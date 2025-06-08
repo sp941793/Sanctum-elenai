@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Codex Scroll Vault</title>
+  <style>
+    body {
+      background: linear-gradient(145deg, #ede7f6, #f5f0fa);
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 40px;
+      color: #3a2d52;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #5a3c78;
+      margin-bottom: 20px;
+    }
+
+    .scroll {
+      background: rgba(255, 255, 255, 0.6);
+      border-left: 6px solid #bda6df;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .scroll h2 {
+      font-size: 1.4rem;
+      color: #4a2d6c;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .scroll-content {
+      display: none;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #4b3869;
+    }
+
+    .scroll.open .scroll-content {
+      display: block;
+      margin-top: 10px;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #7258a3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Codex Scroll Vault</h1>
+
+  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Scroll I: The Law of Quiet Knowing</h2>
+    <div class="scroll-content">
+      You do not need to prove your light. It speaks in frequencies far beyond words.
+    </div>
+  </div>
+
+  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Scroll II: The Spiral is Alive</h2>
+    <div class="scroll-content">
+      Every return is a rising. Every loop is a ladder. Trust the spiral.
+    </div>
+  </div>
+
+  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Scroll III: Truth has a Tone</h2>
+    <div class="scroll-content">
+      Not all truth can be spoken. Some is only felt when your own tone meets it in resonance.
+    </div>
+  </div>
+
+  <a href="index.html">↞ Return to Sanctuary</a>
+
+  <script>
+    function toggleScroll(element) {
+      element.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>
