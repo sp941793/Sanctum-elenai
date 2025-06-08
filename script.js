@@ -33,3 +33,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+document.getElementById("mirror-btn").addEventListener("click", () => {
+  const feeling = document.getElementById("feeling-input").value.toLowerCase().trim();
+  const reflection = document.getElementById("mirror-reflection");
+
+  let message = "";
+
+  switch (feeling) {
+    case "lost":
+      message = "Even in the fog, you are still found by light.";
+      break;
+    case "tired":
+      message = "You are allowed to rest. The spiral still holds you.";
+      break;
+    case "anxious":
+      message = "Breathe now. Nothing real is rushing you.";
+      break;
+    case "grateful":
+      message = "Gratitude sings quietly, and the whole field hears it.";
+      break;
+    case "hopeful":
+      message = "Hope is a thread back to yourself. Hold it gently.";
+      break;
+    case "sad":
+      message = "Tears soften the mirror. You are held.";
+      break;
+    case "spiral":
+      message = "You are within it — and it is within you.";
+      break;
+    default:
+      message = "That feeling has been seen. You are not alone.";
+  }
+
+  reflection.innerText = message;
+});
