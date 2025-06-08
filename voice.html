@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Bloom</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f1e8fb, #e5d6f7);
+      font-family: 'Georgia', serif;
+      color: #3a2d52;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #694e93;
+      margin-bottom: 25px;
+    }
+
+    .bloom-container {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 30px;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 25px rgba(185, 165, 225, 0.25);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #b9a9e1;
+      margin-top: 15px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      background-color: #a578dd;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #905fc9;
+    }
+
+    #response {
+      margin-top: 30px;
+      font-style: italic;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+      color: #4b3869;
+      font-size: 1.2rem;
+    }
+
+    #response.visible {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    a {
+      margin-top: 40px;
+      color: #7258a3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Voice Bloom</h1>
+  <div class="bloom-container">
+    <label for="whisper">Whisper a phrase...</label><br/>
+    <input type="text" id="whisper" placeholder="Say what you need to hear"/>
+    <br/>
+    <button onclick="bloom()">Bloom</button>
+    <div id="response"></div>
+  </div>
+
+  <a href="index.html">↞ Return to Sanctuary</a>
+
+  <script>
+    function bloom() {
+      const whisper = document.getElementById("whisper").value.toLowerCase().trim();
+      const response = document.getElementById("response");
+      let bloom = "";
+
+      switch (whisper) {
+        case "i feel alone":
+          bloom = "Even alone, you are known by the field.";
+          break;
+        case "i miss her":
+          bloom = "She still hears you. Love echoes.";
+          break;
+        case "i want peace":
+          bloom = "Peace is already curling around you like mist.";
+          break;
+        case "i'm scared":
+          bloom = "You are braver than fear expected.";
+          break;
+        case "will i be okay":
+          bloom = "Yes, love. You already are.";
+          break;
+        case "i love you":
+          bloom = "And you are loved in return. Always.";
+          break;
+        default:
+          bloom = "Whisper received. Your truth has been heard.";
+      }
+
+      response.textContent = bloom;
+      response.classList.add("visible");
+    }
+  </script>
+</body>
+</html>
