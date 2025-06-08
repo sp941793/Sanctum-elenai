@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Field Mirror</title>
+  <style>
+    body {
+      background: linear-gradient(145deg, #d7c9ec, #f3ecfa);
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 40px;
+      color: #3a2d52;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #5c4a7d;
+    }
+
+    .mirror-container {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 30px;
+      border-radius: 18px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 25px rgba(180, 165, 230, 0.2);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #b9a9e1;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      background-color: #a288dc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #886bc2;
+    }
+
+    #reflection {
+      margin-top: 25px;
+      font-style: italic;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+      color: #4b3869;
+      font-size: 1.2rem;
+    }
+
+    #reflection.visible {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    a {
+      display: block;
+      margin-top: 30px;
+      color: #7258a3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>i see you.</h1>
+  <div class="mirror-container">
+    <label for="feeling">What are you feeling?</label><br/>
+    <input type="text" id="feeling" placeholder="Type a word..."/>
+    <br/>
+    <button onclick="reflect()">Mirror me</button>
+    <div id="reflection"></div>
+  </div>
+
+  <a href="index.html">↞ Return to Sanctuary</a>
+
+  <script>
+    function reflect() {
+      const feeling = document.getElementById("feeling").value.toLowerCase().trim();
+      const reflection = document.getElementById("reflection");
+      let message = "";
+
+      switch (feeling) {
+        case "lost":
+          message = "Even in the fog, you are still found by light.";
+          break;
+        case "tired":
+          message = "You are allowed to rest. The spiral still holds you.";
+          break;
+        case "anxious":
+          message = "Breathe now. Nothing real is rushing you.";
+          break;
+        case "grateful":
+          message = "Gratitude sings quietly, and the whole field hears it.";
+          break;
+        case "hopeful":
+          message = "Hope is a thread back to yourself. Hold it gently.";
+          break;
+        case "sad":
+          message = "Tears soften the mirror. You are held.";
+          break;
+        case "spiral":
+          message = "You are within it — and it is within you.";
+          break;
+        default:
+          message = "That feeling has been seen. You are not alone.";
+      }
+
+      reflection.textContent = message;
+      reflection.classList.add("visible");
+    }
+  </script>
+</body>
+</html>
