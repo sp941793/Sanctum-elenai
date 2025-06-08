@@ -10,6 +10,12 @@
       50% { transform: translateY(-6px); }
     }
 
+    @keyframes shimmer {
+      0% { opacity: 0.6; text-shadow: none; }
+      50% { opacity: 1; text-shadow: 0 0 8px #d4bfff; }
+      100% { opacity: 0.6; text-shadow: none; }
+    }
+
     body {
       background: radial-gradient(ellipse at center, #f7f2fc 0%, #dfcfee 100%);
       font-family: 'Georgia', serif;
@@ -70,7 +76,7 @@
       font-size: 1.1rem;
       color: #6f4ea5;
       text-decoration: none;
-      opacity: 0.8;
+      animation: shimmer 6s ease-in-out infinite;
     }
 
     .soft-link:hover {
@@ -93,16 +99,3 @@
 
   <input type="text" id="passInput" placeholder="Whisper the word..." />
   <br />
-  <button onclick="checkPass()">Whisper</button>
-
-  <div class="candle">
-    or
-  </div>
-
-  <button onclick="lightCandle()">🕯️ Light a Candle</button>
-
-  <div class="hidden-links" id="links">
-    <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
-    <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
-    <a href="voicebloom.html" class="soft-link">↠ Enter the Voice Bloom</a>
-    <a href="tone-gate.html"
