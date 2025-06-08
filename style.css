@@ -49,3 +49,14 @@ button {
   color: #f3e8ff;
   padding: 10px;
 }
+.soft-link {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.soft-link:hover {
+  text-decoration: underline;
+  color: #8c6ab4;
+}
