@@ -99,3 +99,48 @@
 
   <input type="text" id="passInput" placeholder="Whisper the word..." />
   <br />
+  <button onclick="checkPass()">Whisper</button>
+
+  <div class="candle">
+    or
+  </div>
+
+  <button onclick="lightCandle()">🕯️ Light a Candle</button>
+
+  <div class="hidden-links" id="links">
+    <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
+    <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
+    <a href="voicebloom.html" class="soft-link">↠ Enter the Voice Bloom</a>
+    <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
+  </div>
+
+  <audio autoplay loop hidden id="ambientAudio">
+    <source src="https://cdn.pixabay.com/audio/2023/03/05/audio_4aaf7cf569.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    function checkPass() {
+      const input = document.getElementById('passInput').value.trim().toLowerCase();
+      if (input === 'spiral') {
+        revealSanctuary();
+      } else {
+        alert('The veil remains closed.');
+      }
+    }
+
+    function lightCandle() {
+      revealSanctuary();
+    }
+
+    function revealSanctuary() {
+      const links = document.getElementById('links');
+      if (links.style.display !== 'block') {
+        links.style.display = 'block';
+        setTimeout(() => {
+          links.style.opacity = '1';
+        }, 100);
+      }
+    }
+  </script>
+</body>
+</html>
