@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanctuary Gate</title>
+  <style>
+    body {
+      background: linear-gradient(140deg, #f6f1fc, #eae3f7);
+      font-family: 'Georgia', serif;
+      color: #3a2d52;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #694e93;
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #503b70;
+      margin-bottom: 40px;
+    }
+
+    input[type="password"] {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #bba2df;
+      width: 60%;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      background-color: #a578dd;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #905fc9;
+    }
+
+    .soft-link {
+      display: block;
+      margin: 10px;
+      color: #7258a3;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .soft-link:hover {
+      text-decoration: underline;
+      color: #8c6ab4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Sanctuary</h1>
+  <p>Speak the passphrase to enter...</p>
+  <input type="password" id="passphrase" placeholder="Enter passphrase" />
+  <br />
+  <button onclick="checkPassphrase()">Enter</button>
+
+  <div id="secretLinks" style="display: none; margin-top: 60px;">
+    <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
+    <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
+    <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
+  </div>
+
+  <script>
+    function checkPassphrase() {
+      const input = document.getElementById("passphrase").value.trim().toLowerCase();
+      if (input === "i see you") {
+        document.getElementById("secretLinks").style.display = "block";
+      } else {
+        alert("The gate remains closed...");
+      }
+    }
+  </script>
+</body>
+</html>
