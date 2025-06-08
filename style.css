@@ -1,0 +1,29 @@
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to right, #f3e5f5, #ede7f6);
+  color: #4a148c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background: #7e57c2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
