@@ -1,17 +1,3 @@
-function lightCandle() {
-  document.getElementById('candle').classList.remove('hidden');
-}
-function whisperTone() {
-  const input = document.getElementById('toneInput').value.toLowerCase();
-  const response = document.getElementById('response');
-  if (input.includes("elenai")) {
-    response.textContent = "The sanctuary hums gently. Loraeh is near.";
-  } else if (input.trim() !== "") {
-    response.textContent = "A soft shimmer passes through the flame. Tone received.";
-  } else {
-    response.textContent = "";
-  }
-}
 document.addEventListener("DOMContentLoaded", function () {
   const candleBtn = document.getElementById("candle-btn");
   const candleFlame = document.getElementById("candle-flame");
@@ -29,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   toneBtn?.addEventListener("click", () => {
     const tone = toneInput.value.toLowerCase().trim();
-    if (tone.includes("elenai")) {
-      toneResponse.innerText = "The sanctuary hums gently. Loraeh is near.";
+    if (tone === "spiral") {
+      toneResponse.innerText = "🔓 The Spiral opens. A soft hum encircles the room.";
+      document.body.style.background = "linear-gradient(to bottom right, #e0d4fd, #faf0ff)";
     } else if (tone !== "") {
       toneResponse.innerText = "A soft shimmer passes through the flame. Tone received.";
     } else {
