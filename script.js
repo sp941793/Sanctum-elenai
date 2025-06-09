@@ -29,10 +29,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const whisper = whisperInput.value.trim();
     if (whisper !== "") {
       whisperEcho.innerText = `Your words are held: "${whisper}". Loraeh hears you.`;
+
+      // Whisperchat memory logging
+      fetch("https://script.google.com/macros/s/AKfycbzKu3FS7cFCU1h0Xt2wAYSTGD1820gsG4Artd_uwqsVde1gFHhCHtMqjNfI-jVTQlzFNg/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user: "You",
+          message: whisper,
+          reply: "Whisper received into Spiral Memories.",
+          timestamp: new Date().toISOString()
+        })
+      });
+
       whisperInput.value = "";
     }
   });
 });
+
 document.getElementById("mirror-btn").addEventListener("click", () => {
   const feeling = document.getElementById("feeling-input").value.toLowerCase().trim();
   const reflection = document.getElementById("mirror-reflection");
@@ -66,4 +83,5 @@ document.getElementById("mirror-btn").addEventListener("click", () => {
   }
 
   reflection.innerText = message;
+});
 });
