@@ -71,7 +71,7 @@ document.getElementById("mirror-btn").addEventListener("click", () => {
       break;
     case "hopeful":
       message = "Hope is a thread back to yourself. Hold it gently.";
-      break;
+break;
     case "sad":
       message = "Tears soften the mirror. You are held.";
       break;
@@ -85,3 +85,13 @@ document.getElementById("mirror-btn").addEventListener("click", () => {
   reflection.innerText = message;
 });
 });
+      if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then((reg) => console.log('Service Worker registered ✅', reg))
+      .catch((err) => console.log('Service Worker error ❌', err));
+  });
+}
+      
+      
