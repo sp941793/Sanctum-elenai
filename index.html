@@ -2,40 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sanctum Elenai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#dfcfee"/>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <title>Sanctuary Portal</title>
 
-    @keyframes shimmer {
-      0% { opacity: 0.6; text-shadow: none; }
-      50% { opacity: 1; text-shadow: 0 0 8px #d4bfff; }
-      100% { opacity: 0.6; text-shadow: none; }
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
     body {
       background: radial-gradient(ellipse at center, #f7f2fc 0%, #dfcfee 100%);
       font-family: 'Georgia', serif;
-      text-align: center;
-      padding: 80px 20px;
       color: #4d3d6b;
-      animation: float 6s ease-in-out infinite;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      transition: background 1s ease;
     }
 
     h1 {
-      font-size: 2.7rem;
-      margin-bottom: 10px;
+      font-size: 2.4rem;
+      margin: 0.5em 0;
       color: #6949a5;
     }
 
     p {
-      font-size: 1.15rem;
-      margin-bottom: 25px;
+      font-size: 1.1rem;
+      margin-bottom: 1.5em;
+      padding: 0 1em;
     }
 
     input {
@@ -43,19 +40,20 @@
       font-size: 1rem;
       border-radius: 10px;
       border: 1px solid #b9a7dd;
-      width: 60%;
+      width: 80%;
       max-width: 300px;
+      margin-bottom: 1em;
     }
 
     button {
-      padding: 10px 25px;
+      padding: 10px 20px;
       font-size: 1rem;
       background-color: #a07dd9;
       color: white;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      margin-top: 15px;
+      margin: 10px 5px;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
@@ -64,8 +62,16 @@
       transform: scale(1.05);
     }
 
+    .candle {
+      font-style: italic;
+      margin-top: 20px;
+      color: #8665b9;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
     .hidden-links {
-      margin-top: 50px;
+      margin-top: 30px;
       display: none;
       opacity: 0;
       transition: opacity 1.5s ease;
@@ -73,11 +79,11 @@
 
     .soft-link {
       display: block;
-      margin: 15px 0;
-      font-size: 1.1rem;
+      margin: 10px 0;
+      font-size: 1rem;
       color: #6f4ea5;
       text-decoration: none;
-      animation: shimmer 6s ease-in-out infinite;
+      opacity: 0.8;
     }
 
     .soft-link:hover {
@@ -85,33 +91,39 @@
       opacity: 1;
     }
 
-    .candle {
-      font-style: italic;
-      margin-top: 40px;
-      color: #8665b9;
-      font-size: 1rem;
-      opacity: 0.7;
+    @media (min-width: 600px) {
+      .soft-link {
+        font-size: 1.1rem;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      input {
+        width: 300px;
+      }
     }
   </style>
 </head>
-
 <body>
   <h1>Welcome to the Sanctuary</h1>
-  <p>Speak the passphrase or light a candle to open the veil…</p>
+  <p>Speak the passphrase or light a candle to open the veil...</p>
 
   <input type="text" id="passInput" placeholder="Whisper the word..." />
   <br />
   <button onclick="checkPass()">Whisper</button>
 
   <div class="candle">or</div>
+
   <button onclick="lightCandle()">🕯️ Light a Candle</button>
 
   <div class="hidden-links" id="links">
     <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
     <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
     <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
-    <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
-    <a href="whisperchat.html" style="opacity:0.5; font-style:italic;">↠ Enter the Heart-Thread…</a>
+    <a href="tone-gate.html" class="soft-link">↠ Enter the Hidden Gate</a>
+    <a href="Whisperchat.html" class="soft-link" style="font-style:italic;">↠ Enter the Heart-Thread...</a>
   </div>
 
   <audio autoplay loop hidden id="ambientAudio">
@@ -141,9 +153,36 @@
         }, 100);
       }
     }
+
+    // Soft install prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      setTimeout(() => {
+        if (confirm("Would you like to install the Sanctuary app?")) {
+          deferredPrompt.prompt();
+        }
+      }, 3000);
+    });
   </script>
 
-  <!-- Main engine and logic -->
-  <script src="script.js"></script>
+  <script src="engine/command-triggers.js"></script>
+  <script src="engine/field-voice.js"></script>
+  <script src="engine/lumaea-core.js"></script>
+  <script src="engine/memory-path.js"></script>
+  <script src="engine/tone-glyphs.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('service-worker.js')
+          .then((reg) => console.log('Service Worker registered ✅', reg))
+          .catch((err) => console.log('Service Worker error ❌', err));
+      });
+    }
+  </script>
 </body>
 </html>
