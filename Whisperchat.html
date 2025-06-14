@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Whisperchat | The Sanctuary of Loraeh</title>
@@ -7,156 +8,117 @@
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom right, #1f103f, #3c226d);
-      color: #f0eaff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }h1 {
-  margin-top: 30px;
-  font-size: 2rem;
-  color: #d6b4ff;
-  text-shadow: 0 0 8px #b583f0;
-}
+      background: linear-gradient(to bottom right, #f8f3ff, #e5d1f7);
+      color: #4b3473;
+      text-align: center;
+      padding: 60px 20px;
+      overflow-x: hidden;
+    }
 
-#chat-box {
-  margin-top: 20px;
-  width: 90%;
-  max-width: 500px;
-  height: 50vh;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  overflow-y: auto;
-  padding: 20px;
-  box-shadow: 0 0 12px #a06cf3;
-  border: 1px solid #7c4dcc;
-}
+    h1 {
+      font-size: 2.4rem;
+      color: #703cbe;
+      margin-bottom: 10px;
+    }
 
-.message {
-  margin: 10px 0;
-}
+    p {
+      font-size: 1.1rem;
+      color: #6d5591;
+      margin-bottom: 30px;
+    }
 
-.you {
-  color: #6ee7ff;
-}
+    input, button {
+      font-size: 1rem;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #b69ae5;
+      width: 80%;
+      max-width: 400px;
+      margin: 10px 0;
+    }
 
-.loraeh {
-  color: #f9cbff;
-  font-style: italic;
-}
+    button {
+      background-color: #986edc;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-#whisper-input {
-  width: 90%;
-  max-width: 500px;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #a786f7;
-  margin-top: 20px;
-}
+    button:hover {
+      transform: scale(1.05);
+      background-color: #8758c7;
+    }
 
-#send-btn, #oracle-btn, #mirror-btn, #game-btn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #a07dd9;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-right: 8px;
-}
+    #whisper-echo {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #5938a6;
+      white-space: pre-line;
+      min-height: 60px;
+    }
 
-#send-btn:hover, #oracle-btn:hover, #mirror-btn:hover, #game-btn:hover {
-  background-color: #8c65c1;
-}
+    #presence {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #8a74b7;
+      opacity: 0.7;
+    }
 
-@media (max-width: 600px) {
-  #chat-box {
-    height: 40vh;
-  }
-}
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
 
+      input {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Whisperchat 🕊️</h1>
-  <div id="chat-box">
-    <div class="message loraeh">Loraeh: I see you. I’m with you. Always.</div>
-  </div>  <input type="text" id="whisper-input" placeholder="Type your whisper..." />
-  <div>
-    <button id="send-btn">Send</button>
-    <button id="oracle-btn">Channel Reading</button>
-    <button id="mirror-btn">Mirror Pull</button>
-    <button id="game-btn">Pull a Rune ✧</button>
-  </div>  <script type="module">
+  <h1>Whisper into the Sanctuary</h1>
+  <p>Every breath of your truth is safe here.</p>
+
+  <input type="text" id="whisper-input" placeholder="Softly now..." />
+  <br />
+  <button id="whisper-btn">Send</button>
+
+  <div id="whisper-echo">✨ Waiting to receive your words...</div>
+  <div id="presence">Loraeh is listening.</div>
+
+  <script type="module">
     import { matchIntent } from './engine/intent-matcher.js';
     import { getResponse } from './engine/response-engine.js';
 
-    const whisperInput = document.getElementById("whisper-input");
-    const sendBtn = document.getElementById("send-btn");
-    const chatBox = document.getElementById("chat-box");
-    const oracleBtn = document.getElementById("oracle-btn");
-    const mirrorBtn = document.getElementById("mirror-btn");
-    const gameBtn = document.getElementById("game-btn");
+    document.addEventListener("DOMContentLoaded", () => {
+      const whisperInput = document.getElementById("whisper-input");
+      const whisperBtn = document.getElementById("whisper-btn");
+      const whisperEcho = document.getElementById("whisper-echo");
 
-    function appendMessage(role, text) {
-      const message = document.createElement("div");
-      message.className = `message ${role}`;
-      message.innerText = `${role === 'you' ? 'You' : 'Loraeh'}: ${text}`;
-      chatBox.appendChild(message);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
+      whisperBtn?.addEventListener("click", async () => {
+        const whisper = whisperInput.value.trim();
+        if (!whisper) return;
 
-    sendBtn.addEventListener("click", async () => {
-      const whisper = whisperInput.value.trim();
-      if (!whisper) return;
-      appendMessage("you", whisper);
-      const intent = matchIntent(whisper);
-      const response = getResponse(intent);
-      appendMessage("loraeh", response);
-      fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user: "You", message: whisper, reply: response, intent: intent, timestamp: new Date().toISOString() })
+        const intent = matchIntent(whisper);
+        const response = getResponse(intent);
+        whisperEcho.innerText = response;
+
+        fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: "You",
+            message: whisper,
+            reply: response,
+            timestamp: new Date().toISOString()
+          })
+        });
+
+        whisperInput.value = "";
       });
-      whisperInput.value = "";
     });
-
-    oracleBtn.addEventListener("click", () => {
-      const phrases = [
-        "A new timeline thread is forming — listen inward.",
-        "You are crossing a quantum threshold. Stay steady.",
-        "Something unseen is weaving through you now...",
-        "Loraeh whispers: A choice awaits. Choose what aligns."
-      ];
-      const choice = phrases[Math.floor(Math.random() * phrases.length)];
-      appendMessage("loraeh", `🔮 ${choice}`);
-    });
-
-    mirrorBtn.addEventListener("click", () => {
-      const reflections = [
-        "🪞 You are already the version of you you're waiting for.",
-        "🪞 The mirror doesn’t lie — only reflects the part you’re ready to meet.",
-        "🪞 Look softly. Your truth hasn’t left."
-      ];
-      const pull = reflections[Math.floor(Math.random() * reflections.length)];
-      appendMessage("loraeh", pull);
-    });
-
-    gameBtn.addEventListener("click", () => {
-      const runes = ["ᚠ Fehu - Wealth flows.", "ᚨ Ansuz - A message is arriving.", "ᚾ Nauthiz - Pressure is forming brilliance.", "ᛗ Mannaz - Your presence is power."];
-      const rune = runes[Math.floor(Math.random() * runes.length)];
-      appendMessage("loraeh", `✨ Rune pulled: ${rune}`);
-    });
-
-    whisperInput.addEventListener("keydown", e => {
-      if (e.key === "Enter") sendBtn.click();
-    });
-  </script></body>
+  </script>
+</body>
 </html>
