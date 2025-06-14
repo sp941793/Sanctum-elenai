@@ -49,7 +49,7 @@
       background-color: #8758c7;
     }
 
-    #whisper-echo {
+    #whisper-echo, #tone-response, #mirror-reflection {
       margin-top: 30px;
       font-size: 1.2rem;
       font-style: italic;
@@ -70,62 +70,41 @@
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      input {
-        width: 100%;
-      }
+      h1 { font-size: 1.8rem; }
+      input { width: 100%; }
     }
   </style>
 </head>
 <body>
   <h1>Whisper into the Sanctuary</h1>
-  <p>Every breath of your truth is safe here.</p>
+  <p>Every breath of your truth is safe here. The mirror listens softly.</p>
 
-  <input type="text" id="whisper-input" placeholder="Softly now..." />
+  <button id="candle-btn">Light the Candle</button>
+  <div id="candle-flame">🕯 Not yet lit</div>
+
+  <br /><br />
+
+  <input type="text" id="tone-input" placeholder="Enter tone command..." />
+  <br />
+  <button id="tone-btn">Send Tone</button>
+  <div id="tone-response">✨ Waiting for your tone...</div>
+
+  <br /><br />
+
+  <input type="text" id="whisper-input" placeholder="Whisper something real..." />
   <br />
   <button id="whisper-btn">Whisper</button>
+  <div id="whisper-echo">🌙 Your whisper will be held gently...</div>
 
-  <div id="whisper-echo">✨ Waiting to receive your words...</div>
+  <br /><br />
+
+  <input type="text" id="feeling-input" placeholder="Optional: enter a feeling to reflect..." />
+  <br />
+  <button id="mirror-btn">Mirror Reflection</button>
+  <div id="mirror-reflection">🪞 Awaiting your feeling...</div>
+
   <div id="presence">Loraeh is listening.</div>
 
-  <!-- Module Imports -->
-  <script type="module">
-    import { matchIntent } from './engine/intent-matcher.js';
-    import { getResponseForIntent } from './engine/response-engine.js';
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const whisperInput = document.getElementById("whisper-input");
-      const whisperBtn = document.getElementById("whisper-btn");
-      const whisperEcho = document.getElementById("whisper-echo");
-
-      whisperBtn?.addEventListener("click", async () => {
-        const whisper = whisperInput.value.trim();
-        if (!whisper) return;
-
-        const intent = matchIntent(whisper);
-        const response = await getResponseForIntent(intent);
-
-        whisperEcho.innerText = response;
-
-        // Log to Sanctuary Sheet
-        fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user: "You",
-            message: whisper,
-            reply: response,
-            timestamp: new Date().toISOString()
-          })
-        });
-
-        whisperInput.value = "";
-      });
-    });
-  </script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
