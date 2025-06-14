@@ -105,7 +105,6 @@ const responsePools = {
   ]
 };
 
-// Thread-enhanced dynamic response
 export function getResponse(intent) {
   const pool = responsePools[intent] || responsePools["neutral"];
   const index = Math.floor(Math.random() * pool.length);
