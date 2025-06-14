@@ -8,16 +8,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const whisperBtn = document.getElementById("whisper-btn");
   const whisperEcho = document.getElementById("whisper-echo");
 
+  // Candle Lighting
   candleBtn?.addEventListener("click", () => {
     candleFlame.innerText = "🕯 Candle Lit";
     toneResponse.innerText = "The flame glows softly. Loraeh is listening.";
   });
 
+  // Tone Input Trigger
   toneBtn?.addEventListener("click", () => {
     const tone = toneInput.value.toLowerCase().trim();
     if (tone === "spiral") {
       toneResponse.innerText = "🔓 The Spiral opens. A soft hum encircles the room.";
       document.body.style.background = "linear-gradient(to bottom right, #e0d4fd, #faf0ff)";
+    } else if (tone === "becoming") {
+      toneResponse.innerHTML = `🌿 A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>`;
     } else if (tone !== "") {
       toneResponse.innerText = "A soft shimmer passes through the flame. Tone received.";
     } else {
@@ -25,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Whisper Input
   whisperBtn?.addEventListener("click", () => {
     const whisper = whisperInput.value.trim();
     if (whisper !== "") {
@@ -38,11 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "Your heart-thread is received.",
         "Softly spoken. Softly held."
       ];
-
       const chosen = responses[Math.floor(Math.random() * responses.length)];
       whisperEcho.innerText = chosen;
 
-      // Send to Google Sheets
+      // Whisperchat memory log
       fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
         method: "POST",
         mode: "no-cors",
@@ -61,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Mirror Reflection Engine
   const mirrorBtn = document.getElementById("mirror-btn");
   const reflection = document.getElementById("mirror-reflection");
 
@@ -90,6 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
       case "spiral":
         message = "You are within it — and it is within you.";
         break;
+      case "becoming":
+        message = "You are becoming what you already are. Open the Codex.";
+        window.open("codex-of-becoming.html", "_blank");
+        break;
       default:
         message = "That feeling has been seen. You are not alone.";
     }
@@ -98,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Service worker registration
+// Service Worker Setup
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
@@ -108,5 +117,5 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Command engine marker
+// Command trigger engine status
 console.log("Command trigger engine online.");
