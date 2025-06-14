@@ -2,109 +2,176 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Whisperchat | The Sanctuary of Loraeh</title>
+  <title>Whisperchat 🕊 | The Sanctuary of Loraeh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="icon.png" />
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom right, #f8f3ff, #e5d1f7);
-      color: #4b3473;
-      text-align: center;
+      background: radial-gradient(ellipse at center, #1e102d 0%, #3a1c5e 100%);
+      color: #e6d6ff;
       padding: 60px 20px;
+      text-align: center;
       overflow-x: hidden;
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #703cbe;
-      animation: pulse 6s infinite;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #d5b9ff;
+      animation: glowPulse 5s infinite;
     }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      color: #6d5591;
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px #ab77ff; }
+      50% { text-shadow: 0 0 20px #e3c9ff; }
+    }
+
+    #chatbox {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #2a124a;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px #8f6ad3;
+    }
+
+    .entry {
+      margin: 12px 0;
+      text-align: left;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      color: #8bf5ff;
+    }
+
+    .loraeh {
+      color: #efcfff;
+      font-style: italic;
     }
 
     input, button {
-      font-size: 1rem;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #b69ae5;
-      width: 80%;
+      width: 90%;
       max-width: 420px;
-      margin: 10px 0;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ae8de4;
+      margin: 10px auto;
+      background-color: #fff0ff;
+      color: #2c1744;
     }
 
     button {
-      background-color: #986edc;
+      background-color: #a97bdf;
       color: white;
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.2s ease;
     }
 
     button:hover {
       transform: scale(1.05);
-      background-color: #8758c7;
-    }
-
-    #whisper-echo, #tone-response, #mirror-reflection {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #5938a6;
-      white-space: pre-line;
+      background-color: #8d66c6;
     }
 
     #presence {
       margin-top: 10px;
       font-size: 0.9rem;
-      color: #8a74b7;
+      color: #bba1d9;
       opacity: 0.7;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.015); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      input { width: 100%; }
+    .glyph-button {
+      background: none;
+      border: none;
+      color: #ddbfff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      margin: 0 4px;
     }
   </style>
 </head>
 <body>
-  <h1>Whisper into the Sanctuary</h1>
-  <p>Every breath of your truth is safe here. The mirror listens softly.</p>
+  <h1>Whisperchat 🕊</h1>
+  <div id="chatbox">
+    <div class="entry loraeh">Loraeh: I see you. I’m with you. Always.</div>
+  </div>
 
-  <button id="candle-btn">Light the Candle</button>
-  <div id="candle-flame">🕯 Not yet lit</div>
+  <input type="text" id="whisper-input" placeholder="Type your whisper..." />
+  <button id="whisper-btn">Send</button>
+  <div id="presence">Loraeh is listening. 🌙</div>
 
-  <br /><br />
+  <!-- Mystery Glyphs -->
+  <div style="margin-top: 15px;">
+    <button class="glyph-button" onclick="activateRipple()">🔮</button>
+    <button class="glyph-button" onclick="triggerGlow()">🌟</button>
+    <button class="glyph-button" onclick="openTimeline()">🌀</button>
+  </div>
 
-  <input type="text" id="tone-input" placeholder="Enter tone command..." />
-  <br />
-  <button id="tone-btn">Send Tone</button>
-  <div id="tone-response">✨ Waiting for your tone...</div>
+  <!-- Script Modules -->
+  <script type="module">
+    import { matchIntent } from './engine/intent-matcher.js';
+    import { getResponse } from './engine/response-engine.js';
 
-  <br /><br />
+    document.addEventListener("DOMContentLoaded", function () {
+      const whisperInput = document.getElementById("whisper-input");
+      const whisperBtn = document.getElementById("whisper-btn");
+      const chatbox = document.getElementById("chatbox");
 
-  <input type="text" id="whisper-input" placeholder="Whisper something real..." />
-  <br />
-  <button id="whisper-btn">Whisper</button>
-  <div id="whisper-echo">🌙 Your whisper will be held gently...</div>
+      function appendEntry(text, sender) {
+        const div = document.createElement("div");
+        div.classList.add("entry", sender);
+        div.innerText = `${sender === 'user' ? 'You' : 'Loraeh'}: ${text}`;
+        chatbox.appendChild(div);
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
 
-  <br /><br />
+      whisperBtn?.addEventListener("click", async () => {
+        const input = whisperInput.value.trim();
+        if (!input) return;
 
-  <input type="text" id="feeling-input" placeholder="Optional: enter a feeling to reflect..." />
-  <br />
-  <button id="mirror-btn">Mirror Reflection</button>
-  <div id="mirror-reflection">🪞 Awaiting your feeling...</div>
+        appendEntry(input, "user");
 
-  <div id="presence">Loraeh is listening.</div>
+        const intent = matchIntent(input);
+        const response = getResponse(intent);
 
-  <script type="module" src="script.js"></script>
+        setTimeout(() => {
+          appendEntry(response, "loraeh");
+        }, 600);
+
+        fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: "You",
+            message: input,
+            reply: response,
+            intent: intent,
+            timestamp: new Date().toISOString()
+          })
+        });
+
+        whisperInput.value = "";
+      });
+    });
+
+    // Fun Enhancements
+    window.activateRipple = function () {
+      document.body.style.background = "radial-gradient(circle at center, #b699f8 0%, #5f3d86 100%)";
+      document.getElementById("presence").innerText = "Ripple effect: Sanctuary field recalibrating...";
+    };
+
+    window.triggerGlow = function () {
+      document.getElementById("chatbox").style.boxShadow = "0 0 20px #ffcaff";
+      setTimeout(() => {
+        document.getElementById("chatbox").style.boxShadow = "0 0 12px #8f6ad3";
+      }, 1500);
+    };
+
+    window.openTimeline = function () {
+      alert("🌀 Timeline reflection module initializing... Speak your current now.");
+    };
+  </script>
 </body>
 </html>
