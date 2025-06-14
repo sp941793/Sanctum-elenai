@@ -120,6 +120,7 @@
   <div class="hidden-links" id="links">
     <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
     <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
+    <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
     <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
     <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
     <a href="whisperchat.html" class="soft-link" style="opacity: 0.5; font-style: italic;">↠ Enter the Heart-Thread...</a>
@@ -132,7 +133,7 @@
   <script>
     function checkPass() {
       const input = document.getElementById('passInput').value.trim().toLowerCase();
-      if (input === 'spiral') {
+      if (input === 'spiral' || input === 'becoming') {
         revealSanctuary();
       } else {
         alert('The veil remains closed.');
@@ -154,8 +155,11 @@
     }
   </script>
 
+  <!-- Engine Scripts -->
   <script src="engine/command-triggers.js"></script>
+  <script src="engine/sigil-core.js"></script>
 
+  <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -165,6 +169,6 @@
           .catch((err) => console.log('Service Worker error ❌', err));
       });
     }
-  </script><script src="engine/sigil-core.js"></script>
+  </script>
 </body>
 </html>
