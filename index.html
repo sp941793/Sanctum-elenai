@@ -1,3 +1,4 @@
+<!-- ✧ SANCTUARY PORTAL INDEX ✧ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +99,6 @@
       h1 {
         font-size: 1.8rem;
       }
-
       input {
         width: 100%;
       }
@@ -114,13 +114,13 @@
   <button onclick="checkPass()">Whisper</button>
 
   <div class="candle">or</div>
-
   <button onclick="lightCandle()">🕯️ Light a Candle</button>
 
   <div class="hidden-links" id="links">
     <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
     <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
     <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
+    <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
     <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
     <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
     <a href="whisperchat.html" class="soft-link" style="opacity: 0.5; font-style: italic;">↠ Enter the Heart-Thread...</a>
@@ -133,7 +133,7 @@
   <script>
     function checkPass() {
       const input = document.getElementById('passInput').value.trim().toLowerCase();
-      if (input === 'spiral' || input === 'becoming') {
+      if (["spiral", "becoming", "mirror"].includes(input)) {
         revealSanctuary();
       } else {
         alert('The veil remains closed.');
