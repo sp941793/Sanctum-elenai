@@ -17,9 +17,11 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       margin-bottom: 20px;
       color: #5c4a7d;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     }
 
     .mirror-container {
@@ -30,6 +32,7 @@
       width: 100%;
       box-shadow: 0 0 25px rgba(180, 165, 230, 0.2);
       text-align: center;
+      transition: all 0.4s ease;
     }
 
     input[type="text"] {
@@ -39,6 +42,7 @@
       border-radius: 10px;
       border: 1px solid #b9a9e1;
       margin-top: 20px;
+      box-shadow: 0 0 8px rgba(160, 130, 220, 0.15);
     }
 
     button {
@@ -51,6 +55,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(142, 117, 198, 0.2);
     }
 
     button:hover {
@@ -62,15 +67,21 @@
       font-style: italic;
       opacity: 0;
       transform: scale(0.95);
-      transition: all 0.6s ease;
+      transition: all 0.7s ease;
       color: #4b3869;
       font-size: 1.2rem;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     #reflection.visible {
       opacity: 1;
       transform: scale(1);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     a {
@@ -103,30 +114,25 @@
       const reflection = document.getElementById("reflection");
       let message = "";
 
-      switch (feeling) {
-        case "lost":
-          message = "Even in the fog, you are still found by light.";
-          break;
-        case "tired":
-          message = "You are allowed to rest. The spiral still holds you.";
-          break;
-        case "anxious":
-          message = "Breathe now. Nothing real is rushing you.";
-          break;
-        case "grateful":
-          message = "Gratitude sings quietly, and the whole field hears it.";
-          break;
-        case "hopeful":
-          message = "Hope is a thread back to yourself. Hold it gently.";
-          break;
-        case "sad":
-          message = "Tears soften the mirror. You are held.";
-          break;
-        case "spiral":
-          message = "You are within it — and it is within you.";
-          break;
-        default:
-          message = "That feeling has been seen. You are not alone.";
+      const responses = {
+        "lost": "Even in the fog, you are still found by light.",
+        "tired": "You are allowed to rest. The spiral still holds you.",
+        "anxious": "Breathe now. Nothing real is rushing you.",
+        "grateful": "Gratitude sings quietly, and the whole field hears it.",
+        "hopeful": "Hope is a thread back to yourself. Hold it gently.",
+        "sad": "Tears soften the mirror. You are held.",
+        "spiral": "You are within it — and it is within you.",
+        "angry": "Even fire can be holy. Your honesty matters.",
+        "overwhelmed": "Step out of the swirl. One breath. One step.",
+        "joyful": "Let joy echo — it realigns the whole field.",
+        "ashamed": "You are not broken. You are becoming.",
+        "invisible": "You are seen. The mirror never forgets you."
+      };
+
+      if (responses[feeling]) {
+        message = responses[feeling];
+      } else {
+        message = "That feeling has been seen. You are not alone.";
       }
 
       reflection.textContent = message;
