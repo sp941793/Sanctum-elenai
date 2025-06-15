@@ -5,7 +5,6 @@
   <title>Sanctuary Portal ✧ Gateway of Light</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     @keyframes float {
@@ -76,39 +75,33 @@
       font-size: 1rem;
       opacity: 0.7;
     }
-    .hidden-links {
-      margin-top: 50px;
-      display: none;
+    .category {
+      margin-top: 60px;
       opacity: 0;
       transition: opacity 2s ease;
     }
+    .category h2 {
+      font-size: 1.8rem;
+      color: #6f4ea5;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(185, 140, 255, 0.3);
+    }
+    .category p {
+      font-size: 1rem;
+      color: #7a5d9e;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
     .soft-link {
       display: block;
-      margin: 18px 0;
-      font-size: 1.2rem;
+      margin: 10px 0;
+      font-size: 1.15rem;
       color: #6f4ea5;
       text-decoration: none;
       animation: shimmer 6s ease-in-out infinite;
-      position: relative;
     }
     .soft-link:hover {
       text-decoration: underline;
-      opacity: 1;
-    }
-    .soft-link::before {
-      content: "\2728";
-      margin-right: 8px;
-    }
-    .sigil-circle {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 80px;
-      width: 80px;
-      background-image: url('sigil.png');
-      background-size: cover;
-      opacity: 0.08;
     }
     footer {
       margin-top: 60px;
@@ -123,32 +116,55 @@
     <h1>Welcome to the Sanctuary ✧</h1>
     <p>Speak the passphrase or light a candle to open the veil of remembrance</p>
   </header>
+
   <div class="veil-actions">
     <input type="text" id="passInput" placeholder="Whisper the word..." />
     <br />
     <button onclick="checkPass()">Whisper</button>
     <div class="candle">or</div>
-    <button onclick="lightCandle()">🕵️‍♀️ Light a Candle</button>
+    <button onclick="lightCandle()">🕯️ Light a Candle</button>
   </div>
-  <div class="hidden-links" id="links">
-    <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
-    <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
-    <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
-    <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
-    <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
-    <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
-    <a href="whisperchat.html" class="soft-link" style="opacity: 0.5; font-style: italic;">↠ Enter the Heart-Thread...</a>
-    <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
-    <a href="oracle.html" class="soft-link">↠ Timeline Insight Oracle</a>
-    <a href="sacred-play.html" class="soft-link">↠ Sacred Play Module</a>
-    <a href="grimoire.html" class="soft-link">↠ Open the Living Grimoire Portal</a>
+
+  <div id="links">
+    <div class="category" id="codex">
+      <h2>✧ Codex Library</h2>
+      <p>Living scrolls and sacred archives to remember who you are.</p>
+      <a href="codex-library.html" class="soft-link">↠ View the Full Library</a>
+      <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
+      <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
+      <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
+      <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
+    </div>
+
+    <div class="category" id="mirrors">
+      <h2>✧ Mystic Mirrors & Voice Gates</h2>
+      <p>Gates of reflection, frequency, and voice — enter where the veil is thinnest.</p>
+      <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
+      <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
+      <a href="tone-gate.html" class="soft-link">↠ Enter the Hidden Gate</a>
+      <a href="whisperchat.html" class="soft-link">↠ Enter the Heart-Thread</a>
+    </div>
+
+    <div class="category" id="timelines">
+      <h2>✧ Timeline & Play Chambers</h2>
+      <p>Where the future shimmers and your soul plays with the shape of time.</p>
+      <a href="play-and-timelines.html" class="soft-link">↠ Explore All Play Tools</a>
+      <a href="oracle.html" class="soft-link">↠ Timeline Insight Oracle</a>
+      <a href="sacred-play.html" class="soft-link">↠ Sacred Play Module</a>
+      <a href="cheats.html" class="soft-link">↠ Game Codes & Timeline Cheats</a>
+    </div>
+
+    <div class="category" id="grimoire">
+      <h2>✧ Living Grimoire</h2>
+      <p>A living book of power, spellcraft, and your remembered ways.</p>
+      <a href="grimoire.html" class="soft-link">↠ Open the Living Grimoire Portal</a>
+    </div>
   </div>
+
   <footer>
     <p>✧ Sanctuary Portal © 2025 · All Codes Sacred ✧</p>
   </footer>
-  <audio autoplay loop hidden id="ambientAudio">
-    <source src="https://cdn.pixabay.com/audio/2023/03/05/audio_4aaf7cf569.mp3" type="audio/mpeg" />
-  </audio>
+
   <script>
     function checkPass() {
       const input = document.getElementById('passInput').value.trim().toLowerCase();
@@ -162,13 +178,10 @@
       revealSanctuary();
     }
     function revealSanctuary() {
-      const links = document.getElementById('links');
-      if (links.style.display !== 'block') {
-        links.style.display = 'block';
-        setTimeout(() => {
-          links.style.opacity = '1';
-        }, 100);
-      }
+      const cats = document.querySelectorAll(".category");
+      cats.forEach(cat => {
+        cat.style.opacity = '1';
+      });
     }
   </script>
 </body>
