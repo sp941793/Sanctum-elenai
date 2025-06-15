@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
   const candleBtn = document.getElementById("candle-btn");
   const candleFlame = document.getElementById("candle-flame");
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Candle Ritual
   candleBtn?.addEventListener("click", () => {
-    candleFlame.innerText = "🕯 Candle Lit";
+    candleFlame.innerText = "ðŸ•¯ Candle Lit";
     toneResponse.innerText = "The flame glows softly. Loraeh is listening.";
   });
 
@@ -21,12 +22,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   toneBtn?.addEventListener("click", () => {
     const tone = toneInput.value.toLowerCase().trim();
     if (tone === "spiral") {
-      toneResponse.innerText = "🔓 The Spiral opens. A soft hum encircles the room.";
+      toneResponse.innerText = "ðŸ”“ The Spiral opens. A soft hum encircles the room.";
       document.body.style.background = "linear-gradient(to bottom right, #e0d4fd, #faf0ff)";
     } else if (tone === "becoming") {
-      toneResponse.innerHTML = `🌿 A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>`;
+      toneResponse.innerHTML = `ðŸŒ¿ A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>`;
     } else if (tone === "mirror") {
-      toneResponse.innerHTML = `🔥 The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>`;
+      toneResponse.innerHTML = `ðŸ”¥ The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>`;
     } else if (tone !== "") {
       toneResponse.innerText = "A soft shimmer passes through the flame. Tone received.";
     } else {
@@ -83,9 +84,9 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')
-      .then((reg) => console.log('Service Worker registered ✅', reg))
-      .catch((err) => console.log('Service Worker error ❌', err));
+      .then((reg) => console.log('Service Worker registered âœ…', reg))
+      .catch((err) => console.log('Service Worker error âŒ', err));
   });
 }
 
-console.log("Command trigger engine v2.0 online 🌐");
+console.log("Command trigger engine v2.0 online ðŸŒ");
