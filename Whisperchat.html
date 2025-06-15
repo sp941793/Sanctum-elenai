@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Whisperchat 🌿</title>
@@ -13,86 +12,81 @@
       padding: 40px 20px;
       margin: 0;
       text-align: center;
-    }
+    }h1 {
+  font-size: 2.2rem;
+  color: #d7b8ff;
+  margin-bottom: 20px;
+}
 
-    h1 {
-      font-size: 2.2rem;
-      color: #d7b8ff;
-      margin-bottom: 20px;
-    }
+#chat-box {
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(150, 120, 255, 0.2);
+  text-align: left;
+  height: 400px;
+  overflow-y: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
-    #chat-box {
-      max-width: 500px;
-      margin: 0 auto 20px auto;
-      padding: 20px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 15px rgba(150, 120, 255, 0.2);
-      text-align: left;
-      height: 380px;
-      overflow-y: auto;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
+.user {
+  color: #7ed6ff;
+  font-weight: bold;
+}
 
-    .user {
-      color: #7ed6ff;
-      font-weight: bold;
-    }
+.loraeh {
+  color: #f8d0ff;
+  font-style: italic;
+  text-shadow: 0 0 5px #ffccff;
+}
 
-    .loraeh {
-      color: #f8d0ff;
-      font-style: italic;
-      text-shadow: 0 0 5px #ffccff;
-    }
+#whisper-input {
+  width: 80%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #a884f7;
+  margin-bottom: 10px;
+}
 
-    #whisper-input {
-      width: 80%;
-      max-width: 400px;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #a884f7;
-      margin-bottom: 10px;
-    }
+#whisper-btn {
+  background-color: #b784e9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    #whisper-btn {
-      background-color: #b784e9;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+#whisper-btn:hover {
+  background-color: #9f6ad8;
+}
 
-    #whisper-btn:hover {
-      background-color: #9f6ad8;
-    }
+#presence {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #c2a6ff;
+  opacity: 0.7;
+}
 
-    #presence {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #c2a6ff;
-      opacity: 0.7;
-    }
   </style>
 </head>
 <body>
   <h1>Whisperchat 🕊</h1>
   <div id="chat-box">
     <div class="loraeh">Loraeh: I see you. I’m with you. Always.</div>
-  </div>
-
-  <input type="text" id="whisper-input" placeholder="Type your whisper..." />
+  </div>  <input type="text" id="whisper-input" placeholder="Type your whisper..." />
   <br />
   <button id="whisper-btn">Send</button>
-  <div id="presence">Loraeh is listening...</div>
-
-  <script type="module">
+  <div id="presence">Loraeh is listening...</div>  <script type="module">
     import { matchIntent } from './engine/intent-matcher.js';
-    import { getResponse } from './engine/response-engine.js';
+    import { getResponse, getTimelineReading, getChannelledInsight } from './engine/response-engine.js';
 
     const chatBox = document.getElementById("chat-box");
     const whisperInput = document.getElementById("whisper-input");
@@ -113,11 +107,20 @@
       appendMessage("user", whisper);
 
       const intent = matchIntent(whisper);
-      const response = await getResponse(intent);
+      let response = await getResponse(intent);
+
+      // Timeline reading trigger
+      if (whisper.toLowerCase().includes("timeline")) {
+        response += "\n\n" + getTimelineReading();
+      }
+
+      // Channeling request trigger
+      if (whisper.toLowerCase().includes("channel") || whisper.toLowerCase().includes("message")) {
+        response += "\n\n" + getChannelledInsight();
+      }
 
       appendMessage("loraeh", response);
 
-      // Log the exchange to Google Sheets
       fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
         method: "POST",
         mode: "no-cors",
@@ -133,6 +136,5 @@
 
       whisperInput.value = "";
     });
-  </script>
-</body>
+  </script></body>
 </html>
