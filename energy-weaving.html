@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Energy Weaving ✧ Subtle Threads of Light</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Marcellus SC', serif;
+      background: linear-gradient(to bottom right, #f2e7fc, #dacbf3);
+      color: #4d326e;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #6c4da4;
+      text-shadow: 0 0 10px rgba(185, 162, 234, 0.4);
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #a689db, #cdb5f5);
+      color: white;
+      font-size: 1rem;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 0 12px rgba(130, 100, 190, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #9067c4;
+      transform: scale(1.05);
+    }
+
+    #tip {
+      font-size: 1.3rem;
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 18px rgba(155, 130, 215, 0.3);
+    }
+
+    a {
+      color: #6b42af;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 40px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Energy Weaving ✧</h1>
+  <p>Subtle threads. Timeless patterning. Choose a tip to begin weaving your field with clarity and intention.</p>
+
+  <button onclick="showTip('stabilize')">🪢 Stabilize the Field</button>
+  <button onclick="showTip('amplify')">💠 Amplify Your Thread</button>
+  <button onclick="showTip('clear')">💨 Clear Energy Residue</button>
+
+  <div id="tip"></div>
+
+  <a href="index.html">↞ Return to Sanctuary Portal</a>
+
+  <script>
+    function showTip(type) {
+      let message = "";
+
+      switch (type) {
+        case "stabilize":
+          message = "🪢 Anchor your breath into your belly. As you exhale, gently say: “Thread, stabilize.” Let your spine lengthen and your gaze soften. Feel a quiet coherence ripple through you.";
+          break;
+        case "amplify":
+          message = "💠 Place your hands over your heart. Whisper a truth you carry that no one else does. Feel it echo. Then say: “Thread, rise.” The field around you will respond.";
+          break;
+        case "clear":
+          message = "💨 Sweep your hands gently around your head and shoulders. Visualize strands of static being brushed away. Say softly: “Thread, clear.” Then breathe into the quiet.";
+          break;
+        default:
+          message = "🌀 Begin by choosing a thread. All weaving starts with attention.";
+      }
+
+      document.getElementById("tip").innerText = message;
+    }
+  </script>
+</body>
+</html>
