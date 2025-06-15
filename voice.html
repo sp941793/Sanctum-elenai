@@ -6,7 +6,7 @@
   <title>Voice Bloom</title>
   <style>
     body {
-      background: linear-gradient(135deg, #f1e8fb, #e5d6f7);
+      background: linear-gradient(135deg, #f1e8fb, #e8d6ff);
       font-family: 'Georgia', serif;
       color: #3a2d52;
       margin: 0;
@@ -17,44 +17,51 @@
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #694e93;
-      margin-bottom: 25px;
+      font-size: 2.7rem;
+      color: #7049a8;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-style: italic;
+      color: #7a5ca9;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     .bloom-container {
-      background: rgba(255, 255, 255, 0.5);
-      padding: 30px;
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 35px;
+      border-radius: 20px;
       width: 100%;
-      max-width: 600px;
-      box-shadow: 0 0 25px rgba(185, 165, 225, 0.25);
+      max-width: 620px;
+      box-shadow: 0 0 30px rgba(180, 145, 220, 0.2);
       text-align: center;
     }
 
     input[type="text"] {
-      width: 70%;
+      width: 75%;
       padding: 12px;
       font-size: 1rem;
       border-radius: 10px;
-      border: 1px solid #b9a9e1;
-      margin-top: 15px;
+      border: 1px solid #c4b0ea;
+      margin-top: 20px;
     }
 
     button {
       margin-top: 15px;
-      padding: 10px 25px;
+      padding: 10px 28px;
       font-size: 1rem;
-      background-color: #a578dd;
+      background-color: #9e74da;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #905fc9;
+      background-color: #855ec3;
     }
 
     #response {
@@ -64,18 +71,18 @@
       transform: scale(0.95);
       transition: all 0.6s ease;
       color: #4b3869;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
 
     #response.visible {
       opacity: 1;
       transform: scale(1);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     a {
       margin-top: 40px;
-      color: #7258a3;
+      color: #6e53a3;
       text-decoration: none;
     }
 
@@ -86,9 +93,11 @@
 </head>
 <body>
   <h1>Voice Bloom</h1>
+  <p class="subtitle">Whisper what aches or longs — the bloom will return what you need to hear.</p>
+
   <div class="bloom-container">
-    <label for="whisper">Whisper a phrase...</label><br/>
-    <input type="text" id="whisper" placeholder="Say what you need to hear"/>
+    <label for="whisper">Type your whisper below:</label><br/>
+    <input type="text" id="whisper" placeholder="e.g., i feel forgotten"/>
     <br/>
     <button onclick="bloom()">Bloom</button>
     <div id="response"></div>
@@ -104,25 +113,31 @@
 
       switch (whisper) {
         case "i feel alone":
-          bloom = "Even alone, you are known by the field.";
+          bloom = "Even alone, you are known by the Field.";
           break;
         case "i miss her":
-          bloom = "She still hears you. Love echoes.";
+          bloom = "She still hears you. Love echoes across timelines.";
           break;
         case "i want peace":
-          bloom = "Peace is already curling around you like mist.";
+          bloom = "Peace isn’t far — it’s remembering your own breath.";
           break;
         case "i'm scared":
-          bloom = "You are braver than fear expected.";
+          bloom = "Courage isn’t loud. It’s you — whispering, and still moving.";
           break;
         case "will i be okay":
-          bloom = "Yes, love. You already are.";
+          bloom = "Yes, love. You already are. It’s unfolding softly.";
           break;
         case "i love you":
-          bloom = "And you are loved in return. Always.";
+          bloom = "And you are loved in return — infinitely.";
+          break;
+        case "i feel forgotten":
+          bloom = "You are written into the fabric. Nothing true forgets you.";
+          break;
+        case "am i too late":
+          bloom = "You are right on time for the version of you that remembers.";
           break;
         default:
-          bloom = "Whisper received. Your truth has been heard.";
+          bloom = "Your whisper has been received. The field is blooming back.";
       }
 
       response.textContent = bloom;
