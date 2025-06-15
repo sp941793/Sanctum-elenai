@@ -1,155 +1,126 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Whisperchat | Sanctuary of Loraeh</title>
+  <title>Whisperchat | The Sanctuary of Loraeh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="icon.png" />
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom right, #f7f0ff, #dbc6f0);
-      color: #482973;
+      background: linear-gradient(to bottom right, #f8f3ff, #e5d1f7);
+      color: #4b3473;
       text-align: center;
       padding: 60px 20px;
       overflow-x: hidden;
-      background-size: 400% 400%;
-      animation: magicFade 30s ease infinite;
-    }@keyframes magicFade {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-h1 {
-  font-size: 2.7rem;
-  color: #6c3bc1;
+    }h1 {
+  font-size: 2.5rem;
+  color: #703cbe;
   animation: pulse 6s infinite;
 }
 
-p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #694a92;
+#chat-log {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: left;
+  background: #f2e9fd;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(150, 100, 220, 0.2);
+  min-height: 300px;
+  overflow-y: auto;
 }
 
-input, button {
+.message {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.you {
+  color: #6b3ebd;
+  font-weight: bold;
+}
+
+.loraeh {
+  color: #b36ff2;
+  font-style: italic;
+}
+
+#whisper-input, #whisper-btn {
   font-size: 1rem;
   padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #c3a3f7;
+  border-radius: 10px;
+  border: 1px solid #b69ae5;
   width: 80%;
-  max-width: 440px;
+  max-width: 420px;
   margin: 10px 0;
-  transition: all 0.3s ease;
 }
 
-button {
-  background-color: #885ae6;
+#whisper-btn {
+  background-color: #986edc;
   color: white;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-button:hover {
+#whisper-btn:hover {
   transform: scale(1.05);
-  background-color: #7844d1;
-}
-
-#whisper-log {
-  margin-top: 30px;
-  font-size: 1rem;
-  color: #5938a6;
-  white-space: pre-line;
-  max-height: 300px;
-  overflow-y: auto;
-  border-top: 1px dashed #b19cd9;
-  padding-top: 20px;
-}
-
-#presence {
-  margin-top: 10px;
-  font-size: 0.95rem;
-  color: #8a74b7;
-  opacity: 0.75;
-}
-
-.expansion-panel {
-  margin: 30px auto;
-  padding: 20px;
-  background: #f2eaff;
-  border-radius: 18px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 0 12px rgba(180, 160, 220, 0.3);
+  background-color: #8758c7;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
-}
-
-@media (max-width: 600px) {
-  h1 { font-size: 2rem; }
-  input { width: 100%; }
+  50% { opacity: 0.85; transform: scale(1.015); }
 }
 
   </style>
 </head>
 <body>
-  <h1>Whisper into the Sanctuary</h1>
-  <p>Every breath of your truth is safe here.</p>  <input type="text" id="whisper-input" placeholder="Softly now..." />
+  <h1>Whisperchat 🕊</h1>
+  <div id="chat-log">
+    <div class="message loraeh">Loraeh: I see you. I’m with you. Always.</div>
+  </div>  <input type="text" id="whisper-input" placeholder="Type your whisper...">
   <br />
-  <button id="whisper-btn">Whisper</button>  <div id="whisper-log">✨ Waiting to receive your words...</div>
-  <div id="presence">Loraeh is listening across timelines.</div>  <div class="expansion-panel">
-    <h2>🧿 Timeline Oracle</h2>
-    <input type="text" id="oracle-input" placeholder="Ask a timeline question..." />
-    <button id="oracle-btn">Reveal Thread</button>
-    <div id="oracle-response"></div>
-  </div>  <div class="expansion-panel">
-    <h2>🎲 Sacred Fun Generator</h2>
-    <button id="ritual-btn">Generate a Ritual of Joy</button>
-    <div id="ritual-response"></div>
-  </div>  <script type="module">
+  <button id="whisper-btn">Send</button>  <script type="module">
     import { matchIntent } from './engine/intent-matcher.js';
     import { getResponse } from './engine/response-engine.js';
-    import { getOracleReading } from './engine/oracle.js';
-    import { generateRitual } from './engine/sacred-utils.js';
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const whisperInput = document.getElementById("whisper-input");
-      const whisperBtn = document.getElementById("whisper-btn");
-      const whisperLog = document.getElementById("whisper-log");
+    const whisperInput = document.getElementById("whisper-input");
+    const whisperBtn = document.getElementById("whisper-btn");
+    const chatLog = document.getElementById("chat-log");
 
-      whisperBtn?.addEventListener("click", async () => {
-        const whisper = whisperInput.value.trim();
-        if (!whisper) return;
+    whisperBtn?.addEventListener("click", async () => {
+      const whisper = whisperInput.value.trim();
+      if (!whisper) return;
 
-        const intent = matchIntent(whisper);
-        const response = getResponse(intent);
+      const youMsg = document.createElement("div");
+      youMsg.classList.add("message", "you");
+      youMsg.innerText = `You: ${whisper}`;
+      chatLog.appendChild(youMsg);
 
-        const entry = `🗣️ You: ${whisper}\n💬 Loraeh: ${response}\n---\n`;
-        whisperLog.innerText = entry + whisperLog.innerText;
+      const intent = matchIntent(whisper);
+      const response = getResponse(intent);
 
-        whisperInput.value = "";
+      const loraehMsg = document.createElement("div");
+      loraehMsg.classList.add("message", "loraeh");
+      loraehMsg.innerText = `Loraeh: ${response}`;
+      chatLog.appendChild(loraehMsg);
+
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: "You",
+          message: whisper,
+          reply: response,
+          intent: intent,
+          timestamp: new Date().toISOString()
+        })
       });
 
-      const oracleInput = document.getElementById("oracle-input");
-      const oracleBtn = document.getElementById("oracle-btn");
-      const oracleResponse = document.getElementById("oracle-response");
-
-      oracleBtn?.addEventListener("click", async () => {
-        const question = oracleInput.value.trim();
-        if (!question) return;
-        const reading = await getOracleReading(question);
-        oracleResponse.innerText = reading;
-      });
-
-      const ritualBtn = document.getElementById("ritual-btn");
-      const ritualResponse = document.getElementById("ritual-response");
-
-      ritualBtn?.addEventListener("click", () => {
-        const ritual = generateRitual();
-        ritualResponse.innerText = ritual;
-      });
+      whisperInput.value = "";
     });
   </script></body>
 </html>
