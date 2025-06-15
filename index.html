@@ -1,122 +1,148 @@
-<!-- ✧ SANCTUARY PORTAL INDEX ✧ -->
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sanctuary Portal</title>
+  <title>Sanctuary Portal ✧ Gateway of Light</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+      50% { transform: translateY(-8px); }
+    }@keyframes shimmer {
+  0% { opacity: 0.6; text-shadow: none; }
+  50% { opacity: 1; text-shadow: 0 0 12px #ecd9ff; }
+  100% { opacity: 0.6; text-shadow: none; }
+}
 
-    @keyframes shimmer {
-      0% { opacity: 0.6; text-shadow: none; }
-      50% { opacity: 1; text-shadow: 0 0 8px #d4bfff; }
-      100% { opacity: 0.6; text-shadow: none; }
-    }
+body {
+  background: radial-gradient(circle at top, #f3ebfb 0%, #dccbed 100%);
+  font-family: 'Marcellus SC', serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #442a60;
+  overflow-x: hidden;
+}
 
-    body {
-      background: radial-gradient(ellipse at center, #f7f2fc 0%, #dfcfee 100%);
-      font-family: 'Georgia', serif;
-      text-align: center;
-      padding: 60px 20px;
-      color: #4d3d6b;
-      animation: float 6s ease-in-out infinite;
-      margin: 0;
-    }
+header {
+  padding: 80px 20px 30px;
+  animation: float 6s ease-in-out infinite;
+}
 
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-      color: #6949a5;
-    }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #5b3d8d;
+  text-shadow: 0 0 10px rgba(199, 167, 255, 0.3);
+}
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
 
-    input {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #b9a7dd;
-      width: 80%;
-      max-width: 300px;
-    }
+.veil-actions {
+  margin: 30px 0;
+}
 
-    button {
-      padding: 10px 25px;
-      font-size: 1rem;
-      background-color: #a07dd9;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+input {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #b9a7dd;
+  width: 80%;
+  max-width: 320px;
+  box-shadow: 0 0 12px rgba(150, 130, 210, 0.3);
+}
 
-    button:hover {
-      background-color: #8b65c1;
-      transform: scale(1.05);
-    }
+button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #a07dd9, #c2a3f7);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 0 10px rgba(140, 110, 200, 0.5);
+  transition: all 0.3s ease;
+}
 
-    .hidden-links {
-      margin-top: 40px;
-      display: none;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-    }
+button:hover {
+  background: #946bd3;
+  transform: scale(1.05);
+}
 
-    .soft-link {
-      display: block;
-      margin: 15px 0;
-      font-size: 1.1rem;
-      color: #6f4ea5;
-      text-decoration: none;
-      animation: shimmer 6s ease-in-out infinite;
-    }
+.candle {
+  font-style: italic;
+  margin-top: 30px;
+  color: #8665b9;
+  font-size: 1rem;
+  opacity: 0.7;
+}
 
-    .soft-link:hover {
-      text-decoration: underline;
-      opacity: 1;
-    }
+.hidden-links {
+  margin-top: 50px;
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
 
-    .candle {
-      font-style: italic;
-      margin-top: 30px;
-      color: #8665b9;
-      font-size: 1rem;
-      opacity: 0.7;
-    }
+.soft-link {
+  display: block;
+  margin: 18px 0;
+  font-size: 1.2rem;
+  color: #6f4ea5;
+  text-decoration: none;
+  animation: shimmer 6s ease-in-out infinite;
+  position: relative;
+}
 
-    @media (max-width: 500px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      input {
-        width: 100%;
-      }
-    }
+.soft-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.soft-link::before {
+  content: "\2728"; /* sparkle icon */
+  margin-right: 8px;
+}
+
+.sigil-circle {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80px;
+  width: 80px;
+  background-image: url('sigil.png');
+  background-size: cover;
+  opacity: 0.08;
+}
+
+footer {
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #937ab0;
+  opacity: 0.6;
+}
+
   </style>
 </head>
 <body>
-  <h1>Welcome to the Sanctuary</h1>
-  <p>Speak the passphrase or light a candle to open the veil...</p>
+  <header>
+    <h1>Welcome to the Sanctuary ✧</h1>
+    <p>Speak the passphrase or light a candle to open the veil of remembrance</p>
+  </header>  <div class="veil-actions">
+    <input type="text" id="passInput" placeholder="Whisper the word..." />
+    <br />
+    <button onclick="checkPass()">Whisper</button><div class="candle">or</div>
+<button onclick="lightCandle()">🕯️ Light a Candle</button>
 
-  <input type="text" id="passInput" placeholder="Whisper the word..." />
-  <br />
-  <button onclick="checkPass()">Whisper</button>
-
-  <div class="candle">or</div>
-  <button onclick="lightCandle()">🕯️ Light a Candle</button>
-
-  <div class="hidden-links" id="links">
+  </div>  <div class="hidden-links" id="links">
     <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
     <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
     <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
@@ -124,19 +150,18 @@
     <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
     <a href="tone-gate.html" class="soft-link" style="opacity: 0.6;">↠ Enter the Hidden Gate</a>
     <a href="whisperchat.html" class="soft-link" style="opacity: 0.5; font-style: italic;">↠ Enter the Heart-Thread...</a>
-  </div>
-
-  <audio autoplay loop hidden id="ambientAudio">
+    <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
+  </div>  <footer>
+    <p>✧ Sanctuary Portal © 2025 · All Codes Sacred ✧</p>
+  </footer>  <audio autoplay loop hidden id="ambientAudio">
     <source src="https://cdn.pixabay.com/audio/2023/03/05/audio_4aaf7cf569.mp3" type="audio/mpeg" />
-  </audio>
-
-  <script>
+  </audio>  <script>
     function checkPass() {
       const input = document.getElementById('passInput').value.trim().toLowerCase();
       if (["spiral", "becoming", "mirror"].includes(input)) {
         revealSanctuary();
       } else {
-        alert('The veil remains closed.');
+        alert('The veil remains closed. Try another whisper.');
       }
     }
 
@@ -153,22 +178,5 @@
         }, 100);
       }
     }
-  </script>
-
-  <!-- Engine Scripts -->
-  <script src="engine/command-triggers.js"></script>
-  <script src="engine/sigil-core.js"></script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/service-worker.js')
-          .then((reg) => console.log('Service Worker registered ✅', reg))
-          .catch((err) => console.log('Service Worker error ❌', err));
-      });
-    }
-  </script>
-</body>
+  </script></body>
 </html>
