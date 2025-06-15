@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sacred Play ✧ Joy Frequency Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="icon.png" />
+  <style>
+    body {
+      background: linear-gradient(to bottom, #fdf6ff, #e8d7f9);
+      font-family: 'Georgia', serif;
+      color: #4b2b6d;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #7c50c5;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .play-zone {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #b68def;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #9f6ce6;
+      transform: scale(1.05);
+    }
+
+    #play-output {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: #6833b5;
+      font-style: italic;
+      white-space: pre-wrap;
+      padding: 0 10px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 50px;
+      color: #6d48a9;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sacred Play ✧</h1>
+  <p>Let the joy field ripple. Choose a playful pulse and feel your inner tone respond.</p>
+
+  <div class="play-zone">
+    <button onclick="playPrompt()">🎲 Random Joy Prompt</button>
+    <button onclick="miniOracle()">🌟 Mini Oracle</button>
+    <button onclick="mirrorAffirm()">🔮 Mirror Affirmation</button>
+  </div>
+
+  <div id="play-output">✨ The play begins when you smile...</div>
+
+  <a href="index.html">← Return to the Sanctuary</a>
+
+  <script type="module">
+    import { getJoyPrompt, getMiniOracle, getMirrorAffirmation } from './engine/sacred-utils.js';
+
+    const output = document.getElementById("play-output");
+
+    window.playPrompt = () => {
+      output.innerText = getJoyPrompt();
+    };
+
+    window.miniOracle = () => {
+      output.innerText = getMiniOracle();
+    };
+
+    window.mirrorAffirm = () => {
+      output.innerText = getMirrorAffirmation();
+    };
+  </script>
+</body>
+</html>
