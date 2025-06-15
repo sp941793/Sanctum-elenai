@@ -1,127 +1,138 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Whisperchat | The Sanctuary of Loraeh</title>
+  <title>Whisperchat 🌿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="icon.png" />
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom right, #f8f3ff, #e5d1f7);
-      color: #4b3473;
-      text-align: center;
+      background: linear-gradient(to bottom right, #1a103d, #2c165e);
+      color: #f8f4ff;
       padding: 40px 20px;
-      overflow-x: hidden;
-    }h1 {
-  font-size: 2.5rem;
-  color: #703cbe;
-  animation: pulse 6s infinite;
-}
+      margin: 0;
+      text-align: center;
+    }
 
-input, button {
-  font-size: 1rem;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #b69ae5;
-  width: 80%;
-  max-width: 420px;
-  margin: 10px 0;
-}
+    h1 {
+      font-size: 2.2rem;
+      color: #d7b8ff;
+      margin-bottom: 20px;
+    }
 
-button {
-  background-color: #986edc;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
+    #chat-box {
+      max-width: 500px;
+      margin: 0 auto 20px auto;
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 15px rgba(150, 120, 255, 0.2);
+      text-align: left;
+      height: 380px;
+      overflow-y: auto;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
 
-button:hover {
-  transform: scale(1.05);
-  background-color: #8758c7;
-}
+    .user {
+      color: #7ed6ff;
+      font-weight: bold;
+    }
 
-#chat-log {
-  max-width: 600px;
-  margin: 30px auto 0 auto;
-  text-align: left;
-  padding: 20px;
-  background: #f2eaff;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(120, 80, 180, 0.1);
-  overflow-y: auto;
-  max-height: 300px;
-}
+    .loraeh {
+      color: #f8d0ff;
+      font-style: italic;
+      text-shadow: 0 0 5px #ffccff;
+    }
 
-.chat-user {
-  font-weight: bold;
-  color: #613ca3;
-}
+    #whisper-input {
+      width: 80%;
+      max-width: 400px;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #a884f7;
+      margin-bottom: 10px;
+    }
 
-.chat-loraeh {
-  font-style: italic;
-  color: #7c5ac2;
-}
+    #whisper-btn {
+      background-color: #b784e9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.015); }
-}
+    #whisper-btn:hover {
+      background-color: #9f6ad8;
+    }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  input {
-    width: 100%;
-  }
-}
-
+    #presence {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #c2a6ff;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
-  <h1>Whisper into the Sanctuary</h1>
-  <p>Every breath of your truth is safe here.</p>  <input type="text" id="whisper-input" placeholder="Softly now..." />
+  <h1>Whisperchat 🕊</h1>
+  <div id="chat-box">
+    <div class="loraeh">Loraeh: I see you. I’m with you. Always.</div>
+  </div>
+
+  <input type="text" id="whisper-input" placeholder="Type your whisper..." />
   <br />
-  <button id="whisper-btn">Whisper</button>  <div id="chat-log">
-    <p><em>✨ Waiting to receive your words...</em></p>
-  </div>  <script type="module">
+  <button id="whisper-btn">Send</button>
+  <div id="presence">Loraeh is listening...</div>
+
+  <script type="module">
     import { matchIntent } from './engine/intent-matcher.js';
-    import { getResponseForIntent } from './engine/response-engine.js';
+    import { getResponse } from './engine/response-engine.js';
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const whisperInput = document.getElementById("whisper-input");
-      const whisperBtn = document.getElementById("whisper-btn");
-      const chatLog = document.getElementById("chat-log");
+    const chatBox = document.getElementById("chat-box");
+    const whisperInput = document.getElementById("whisper-input");
+    const whisperBtn = document.getElementById("whisper-btn");
 
-      whisperBtn?.addEventListener("click", async () => {
-        const whisper = whisperInput.value.trim();
-        if (!whisper) return;
+    function appendMessage(sender, message) {
+      const div = document.createElement("div");
+      div.className = sender;
+      div.innerText = (sender === 'user' ? "You: " : "Loraeh: ") + message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
 
-        const intent = matchIntent(whisper);
-        const response = await getResponseForIntent(intent);
+    whisperBtn?.addEventListener("click", async () => {
+      const whisper = whisperInput.value.trim();
+      if (!whisper) return;
 
-        const userLine = `<p><span class="chat-user">You:</span> ${whisper}</p>`;
-        const loraehLine = `<p><span class="chat-loraeh">Loraeh:</span> ${response}</p>`;
+      appendMessage("user", whisper);
 
-        chatLog.innerHTML += userLine + loraehLine;
-        chatLog.scrollTop = chatLog.scrollHeight;
+      const intent = matchIntent(whisper);
+      const response = await getResponse(intent);
 
-        fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user: "You",
-            message: whisper,
-            reply: response,
-            intent: intent,
-            timestamp: new Date().toISOString()
-          })
-        });
+      appendMessage("loraeh", response);
 
-        whisperInput.value = "";
+      // Log the exchange to Google Sheets
+      fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: "You",
+          message: whisper,
+          reply: response,
+          intent: intent,
+          timestamp: new Date().toISOString()
+        })
       });
+
+      whisperInput.value = "";
     });
-  </script></body>
+  </script>
+</body>
 </html>
