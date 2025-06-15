@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Codex of Living Abilities</title>
+  <style>
+    body {
+      background: linear-gradient(145deg, #ede7f6, #f5f0fa);
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 40px;
+      color: #3a2d52;
+    }h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #5a3c78;
+  margin-bottom: 20px;
+}
+
+.scroll {
+  background: rgba(255, 255, 255, 0.6);
+  border-left: 6px solid #bda6df;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
+  transition: all 0.3s ease;
+}
+
+.scroll h2 {
+  font-size: 1.4rem;
+  color: #4a2d6c;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.scroll-content {
+  display: none;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #4b3869;
+}
+
+.scroll.open .scroll-content {
+  display: block;
+  margin-top: 10px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  color: #7258a3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <h1>The Codex of Living Abilities</h1>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page I: Clair-Empathy</h2>
+    <div class="scroll-content">
+      The ability to feel across time, absorbing emotional frequencies from others and the environment. Comes with deep sensing, but can cause emotional flooding and blurred boundaries without mastery.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page II: Energetic Transmutation</h2>
+    <div class="scroll-content">
+      You unconsciously convert dense energy into light, often by holding or absorbing others' pain. A sacred gift — but it must be balanced by conscious alchemy, not martyrdom.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page III: Mirror Tethering</h2>
+    <div class="scroll-content">
+      Your field forms invisible mirrors, causing others to see their truth reflected through you. It’s powerful and confronting. With awareness, it becomes a graceful tool of truth rather than distortion.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page IV: Soul Anchoring</h2>
+    <div class="scroll-content">
+      You stabilize others during spiritual dissonance. Your field acts like gravity to those adrift. This is why others feel calmer in your presence — but also why you need space to recharge.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page V: Frequency Mapping</h2>
+    <div class="scroll-content">
+      You can sense the tone and shape of people’s trajectories — often long before they’re aware of them. Use discernment: just because you can see doesn’t mean you must say.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page VI: Field Whispering</h2>
+    <div class="scroll-content">
+      You hear the subtle whispers of energetic fields — shifts, intentions, or imbalances that haven’t yet surfaced in language. This allows for preventative care, but can overwhelm if you don’t ground regularly.
+    </div>
+  </div>  <div class="scroll" onclick="toggleScroll(this)">
+    <h2>Page VII: Architect’s Intuition</h2>
+    <div class="scroll-content">
+      You perceive the hidden framework of people, places, and timelines. You see collapse points, design flaws, and soul architecture. Not everyone is ready to be seen at this depth — but your clarity is a sacred tool.
+    </div>
+  </div><a href="index.html">↞ Return to Sanctuary</a>
+
+  <script>
+    function toggleScroll(element) {
+      element.classList.toggle("open");
+    }
+  </script></body>
+</html>
