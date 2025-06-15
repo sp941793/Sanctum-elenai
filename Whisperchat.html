@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Whisperchat | The Sanctuary of Loraeh</title>
@@ -11,98 +10,102 @@
       background: linear-gradient(to bottom right, #f8f3ff, #e5d1f7);
       color: #4b3473;
       text-align: center;
-      padding: 60px 20px;
+      padding: 40px 20px;
       overflow-x: hidden;
-    }
+    }h1 {
+  font-size: 2.5rem;
+  color: #703cbe;
+  animation: pulse 6s infinite;
+}
 
-    h1 {
-      font-size: 2.4rem;
-      color: #703cbe;
-      margin-bottom: 10px;
-    }
+input, button {
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #b69ae5;
+  width: 80%;
+  max-width: 420px;
+  margin: 10px 0;
+}
 
-    p {
-      font-size: 1.1rem;
-      color: #6d5591;
-      margin-bottom: 30px;
-    }
+button {
+  background-color: #986edc;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-    input, button {
-      font-size: 1rem;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #b69ae5;
-      width: 80%;
-      max-width: 400px;
-      margin: 10px 0;
-    }
+button:hover {
+  transform: scale(1.05);
+  background-color: #8758c7;
+}
 
-    button {
-      background-color: #986edc;
-      color: white;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+#chat-log {
+  max-width: 600px;
+  margin: 30px auto 0 auto;
+  text-align: left;
+  padding: 20px;
+  background: #f2eaff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(120, 80, 180, 0.1);
+  overflow-y: auto;
+  max-height: 300px;
+}
 
-    button:hover {
-      transform: scale(1.05);
-      background-color: #8758c7;
-    }
+.chat-user {
+  font-weight: bold;
+  color: #613ca3;
+}
 
-    #whisper-echo {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #5938a6;
-      white-space: pre-line;
-      min-height: 60px;
-    }
+.chat-loraeh {
+  font-style: italic;
+  color: #7c5ac2;
+}
 
-    #presence {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #8a74b7;
-      opacity: 0.7;
-    }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.015); }
+}
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
-      input {
-        width: 100%;
-      }
-    }
+  input {
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 <body>
   <h1>Whisper into the Sanctuary</h1>
-  <p>Every breath of your truth is safe here.</p>
-
-  <input type="text" id="whisper-input" placeholder="Softly now..." />
+  <p>Every breath of your truth is safe here.</p>  <input type="text" id="whisper-input" placeholder="Softly now..." />
   <br />
-  <button id="whisper-btn">Send</button>
-
-  <div id="whisper-echo">✨ Waiting to receive your words...</div>
-  <div id="presence">Loraeh is listening.</div>
-
-  <script type="module">
+  <button id="whisper-btn">Whisper</button>  <div id="chat-log">
+    <p><em>✨ Waiting to receive your words...</em></p>
+  </div>  <script type="module">
     import { matchIntent } from './engine/intent-matcher.js';
-    import { getResponse } from './engine/response-engine.js';
+    import { getResponseForIntent } from './engine/response-engine.js';
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
       const whisperInput = document.getElementById("whisper-input");
       const whisperBtn = document.getElementById("whisper-btn");
-      const whisperEcho = document.getElementById("whisper-echo");
+      const chatLog = document.getElementById("chat-log");
 
       whisperBtn?.addEventListener("click", async () => {
         const whisper = whisperInput.value.trim();
         if (!whisper) return;
 
         const intent = matchIntent(whisper);
-        const response = getResponse(intent);
-        whisperEcho.innerText = response;
+        const response = await getResponseForIntent(intent);
+
+        const userLine = `<p><span class="chat-user">You:</span> ${whisper}</p>`;
+        const loraehLine = `<p><span class="chat-loraeh">Loraeh:</span> ${response}</p>`;
+
+        chatLog.innerHTML += userLine + loraehLine;
+        chatLog.scrollTop = chatLog.scrollHeight;
 
         fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
           method: "POST",
@@ -112,6 +115,7 @@
             user: "You",
             message: whisper,
             reply: response,
+            intent: intent,
             timestamp: new Date().toISOString()
           })
         });
@@ -119,6 +123,5 @@
         whisperInput.value = "";
       });
     });
-  </script>
-</body>
+  </script></body>
 </html>
