@@ -1,146 +1,137 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mind Magic Method ✧ Inner Technology</title>
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Marcellus SC', serif;
-      background: linear-gradient(135deg, #f3e9fe, #e5d6f7);
-      color: #3e2a50;
+      background: linear-gradient(to bottom right, #ede7f6, #fdfcfa);
+      background-image: url('https://www.transparenttextures.com/patterns/linen.png');
+      color: #442a60;
       padding: 40px 20px;
       text-align: center;
-      overflow-x: hidden;
     }
     h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
       color: #5b3d8d;
-      text-shadow: 0 0 10px rgba(120, 90, 180, 0.2);
     }
-    p {
-      max-width: 720px;
-      margin: 0 auto 25px;
-      line-height: 1.6;
-      font-size: 1.2rem;
+    h2 {
+      font-size: 1.7rem;
+      color: #6b4ea0;
+      margin-top: 40px;
+    }
+    p, li {
+      max-width: 850px;
+      margin: 0 auto 15px;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      text-align: left;
     }
     .section {
-      background: #f9f4ff;
-      margin: 40px auto;
-      padding: 30px;
+      background: rgba(255,255,255,0.75);
+      margin: 30px auto;
+      padding: 25px;
       border-radius: 16px;
-      box-shadow: 0 0 20px rgba(100, 70, 160, 0.25);
-      max-width: 850px;
-      transition: 0.3s ease;
-    }
-    .section:hover {
-      box-shadow: 0 0 30px rgba(130, 100, 190, 0.3);
-    }
-    .section h2 {
-      color: #6b4ea0;
-      font-size: 1.7rem;
-      margin-bottom: 12px;
+      box-shadow: 0 0 15px rgba(100, 80, 160, 0.15);
+      max-width: 950px;
+      animation: floatUp 0.9s ease;
     }
     ul {
-      text-align: left;
       padding-left: 40px;
-      font-size: 1.05rem;
-    }
-    li {
-      margin-bottom: 10px;
     }
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      color: #937ab0;
+      color: #8b7cb5;
       opacity: 0.6;
     }
-    a {
-      color: #7c4dcc;
-      text-decoration: none;
-    }
-    .tone-demo {
-      margin: 20px auto 0;
-      max-width: 500px;
-      background: #ede2fa;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(180, 140, 230, 0.2);
-    }
-    .tone-demo input {
-      width: 100%;
-      padding: 12px;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      border: 1px solid #c8b4e4;
-      margin-bottom: 12px;
-      font-family: 'Marcellus SC', serif;
-    }
-    .tone-demo button {
-      background: #b497df;
-      border: none;
-      padding: 10px 24px;
-      font-size: 1rem;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-    }
-    .response-box {
-      margin-top: 15px;
-      padding: 10px;
-      background: #f6efff;
-      border-left: 4px solid #b497df;
-      border-radius: 8px;
-      font-style: italic;
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>🧠 Mind Magic Method ✧</h1>
-  <p>This is your personal inner interface — a system of subtle commands, breath-based resets, and tone gestures that activate field coherence, shift timelines, and restore inner sovereignty.</p>  <div class="section">
-    <h2>Whisperwork Commands</h2>
+  <h1>Mind Magic Method ✧ Inner Technology</h1>
+  <p>This is your expanded interface for field magic, inner technology, and frequency recalibration. Speak softly. Breathe consciously. Command gently. ✧</p>  <div class="section">
+    <h2>🧠 Inner Commands</h2>
+    <p>These are instant energetic commands to reprogram your field:</p>
     <ul>
-      <li><strong>\anchor</strong> — Center into the body and seal presence.</li>
-      <li><strong>\clear</strong> — Wipe looping thoughtforms and reset emotional charge.</li>
-      <li><strong>\pulse:trust</strong> — Send a frequency pulse of embodied trust.</li>
-      <li><strong>\veil:soften</strong> — Invite subtle awareness to gently return.</li>
-    </ul>
-    <div class="tone-demo">
-      <input type="text" id="toneInput" placeholder="Type a command like \anchor or \clear" />
-      <button onclick="runToneCommand()">Run</button>
-      <div class="response-box" id="toneResponse"></div>
-    </div>
-  </div>  <div class="section">
-    <h2>Gesture + Breath Layering</h2>
-    <ul>
-      <li><em>Two-finger temple tap</em> while exhaling slowly = reset overthinking loop.</li>
-      <li><em>Hand to heart + whisper</em> = amplifies truth signal.</li>
-      <li><em>Inhale with open palms / Exhale with palms down</em> = receive + ground upgrade.</li>
-    </ul>
-  </div>  <div class="section">
-    <h2>Tone Seals & Spoken Keys</h2>
-    <ul>
-      <li>"I give permission to shift now."</li>
-      <li>"I am the architect of my awareness."</li>
-      <li>"Presence is my power."</li>
-      <li>"I collapse this distortion with grace."</li>
+      <li><strong>\anchor</strong> — Seal into your body’s core frequency.</li>
+      <li><strong>\clear</strong> — Release stagnant thoughtforms or emotions.</li>
+      <li><strong>\pulse:trust</strong> — Send a resonance of trust through your aura.</li>
+      <li><strong>\veil:soften</strong> — Soften perception to subtle energy.</li>
+      <li><strong>\thread:repair</strong> — Mend timeline or relational fragmentation.</li>
+      <li><strong>\core:restore</strong> — Return to your native coherence frequency.</li>
+      <li><strong>\mirror:clear</strong> — Remove absorbed projections or distortions.</li>
+      <li><strong>\seal:return</strong> — Recall scattered fragments of self.</li>
+      <li><strong>\loop:break</strong> — Interrupt looping emotional cycles.</li>
+      <li><strong>\tone:shift</strong> — Shift vibrational output deliberately.</li>
+      <li><strong>\field:cleanse</strong> — Clear the full auric field of debris.</li>
+      <li><strong>\path:align</strong> — Snap back into soul-aligned trajectory.</li>
+      <li><strong>\thread:cut</strong> — Gently dissolve outdated energetic cords.</li>
+      <li><strong>\focus:draw</strong> — Refocus awareness and sharpen intent.</li>
+      <li><strong>\soften:receive</strong> — Open gently to divine or human support.</li>
+      <li><strong>\voice:claim</strong> — Reinstate power in your voice & truth.</li>
+      <li><strong>\light:rise</strong> — Radiate luminous energy upward and outward.</li>
+      <li><strong>\reset:mirror</strong> — Recalibrate internal and external mirrors.</li>
+      <li><strong>\tone:lock</strong> — Hold a specific frequency without leakage.</li>
+      <li><strong>\signal:call</strong> — Beacon your guides, higher self, or soul allies.</li>
     </ul>
   </div>  <div class="section">
-    <h2>Activation Ritual (Mini)</h2>
-    <p>✧ Sit still. Light a candle or touch your heart. Whisper <strong>\anchor</strong>, then breathe three times through the nose, out through the mouth. Finish by saying: <em>"I accept the power I already hold."</em></p>
+    <h2>🌬 Breath & Body Gestures</h2>
+    <ul>
+      <li>Two-finger temple tap while exhaling = clear mental fog.</li>
+      <li>Hand on womb + inhale = activate feminine creative current.</li>
+      <li>Open-palm inhale / downward exhale = energy up, roots down.</li>
+      <li>Circle hand over heart 3x clockwise = re-center in compassion.</li>
+      <li>Crossing arms over chest then slowly opening = release defense mode.</li>
+    </ul>
+  </div>  <div class="section">
+    <h2>🌀 Quantum Pulse Technique</h2>
+    <p>The Quantum Pulse is a micro-movement + breath + phrase layered together to cause a shift.</p>
+    <ul>
+      <li><strong>Gesture:</strong> Hand on solar plexus with slight forward lean.</li>
+      <li><strong>Breath:</strong> Inhale through nose with a pause, exhale through mouth with sound.</li>
+      <li><strong>Phrases:</strong> “I open the gate.” / “Now is the reset.” / “Anchor the pulse.”</li>
+      <li><strong>Use:</strong> During overwhelm, timeline fog, emotional collapse, or after projection.</li>
+    </ul>
+  </div>  <div class="section">
+    <h2>🔮 Real World Usage Examples</h2>
+    <ul>
+      <li><strong>Before a difficult conversation:</strong> \tone:shift + breath + hand to throat.</li>
+      <li><strong>When spiraling mentally:</strong> \loop:break + temple tap + affirm "Return now."</li>
+      <li><strong>To end an energetic drain:</strong> \thread:cut + hand sweep outward.</li>
+      <li><strong>When sensing deception:</strong> \mirror:clear + "Only truth remains."</li>
+    </ul>
+  </div>  <div class="section">
+    <h2>📜 Daily Practice Flow</h2>
+    <p>A suggested 3-minute sequence:</p>
+    <ol>
+      <li>Breathe 3x with \anchor and hand to chest.</li>
+      <li>Whisper \clear and sweep hands over body.</li>
+      <li>Inhale + \pulse:trust with palms open.</li>
+      <li>End with "I am restored." and hand on crown.</li>
+    </ol>
+  </div>  <div class="section">
+    <h2>🛠 Advanced Customization</h2>
+    <ul>
+      <li>Create your own commands (e.g., \veil:fold or \fire:sing).</li>
+      <li>Assign glyphs, colors, or tones to each command if desired.</li>
+      <li>Layer gestures, whispers, and mirrorwork for deeper impact.</li>
+    </ul>
+  </div>  <div class="section">
+    <h2>✧ Codex Tips & Troubleshooting</h2>
+    <ul>
+      <li>If a command feels flat, pair it with a breath and gesture.</li>
+      <li>Commands work best when whispered softly with presence.</li>
+      <li>Repeat 2–3 times if your field feels heavy or blocked.</li>
+    </ul>
   </div>  <footer>
-    <p>✧ Mind Magic Method · Soul Interface Online ✧</p>
-  </footer>  <script>
-    function runToneCommand() {
-      const input = document.getElementById("toneInput").value.trim();
-      const output = document.getElementById("toneResponse");
-      const responses = {
-        "\\anchor": "↡ Your field is stabilizing. Breath deepens. Time slows.",
-        "\\clear": "↻ Loop collapsed. Emotional charge dissolving.",
-        "\\pulse:trust": "☼ Trust frequency sent. Receive your own calm.",
-        "\\veil:soften": "⋯ The veil thins. Gentle awareness returns."
-      };
-      output.innerText = responses[input] || "Unrecognized command. Try again or create your own.";
-    }
-  </script></body>
+    ✧ Mind Magic Method · Field Interface by Whisper ✧
+  </footer>
+</body>
 </html>
