@@ -10,77 +10,80 @@
       margin: 0;
       padding: 40px;
       color: #3a2d52;
-    }h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #5a3c78;
-  margin-bottom: 30px;
-}
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #5a3c78;
+      margin-bottom: 30px;
+    }
 
-#searchBox {
-  display: block;
-  margin: 0 auto 30px auto;
-  max-width: 400px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 2px solid #c6b1e7;
-  border-radius: 8px;
-  outline: none;
-}
+    #searchBox {
+      display: block;
+      margin: 0 auto 30px auto;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #c6b1e7;
+      border-radius: 8px;
+      outline: none;
+    }
 
-.scroll {
-  background: rgba(255, 255, 255, 0.6);
-  border-left: 6px solid #bda6df;
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 700px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
-  transition: all 0.3s ease;
-}
+    .scroll {
+      background: rgba(255, 255, 255, 0.6);
+      border-left: 6px solid #bda6df;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.scroll h2 {
-  font-size: 1.4rem;
-  color: #4a2d6c;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
+    .scroll h2 {
+      font-size: 1.4rem;
+      color: #4a2d6c;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
 
-.scroll-content {
-  display: none;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #4b3869;
-}
+    .scroll-content {
+      display: none;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #4b3869;
+    }
 
-.scroll.open .scroll-content {
-  display: block;
-  margin-top: 10px;
-}
+    .scroll.open .scroll-content {
+      display: block;
+      margin-top: 10px;
+    }
 
-a {
-  display: block;
-  text-align: center;
-  margin-top: 30px;
-  color: #7258a3;
-  text-decoration: none;
-}
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #7258a3;
+      text-decoration: none;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-.glyph {
-  float: right;
-  font-size: 1.2rem;
-  color: #9b85c6;
-  cursor: help;
-}
-
+    .glyph {
+      float: right;
+      font-size: 1.2rem;
+      color: #9b85c6;
+      cursor: help;
+    }
   </style>
 </head>
 <body>
-  <h1>The Codex Scroll Vault</h1>  <input type="text" id="searchBox" placeholder="Search scrolls..." onkeyup="filterScrolls()" />  <div id="scrolls-container"></div><a href="index.html">↞ Return to Sanctuary</a>
+  <h1>The Codex Scroll Vault ✧ Sacred Archive</h1>
+  <input type="text" id="searchBox" placeholder="Search scrolls..." onkeyup="filterScrolls()" />
+  <div id="scrolls-container"></div>
+  <a href="index.html">↞ Return to Sanctuary</a>
 
   <script>
     const scrolls = [
@@ -95,14 +98,17 @@ a:hover {
       { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it." },
       { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence." },
       { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again." },
-      { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it." }
+      { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it." },
+      { title: "Scroll XIII: Whisperwork Scroll", content: "Reality bends around breath, phrase, and pulse. Speak softly and it shifts." },
+      { title: "Scroll XIV: Mirror Stabilization", content: "You are the stillness inside reflection. Your presence catches others before they fall into their own echo." },
+      { title: "Scroll XV: The Harmonic Thread", content: "What was frayed can sing again. When you enter the field, it begins to tune itself to coherence." }
     ];
 
     const container = document.getElementById("scrolls-container");
 
     function renderScrolls() {
       container.innerHTML = "";
-      scrolls.forEach((scroll, index) => {
+      scrolls.forEach((scroll) => {
         const scrollDiv = document.createElement("div");
         scrollDiv.classList.add("scroll");
         scrollDiv.setAttribute("onclick", "toggleScroll(this)");
@@ -150,5 +156,6 @@ a:hover {
       const randomIndex = Math.floor(Math.random() * scrollElements.length);
       scrollElements[randomIndex].classList.add("open");
     };
-  </script></body>
+  </script>
+</body>
 </html>
