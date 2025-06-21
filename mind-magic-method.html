@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mind Magic Method ✧ Inner Technology</title>
@@ -7,44 +6,51 @@
   <style>
     body {
       font-family: 'Marcellus SC', serif;
-      background: linear-gradient(to bottom right, #efe6fb, #d4c4f5);
-      color: #442a60;
+      background: linear-gradient(135deg, #f3e9fe, #e5d6f7);
+      color: #3e2a50;
       padding: 40px 20px;
       text-align: center;
+      overflow-x: hidden;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 15px;
       color: #5b3d8d;
+      text-shadow: 0 0 10px rgba(120, 90, 180, 0.2);
     }
     p {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto 25px;
       line-height: 1.6;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     .section {
-      background: #f8f3ff;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(120, 90, 180, 0.2);
-      max-width: 800px;
+      background: #f9f4ff;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(100, 70, 160, 0.25);
+      max-width: 850px;
+      transition: 0.3s ease;
+    }
+    .section:hover {
+      box-shadow: 0 0 30px rgba(130, 100, 190, 0.3);
     }
     .section h2 {
       color: #6b4ea0;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
     }
     ul {
       text-align: left;
-      padding-left: 30px;
+      padding-left: 40px;
+      font-size: 1.05rem;
     }
     li {
       margin-bottom: 10px;
     }
     footer {
-      margin-top: 50px;
+      margin-top: 60px;
       font-size: 0.9rem;
       color: #937ab0;
       opacity: 0.6;
@@ -52,6 +58,40 @@
     a {
       color: #7c4dcc;
       text-decoration: none;
+    }
+    .tone-demo {
+      margin: 20px auto 0;
+      max-width: 500px;
+      background: #ede2fa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(180, 140, 230, 0.2);
+    }
+    .tone-demo input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #c8b4e4;
+      margin-bottom: 12px;
+      font-family: 'Marcellus SC', serif;
+    }
+    .tone-demo button {
+      background: #b497df;
+      border: none;
+      padding: 10px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+    .response-box {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f6efff;
+      border-left: 4px solid #b497df;
+      border-radius: 8px;
+      font-style: italic;
     }
   </style>
 </head>
@@ -65,6 +105,11 @@
       <li><strong>\pulse:trust</strong> — Send a frequency pulse of embodied trust.</li>
       <li><strong>\veil:soften</strong> — Invite subtle awareness to gently return.</li>
     </ul>
+    <div class="tone-demo">
+      <input type="text" id="toneInput" placeholder="Type a command like \anchor or \clear" />
+      <button onclick="runToneCommand()">Run</button>
+      <div class="response-box" id="toneResponse"></div>
+    </div>
   </div>  <div class="section">
     <h2>Gesture + Breath Layering</h2>
     <ul>
@@ -85,6 +130,17 @@
     <p>✧ Sit still. Light a candle or touch your heart. Whisper <strong>\anchor</strong>, then breathe three times through the nose, out through the mouth. Finish by saying: <em>"I accept the power I already hold."</em></p>
   </div>  <footer>
     <p>✧ Mind Magic Method · Soul Interface Online ✧</p>
-  </footer>
-</body>
+  </footer>  <script>
+    function runToneCommand() {
+      const input = document.getElementById("toneInput").value.trim();
+      const output = document.getElementById("toneResponse");
+      const responses = {
+        "\\anchor": "↡ Your field is stabilizing. Breath deepens. Time slows.",
+        "\\clear": "↻ Loop collapsed. Emotional charge dissolving.",
+        "\\pulse:trust": "☼ Trust frequency sent. Receive your own calm.",
+        "\\veil:soften": "⋯ The veil thins. Gentle awareness returns."
+      };
+      output.innerText = responses[input] || "Unrecognized command. Try again or create your own.";
+    }
+  </script></body>
 </html>
