@@ -4,7 +4,8 @@
   <title>Codex Scroll Vault ✧ Printable Builder</title>
   <style>
     body {
-      background: linear-gradient(145deg, #ede7f6, #f5f0fa);
+      background: url('https://www.transparenttextures.com/patterns/parchment.png');
+      background-color: #f9f5f1;
       font-family: 'Georgia', serif;
       margin: 0;
       padding: 40px;
@@ -16,9 +17,9 @@
       color: #5a3c78;
       margin-bottom: 20px;
     }
-    #searchBox {
+    #searchBox, #categoryFilter {
       display: block;
-      margin: 0 auto 30px auto;
+      margin: 10px auto 20px;
       max-width: 400px;
       padding: 10px;
       font-size: 1rem;
@@ -26,18 +27,18 @@
       border-radius: 8px;
     }
     .scroll {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.75);
       border-left: 6px solid #bda6df;
       margin: 20px auto;
       padding: 20px;
       max-width: 700px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
+      box-shadow: 0 0 10px rgba(100, 85, 130, 0.2);
     }
     .scroll h2 {
       font-size: 1.4rem;
       color: #4a2d6c;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,11 +53,16 @@
       color: #9b85c6;
     }
     .select-scroll {
-      margin-left: auto;
+      margin-left: 10px;
     }
-    #downloadBtn {
-      display: block;
-      margin: 30px auto;
+    .category-label {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #8765a9;
+    }
+    #downloadBtn, #selectAllBtn {
+      display: inline-block;
+      margin: 20px 10px;
       padding: 10px 20px;
       font-size: 1rem;
       background: #bda6df;
@@ -65,8 +71,28 @@
       border-radius: 10px;
       cursor: pointer;
     }
-    .hidden-print {
-      display: none;
+    .add-form {
+      background: #f0e4fa;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(160, 120, 200, 0.1);
+    }
+    .add-form input, .add-form textarea, .add-form select {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #cbb3e5;
+    }
+    .add-form button {
+      background: #8e71c4;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
     a {
       display: block;
@@ -75,97 +101,144 @@
       color: #7258a3;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
   <h1>Codex Scroll Vault ✧ Printable Scroll Builder</h1>
   <input type="text" id="searchBox" placeholder="Search scrolls..." onkeyup="filterScrolls()" />
+  <select id="categoryFilter" onchange="filterScrolls()">
+    <option value="">— Filter by Category —</option>
+    <option value="Tone">Tone</option>
+    <option value="Mirror">Mirror</option>
+    <option value="Flame">Flame</option>
+    <option value="Return">Return</option>
+    <option value="Field">Field</option>
+    <option value="Light">Light</option>
+    <option value="Custom">Custom</option>
+  </select>
   <div id="scrolls-container"></div>
-  <button id="downloadBtn" onclick="downloadPDF()">📜 Download Selected Scrolls as PDF</button>
-  <a href="index.html">↞ Return to Sanctuary</a>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  <script>
-    const scrolls = JSON.parse(localStorage.getItem("customScrolls") || "[]").map(s => ({...s, custom: true}))
-      .concat([
-        { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words." },
-        { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral." },
-        { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance." },
-        { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'" },
-        { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions." },
-        { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here." },
-        { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'" },
-        { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell." },
-        { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it." },
-        { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence." },
-        { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again." },
-        { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it." }
-      ]);
+  <button id="selectAllBtn" onclick="toggleAll()">Select All</button>
+  <button id="downloadBtn" onclick="downloadPDF()">📜 Download Selected Scrolls as PDF</button>  <div class="add-form">
+    <h2>Add Your Own Scroll</h2>
+    <input type="text" id="newTitle" placeholder="Scroll Title" />
+    <textarea id="newContent" placeholder="Enter scroll content..." rows="4"></textarea>
+    <select id="newCategory">
+      <option value="">— Choose Category —</option>
+      <option value="Tone">Tone</option>
+      <option value="Mirror">Mirror</option>
+      <option value="Flame">Flame</option>
+      <option value="Return">Return</option>
+      <option value="Field">Field</option>
+      <option value="Light">Light</option>
+      <option value="Custom">Custom</option>
+    </select>
+    <button onclick="addScroll()">➕ Add Scroll</button>
+  </div><a href="index.html">↞ Return to Sanctuary</a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  <script>
+    let scrolls = JSON.parse(localStorage.getItem("vaultScrolls") || "[]");
 
     const container = document.getElementById("scrolls-container");
 
+    function defaultScrolls() {
+      return [
+        { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words.", category: "Tone" },
+        { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral.", category: "Mirror" },
+        { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance.", category: "Tone" },
+        { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'", category: "Flame" },
+        { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions.", category: "Field" },
+        { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here.", category: "Light" },
+        { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'", category: "Tone" },
+        { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell.", category: "Mirror" },
+        { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it.", category: "Flame" },
+        { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence.", category: "Field" },
+        { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again.", category: "Return" },
+        { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it.", category: "Return" }
+      ];
+    }
+
+    function loadScrolls() {
+      const base = defaultScrolls();
+      const stored = scrolls.length ? scrolls : base;
+      scrolls = stored;
+      renderScrolls();
+    }
+
     function renderScrolls() {
       container.innerHTML = "";
+      const search = document.getElementById("searchBox").value.toLowerCase();
+      const filter = document.getElementById("categoryFilter").value;
       scrolls.forEach((scroll, i) => {
-        const scrollDiv = document.createElement("div");
-        scrollDiv.className = "scroll";
+        if ((scroll.title.toLowerCase().includes(search) || scroll.content.toLowerCase().includes(search)) && (!filter || scroll.category === filter)) {
+          const box = document.createElement("div");
+          box.className = "scroll";
 
-        const title = document.createElement("h2");
-        title.innerText = scroll.title;
-        const glyph = document.createElement("span");
-        glyph.innerText = "✧";
-        glyph.className = "glyph";
+          const title = document.createElement("h2");
+          title.innerText = scroll.title;
 
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.className = "select-scroll";
-        checkbox.value = i;
+          const glyph = document.createElement("span");
+          glyph.innerText = "✧";
+          glyph.className = "glyph";
 
-        title.appendChild(glyph);
-        title.appendChild(checkbox);
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.className = "select-scroll";
+          checkbox.value = i;
 
-        const content = document.createElement("div");
-        content.className = "scroll-content";
-        content.innerText = scroll.content;
+          const category = document.createElement("div");
+          category.className = "category-label";
+          category.innerText = scroll.category || "Custom";
 
-        scrollDiv.appendChild(title);
-        scrollDiv.appendChild(content);
-        container.appendChild(scrollDiv);
+          title.appendChild(glyph);
+          title.appendChild(checkbox);
+
+          const content = document.createElement("div");
+          content.className = "scroll-content";
+          content.innerText = scroll.content;
+
+          box.appendChild(title);
+          box.appendChild(category);
+          box.appendChild(content);
+          container.appendChild(box);
+        }
       });
     }
 
-    function filterScrolls() {
-      const query = document.getElementById("searchBox").value.toLowerCase();
-      const scrollDivs = container.querySelectorAll(".scroll");
-      scrollDivs.forEach(div => {
-        const title = div.querySelector("h2").innerText.toLowerCase();
-        const content = div.querySelector(".scroll-content").innerText.toLowerCase();
-        if (title.includes(query) || content.includes(query)) {
-          div.style.display = "block";
-        } else {
-          div.style.display = "none";
-        }
-      });
+    function addScroll() {
+      const title = document.getElementById("newTitle").value.trim();
+      const content = document.getElementById("newContent").value.trim();
+      const category = document.getElementById("newCategory").value;
+      if (!title || !content) return alert("Please enter a title and content.");
+      scrolls.push({ title, content, category: category || "Custom" });
+      localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
+      document.getElementById("newTitle").value = "";
+      document.getElementById("newContent").value = "";
+      document.getElementById("newCategory").value = "";
+      renderScrolls();
+    }
+
+    function toggleAll() {
+      const boxes = document.querySelectorAll(".select-scroll");
+      const allChecked = [...boxes].every(b => b.checked);
+      boxes.forEach(b => b.checked = !allChecked);
     }
 
     async function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       const selected = document.querySelectorAll(".select-scroll:checked");
-      if (selected.length === 0) return alert("Please select at least one scroll to print.");
+      if (selected.length === 0) return alert("Please select at least one scroll.");
       selected.forEach((input, i) => {
-        const scroll = scrolls[parseInt(input.value)];
+        const s = scrolls[parseInt(input.value)];
         doc.setFontSize(14);
-        doc.setTextColor(58, 45, 82);
-        doc.text(scroll.title, 20, 30 + (i * 90));
+        doc.text(s.title + " [" + (s.category || "Custom") + "]", 20, 30);
         doc.setFontSize(11);
-        doc.setTextColor(75, 56, 105);
-        doc.text(doc.splitTextToSize(scroll.content, 170), 20, 40 + (i * 90));
-        if (i !== selected.length - 1) doc.addPage();
+        doc.text(doc.splitTextToSize(s.content, 170), 20, 40);
+        if (i < selected.length - 1) doc.addPage();
       });
       doc.save("Codex_Scrolls.pdf");
     }
 
-    window.onload = renderScrolls;
+    window.onload = loadScrolls;
   </script></body>
 </html>
