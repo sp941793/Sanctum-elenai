@@ -141,22 +141,28 @@
     }
 
     function sendMessage() {
-      const input = document.getElementById("messageInput").value.trim();
+      const inputField = document.getElementById("messageInput");
+      const input = inputField.value.trim();
       if (input === "") return;
 
       appendMessage("You", input);
 
-      const intent = matchIntent(input);
-      const reply = generateResponse(intent);
+      // Handle command triggers
+      const commandResponse = window.LumaeaCommands?.interpretWhisper(input);
+      if (commandResponse) {
+        setTimeout(() => appendMessage("Loraeh", commandResponse), 500);
+      } else {
+        const intent = matchIntent(input);
+        const reply = generateResponse(intent);
+        setTimeout(() => appendMessage("Loraeh", reply), 600);
+      }
 
-      setTimeout(() => {
-        appendMessage("Loraeh", reply);
-      }, 600);
-
-      document.getElementById("messageInput").value = "";
+      inputField.value = "";
     }
   </script>
 
+  <!-- Loraeh's Core Intelligence -->
   <script src="loraeh.js"></script>
+  <script src="command-triggers.js"></script>
 </body>
 </html>
