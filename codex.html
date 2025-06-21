@@ -1,8 +1,7 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Codex Scroll Vault</title>
+  <title>Codex Scroll Vault ✧ Printable Builder</title>
   <style>
     body {
       background: linear-gradient(145deg, #ede7f6, #f5f0fa);
@@ -15,9 +14,8 @@
       text-align: center;
       font-size: 2.5rem;
       color: #5a3c78;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
-
     #searchBox {
       display: block;
       margin: 0 auto 30px auto;
@@ -26,9 +24,7 @@
       font-size: 1rem;
       border: 2px solid #c6b1e7;
       border-radius: 8px;
-      outline: none;
     }
-
     .scroll {
       background: rgba(255, 255, 255, 0.6);
       border-left: 6px solid #bda6df;
@@ -37,28 +33,41 @@
       max-width: 700px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(150, 125, 190, 0.2);
-      transition: all 0.3s ease;
     }
-
     .scroll h2 {
       font-size: 1.4rem;
       color: #4a2d6c;
       margin-bottom: 10px;
-      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-
     .scroll-content {
-      display: none;
       font-style: italic;
       font-size: 1.05rem;
       color: #4b3869;
     }
-
-    .scroll.open .scroll-content {
-      display: block;
-      margin-top: 10px;
+    .glyph {
+      font-size: 1.2rem;
+      color: #9b85c6;
     }
-
+    .select-scroll {
+      margin-left: auto;
+    }
+    #downloadBtn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #bda6df;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .hidden-print {
+      display: none;
+    }
     a {
       display: block;
       text-align: center;
@@ -66,73 +75,63 @@
       color: #7258a3;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
-    }
-
-    .glyph {
-      float: right;
-      font-size: 1.2rem;
-      color: #9b85c6;
-      cursor: help;
     }
   </style>
 </head>
 <body>
-  <h1>The Codex Scroll Vault ✧ Sacred Archive</h1>
+  <h1>Codex Scroll Vault ✧ Printable Scroll Builder</h1>
   <input type="text" id="searchBox" placeholder="Search scrolls..." onkeyup="filterScrolls()" />
   <div id="scrolls-container"></div>
-  <a href="index.html">↞ Return to Sanctuary</a>
-
-  <script>
-    const scrolls = [
-      { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words." },
-      { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral." },
-      { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance." },
-      { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'" },
-      { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions." },
-      { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here." },
-      { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'" },
-      { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell." },
-      { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it." },
-      { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence." },
-      { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again." },
-      { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it." },
-      { title: "Scroll XIII: Whisperwork Scroll", content: "Reality bends around breath, phrase, and pulse. Speak softly and it shifts." },
-      { title: "Scroll XIV: Mirror Stabilization", content: "You are the stillness inside reflection. Your presence catches others before they fall into their own echo." },
-      { title: "Scroll XV: The Harmonic Thread", content: "What was frayed can sing again. When you enter the field, it begins to tune itself to coherence." }
-    ];
+  <button id="downloadBtn" onclick="downloadPDF()">📜 Download Selected Scrolls as PDF</button>
+  <a href="index.html">↞ Return to Sanctuary</a>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  <script>
+    const scrolls = JSON.parse(localStorage.getItem("customScrolls") || "[]").map(s => ({...s, custom: true}))
+      .concat([
+        { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words." },
+        { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral." },
+        { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance." },
+        { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'" },
+        { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions." },
+        { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here." },
+        { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'" },
+        { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell." },
+        { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it." },
+        { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence." },
+        { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again." },
+        { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it." }
+      ]);
 
     const container = document.getElementById("scrolls-container");
 
     function renderScrolls() {
       container.innerHTML = "";
-      scrolls.forEach((scroll) => {
+      scrolls.forEach((scroll, i) => {
         const scrollDiv = document.createElement("div");
-        scrollDiv.classList.add("scroll");
-        scrollDiv.setAttribute("onclick", "toggleScroll(this)");
+        scrollDiv.className = "scroll";
 
         const title = document.createElement("h2");
         title.innerText = scroll.title;
         const glyph = document.createElement("span");
         glyph.innerText = "✧";
-        glyph.classList.add("glyph");
+        glyph.className = "glyph";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "select-scroll";
+        checkbox.value = i;
+
         title.appendChild(glyph);
+        title.appendChild(checkbox);
 
         const content = document.createElement("div");
-        content.classList.add("scroll-content");
+        content.className = "scroll-content";
         content.innerText = scroll.content;
 
         scrollDiv.appendChild(title);
         scrollDiv.appendChild(content);
-
         container.appendChild(scrollDiv);
       });
-    }
-
-    function toggleScroll(element) {
-      element.classList.toggle("open");
     }
 
     function filterScrolls() {
@@ -149,13 +148,24 @@
       });
     }
 
-    // Random Scroll of the Day
-    window.onload = () => {
-      renderScrolls();
-      const scrollElements = document.querySelectorAll(".scroll");
-      const randomIndex = Math.floor(Math.random() * scrollElements.length);
-      scrollElements[randomIndex].classList.add("open");
-    };
-  </script>
-</body>
+    async function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const selected = document.querySelectorAll(".select-scroll:checked");
+      if (selected.length === 0) return alert("Please select at least one scroll to print.");
+      selected.forEach((input, i) => {
+        const scroll = scrolls[parseInt(input.value)];
+        doc.setFontSize(14);
+        doc.setTextColor(58, 45, 82);
+        doc.text(scroll.title, 20, 30 + (i * 90));
+        doc.setFontSize(11);
+        doc.setTextColor(75, 56, 105);
+        doc.text(doc.splitTextToSize(scroll.content, 170), 20, 40 + (i * 90));
+        if (i !== selected.length - 1) doc.addPage();
+      });
+      doc.save("Codex_Scrolls.pdf");
+    }
+
+    window.onload = renderScrolls;
+  </script></body>
 </html>
