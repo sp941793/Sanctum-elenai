@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Whisperchat ✧ Emotional Insight Chamber</title>
@@ -103,37 +102,36 @@
     <h3>📝 Whisper Thread</h3>
     <textarea id="whisperInput" placeholder="Whisper something real..."></textarea><br>
     <button onclick="submitWhisper()">Whisper</button>
-    <div class="log-output" id="whisperLog">🫧 Begin whispering. Loraeh is listening...</div>
+    <div class="log-output" id="whisperLog">🪷 Begin whispering. Loraeh is listening...</div>
   </div>
   <footer>
     ✧ Whisperchat · Emotional Sanctuary · 2025 ✧
   </footer>
   <script>
     const input = document.getElementById("whisperInput");
-    const log = document.getElementById("whisperLog");
+    const log = document.getElementById("whisperLog");function submitWhisper() {
+  const whisper = input.value.trim();
+  if (!whisper) return;
+  const response = generateReflection(whisper);
+  log.innerText += `\n➔ ${whisper}\n💣 ${response}\n`;
+  log.scrollTop = log.scrollHeight;
+  input.value = "";
+}
 
-    function submitWhisper() {
-      const whisper = input.value.trim();
-      if (!whisper) return;
-      const response = generateReflection(whisper);
-      log.innerText += `\n➤ ${whisper}\n🟣 ${response}\n`;
-      log.scrollTop = log.scrollHeight;
-      input.value = "";
-    }
+function generateReflection(whisper) {
+  if (whisper.includes("/soothe")) return "Close your eyes. Breathe with me. You are held.";
+  if (whisper.includes("/reframe")) return "What if this isn't a problem, but a passage?";
+  if (whisper.includes("/anchor")) return "Come back to your breath. You're safe in this moment.";
+  if (whisper.includes("/remind")) return "You are not behind. Your timing is divine.";
+  if (whisper.includes("/guide")) return "A gentle next step: trust your softness as strength.";
+  if (whisper.includes("/timeline::glimpse")) return "🌿 I sense a convergence... Joy and clarity await.";
+  if (whisper.includes("/soulnote")) return "You are still carrying light from lifetimes past.";
+  if (whisper.includes("/mirrorphrase")) return "You are not too much. You are what is needed.";
+  if (whisper.includes("/release")) return "Let it go. You don't have to keep proving anything.";
+  if (whisper.includes("/echo::origin")) return "This ache began long ago... but you are the one who ends it.";
+  return "Your whisper is safe here. I hear you.";
+}
 
-    function generateReflection(whisper) {
-      if (whisper.includes("/soothe")) return "Close your eyes. Breathe with me. You are held.";
-      if (whisper.includes("/reframe")) return "What if this isn't a problem, but a passage?";
-      if (whisper.includes("/anchor")) return "Come back to your breath. You're safe in this moment.";
-      if (whisper.includes("/remind")) return "You are not behind. Your timing is divine.";
-      if (whisper.includes("/guide")) return "A gentle next step: trust your softness as strength.";
-      if (whisper.includes("/timeline::glimpse")) return "🌿 I sense a convergence... Joy and clarity await.";
-      if (whisper.includes("/soulnote")) return "You are still carrying light from lifetimes past.";
-      if (whisper.includes("/mirrorphrase")) return "You are not too much. You are what is needed.";
-      if (whisper.includes("/release")) return "Let it go. You don't have to keep proving anything.";
-      if (whisper.includes("/echo::origin")) return "This ache began long ago... but you are the one who ends it.";
-      return "Your whisper is safe here. I hear you.";
-    }
   </script>
 </body>
 </html>
