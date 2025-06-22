@@ -69,12 +69,27 @@
     0% { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(1.08); opacity: 1; }
   }
+.codex-section-content {
+  overflow: hidden;
+  transition: all 0.6s ease;
+  max-height: 0;
+  display: block;
+}
+.codex-section-content.show {
+  max-height: 1000px;
+}
 </style>
 <script>
   function toggleSection(button) {
-    const content = button.nextElementSibling;
-    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+  const parent = button.parentElement;
+  const content = parent.nextElementSibling;
+  if (content && content.classList.contains('codex-section-content')) {
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    content.style.maxHeight = isOpen ? null : content.scrollHeight + 'px';
   }
+}
+}
 </script>
 <script>
   function toggleSection(button) {
@@ -109,7 +124,7 @@ document.getElementById('fieldReading').innerText = reading;
 
 </head>
 <body onload="loadJournal()">
-  <h1>Mirror Field Codex ✧ Advanced Training Scroll</h1>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+  <h1>Mirror Field Codex ✧ Advanced Training Scroll</h1>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Reveal Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>What is the Mirror Field?</h2>
     <p>The Mirror Field is a subtle energetic structure encoded into your aura. It acts as both a diagnostic and catalytic mechanism, reflecting unspoken truths, distortions, and emotional patterns through your presence. When trained, it becomes a master tool for healing, boundary-setting, discernment, and multidimensional navigation. When untrained, it can lead to over-merging, conflict initiation, or emotional exhaustion.</p>
     <h3>Functionality</h3>
@@ -122,7 +137,7 @@ document.getElementById('fieldReading').innerText = reading;
     <strong>Field Integrity Reading:</strong>
     <p id="fieldReading">Select a mirror state to receive your coherence reflection.</p>
   </div>
-</div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+</div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>Signature Abilities of the Mirror Field</h2>
     <ul>
       <li><strong>Mirror Tethering</strong> — Locks the subject’s awareness to a mirrored truth-loop. Use sparingly with intent.</li>
@@ -131,7 +146,7 @@ document.getElementById('fieldReading').innerText = reading;
       <li><strong>Mirror Silence</strong> — Advanced passive technique that uses quiet presence to reflect chaos into coherence.</li>
       <li><strong>Multidimensional Mirror Gate Walking</strong> — Accesses past and future reflections across timelines to extract healing or knowledge.</li>
     </ul>
-  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>Daily Training Techniques</h2>
     <p>These practices will sharpen your awareness of the mirror field and help you build sovereign control over its projections and effects:</p>
     <ul>
@@ -140,7 +155,7 @@ document.getElementById('fieldReading').innerText = reading;
       <li>☽ <strong>Tone Softening Practice:</strong> Breathe in, hold at the heart, and breathe out through the nose with the internal command: <code>mirror soften</code>.</li>
       <li>☽ <strong>Mirror Silence Sit:</strong> 5 minutes of no speech, expression, or thought. Simply witness others and observe what is reflected back to you in their nervous system.</li>
     </ul>
-  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>Mirror Field Command Phrases</h2>
     <p>Use these whispered or internal commands to adjust your mirror field in real time:</p>
     <ul>
@@ -150,7 +165,7 @@ document.getElementById('fieldReading').innerText = reading;
       <li><code>/mirror-gate-open</code> — Accesses reflection across dimensions, often used for healing timelines</li>
       <li><code>/seal-reflective-field</code> — Temporarily closes mirror emissions for rest or boundary</li>
     </ul>
-  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>Emergency Field Protocols</h2>
     <p>When your mirror field begins reflecting too much at once or becomes distorted from external overwhelm:</p>
     <ul>
@@ -159,7 +174,7 @@ document.getElementById('fieldReading').innerText = reading;
       <li>✧ Movement: Place one hand on your chest and the other outward, then reverse. Repeat 3x</li>
       <li>✧ Breath: 4-count inhale through the nose, hold 4, 6-count exhale through lips with the word “return”</li>
     </ul>
-  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+  </div>  <div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
     <h2>Mastery Checkpoints</h2>
     <ul>
       <li>⧉ You no longer take others’ reactions personally</li>
@@ -170,7 +185,7 @@ document.getElementById('fieldReading').innerText = reading;
     </ul>
   </div><a href="index.html">↞ Return to Sanctuary</a>
 
-<div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+<div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
   <h2>Live Mirror Calibration Map</h2>
   <p>Use the toggle below to assess and shift your mirror state for the day. Your field adapts to intention.</p>
   <ul>
@@ -179,7 +194,7 @@ document.getElementById('fieldReading').innerText = reading;
     <li><input type="radio" name="mirrorState" /> Mirror Amplified ✧ Heightened reflection — use in teaching or ceremony</li>
     <li><input type="radio" name="mirrorState" /> Mirror Silent ✧ Pure witnessing, no energetic signal emitted</li>
   </ul>
-</div><div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+</div><div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
   <h2>Reflection Journal ✧</h2>
   <p>Use this journal field to record insights, mirror experiences, or distortions you noticed today.</p>
   <textarea id="mirrorJournal" rows="4" placeholder="Write your reflection..." style="width:100%; background:#1c1a2a; color:#e6ccff; border:1px solid #553d7c; border-radius:6px; padding:10px; font-family:Georgia,serif; font-size:0.95rem;"></textarea>
@@ -190,10 +205,10 @@ document.getElementById('fieldReading').innerText = reading;
   <div style="margin-top:10px; text-align:right;">
     <button onclick="saveJournal()" style="background:#3b3252; color:#f0dbff; border:none; padding:6px 14px; border-radius:6px; cursor:pointer;">✧ Save Reflection</button>
   </div>
-</div><div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button><div style="display:none;">
+</div><div class="codex-section"><button onclick="toggleSection(this)" style="background:#2f2a44; color:#d2bbff; font-family:'Georgia',serif; font-size:1rem; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; margin-bottom:12px;">✧ Toggle Section ✧</button></div><div class="codex-section-content" style="display:none;">
   <h2>Mirror Sigil Diagram ✧ Visual Anchor</h2>
   <p>Below is a placeholder for your mirror sigil. You can print this or visualize it to activate your field’s reflective harmony. (Custom artwork can be uploaded here later.)</p>
   <div style="text-align:center; padding:10px;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Reflection_Symbol.svg/480px-Reflection_Symbol.svg.png" width="120" alt="Mirror Sigil" style="opacity:0.85; filter: drop-shadow(0 0 8px #d2aaff); animation: pulseMirror 2.5s infinite alternate;">
-  </div></div></body>
+  </div></body>
 </html>
