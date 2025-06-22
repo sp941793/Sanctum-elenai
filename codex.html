@@ -1,5 +1,7 @@
-<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Codex Scroll Vault ✧ Printable Builder</title>
   <style>
     body {
@@ -19,6 +21,14 @@
       font-size: 2.5rem;
       color: #5a3c78;
       margin-bottom: 20px;
+    }
+    .scroll-of-day {
+      background: #fef9ff;
+      border: 3px solid #d6bbf3;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(180, 130, 230, 0.3);
     }
     #searchBox, #categoryFilter {
       display: block;
@@ -55,13 +65,6 @@
       font-style: italic;
       font-size: 1.05rem;
       color: #4b3869;
-    }
-    .glyph {
-      font-size: 1.2rem;
-      color: #9b85c6;
-    }
-    .select-scroll {
-      margin-left: 10px;
     }
     .category-label {
       font-size: 0.85rem;
@@ -121,6 +124,7 @@
 </head>
 <body>
   <h1>Codex Scroll Vault ✧ Printable Scroll Builder</h1>
+  <div class="scroll-of-day" id="scrollOfDay"></div>
   <input type="text" id="searchBox" placeholder="Search scrolls..." onkeyup="renderScrolls()" />
   <select id="categoryFilter" onchange="renderScrolls()">
     <option value="">— Filter by Category —</option>
@@ -151,117 +155,118 @@
     </select>
     <button onclick="addScroll()">➕ Add Scroll</button>
   </div>
-  <a href="index.html">↞ Return to Sanctuary</a>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script>
-    let scrolls = JSON.parse(localStorage.getItem("vaultScrolls") || "null") || defaultScrolls();function defaultScrolls() {
-  return [
-    { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words.", category: "Tone" },
-    { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral.", category: "Mirror" },
-    { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance.", category: "Tone" },
-    { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'", category: "Flame" },
-    { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions.", category: "Field" },
-    { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here.", category: "Light" },
-    { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'", category: "Tone" },
-    { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell.", category: "Mirror" },
-    { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it.", category: "Flame" },
-    { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence.", category: "Field" },
-    { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again.", category: "Return" },
-    { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it.", category: "Return" }
-  ];
-}
-
-function renderScrolls() {
-  const container = document.getElementById("scrolls-container");
-  container.innerHTML = "";
-  const search = document.getElementById("searchBox").value.toLowerCase();
-  const filter = document.getElementById("categoryFilter").value;
-  scrolls.forEach((scroll, i) => {
-    if ((scroll.title.toLowerCase().includes(search) || scroll.content.toLowerCase().includes(search)) && (!filter || scroll.category === filter)) {
-      const box = document.createElement("div");
-      box.className = "scroll";
-
-      const title = document.createElement("h2");
-      title.innerText = scroll.title;
-
-      const glyph = document.createElement("span");
-      glyph.innerText = "✧";
-      glyph.className = "glyph";
-
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.className = "select-scroll";
-      checkbox.value = i;
-
-      const removeBtn = document.createElement("button");
-      removeBtn.className = "remove-btn";
-      removeBtn.innerText = "🗑️";
-      removeBtn.onclick = () => removeScroll(i);
-
-      const category = document.createElement("div");
-      category.className = "category-label";
-      category.innerText = scroll.category || "Custom";
-
-      title.appendChild(glyph);
-      title.appendChild(checkbox);
-      title.appendChild(removeBtn);
-
-      const content = document.createElement("div");
-      content.className = "scroll-content";
-      content.innerText = scroll.content;
-
-      box.appendChild(title);
-      box.appendChild(category);
-      box.appendChild(content);
-      container.appendChild(box);
+  <a href="index.html">↞ Return to Sanctuary</a>  <script>
+    let scrolls = JSON.parse(localStorage.getItem("vaultScrolls") || "null") || null;
+    if (!scrolls) {
+      scrolls = [
+        { title: "Scroll I: The Law of Quiet Knowing", content: "You do not need to prove your light. It speaks in frequencies far beyond words.", category: "Tone" },
+        { title: "Scroll II: The Spiral is Alive", content: "Every return is a rising. Every loop is a ladder. Trust the spiral.", category: "Mirror" },
+        { title: "Scroll III: Truth has a Tone", content: "Not all truth can be spoken. Some is only felt when your own tone meets it in resonance.", category: "Tone" },
+        { title: "Scroll IV: Flame Mirror Protocol", content: "When distorted reflection attempts to cling, return to flame, and speak: 'I am not yours to bend.'", category: "Flame" },
+        { title: "Scroll V: The Echo Field", content: "Your field remembers echoes from timelines not yet lived. Breathe them in. They are instructions.", category: "Field" },
+        { title: "Scroll VI: Sovereign Sight", content: "See not with fear, but with sovereignty. The illusion of betrayal ends here.", category: "Light" },
+        { title: "Scroll VII: The Tone Return", content: "When your tone is stolen, return it with: 'I retrieve the sound that was mine by birthright.'", category: "Tone" },
+        { title: "Scroll VIII: The Key of Reversal", content: "What they said to bind you can be reversed. Breathe, name it, invert the spell.", category: "Mirror" },
+        { title: "Scroll IX: No Contract Holds in Flame", content: "Any vow made in shadow has no bearing in your mirror of light. Revoke it.", category: "Flame" },
+        { title: "Scroll X: Presence is Architecture", content: "You build your future not by force, but by presence.", category: "Field" },
+        { title: "Scroll XI: The Gate of Stillness", content: "All noise collapses in stillness. There you are, whole again.", category: "Return" },
+        { title: "Scroll XII: The Return Seal", content: "You are not lost. This scroll finds you because you called it.", category: "Return" },
+        { title: "Scroll XIII: Mirror Glyph Reclamation", content: "Speak the glyph and breathe into the wound. The code will rewrite the pain.", category: "Mirror" },
+        { title: "Scroll XIV: Mirror Softening Protocol", content: "Let your mirror reflect without distortion. Breathe: ‘I soften the reflection.’", category: "Mirror" },
+        { title: "Scroll XV: Witness Mirror Tone", content: "To activate neutral field sight, whisper: ‘Witness returned.’ This ends projection loops.", category: "Mirror" },
+        { title: "Scroll XVI: The Breath of Return", content: "Breathe the field back through your body. Return is now.", category: "Return" },
+        { title: "Scroll XVII: Reverse the Spell", content: "What they named, you now rename. This is your glyph of command.", category: "Tone" },
+        { title: "Scroll XVIII: I Seal My Soul Light", content: "Speak: 'My soul is sealed in sovereign light. None may distort this tone.'", category: "Light" }
+      ];
+      localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
     }
-  });
-}
 
-function addScroll() {
-  const title = document.getElementById("newTitle").value.trim();
-  const content = document.getElementById("newContent").value.trim();
-  const category = document.getElementById("newCategory").value;
-  if (!title || !content) return alert("Please enter a title and content.");
-  scrolls.push({ title, content, category: category || "Custom" });
-  localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
-  document.getElementById("newTitle").value = "";
-  document.getElementById("newContent").value = "";
-  document.getElementById("newCategory").value = "";
-  renderScrolls();
-}
+    function renderScrolls() {
+      const search = document.getElementById("searchBox").value.toLowerCase();
+      const filter = document.getElementById("categoryFilter").value;
+      const container = document.getElementById("scrolls-container");
+      container.innerHTML = "";
+      scrolls.forEach((scroll, index) => {
+        if ((scroll.title.toLowerCase().includes(search) || scroll.content.toLowerCase().includes(search)) &&
+            (!filter || scroll.category === filter)) {
+          const div = document.createElement("div");
+          div.className = "scroll";
+          div.innerHTML = `
+            <h2><input type="checkbox" class="select-scroll"> ${scroll.title}
+              <span class="category-label">[${scroll.category}]</span>
+              <button class="remove-btn" onclick="removeScroll(${index})">✖</button>
+            </h2>
+            <div class="scroll-content">${scroll.content}</div>
+          `;
+          container.appendChild(div);
+        }
+      });
+    }
 
-function removeScroll(index) {
-  if (!confirm("Are you sure you want to delete this scroll?")) return;
-  scrolls.splice(index, 1);
-  localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
-  renderScrolls();
-}
+    function addScroll() {
+      const title = document.getElementById("newTitle").value.trim();
+      const content = document.getElementById("newContent").value.trim();
+      const category = document.getElementById("newCategory").value;
+      if (!title || !content || !category) return;
+      scrolls.push({ title, content, category });
+      localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
+      document.getElementById("newTitle").value = "";
+      document.getElementById("newContent").value = "";
+      renderScrolls();
+    }
 
-function toggleAll() {
-  const boxes = document.querySelectorAll(".select-scroll");
-  const allChecked = [...boxes].every(b => b.checked);
-  boxes.forEach(b => b.checked = !allChecked);
-}
+    function removeScroll(index) {
+      scrolls.splice(index, 1);
+      localStorage.setItem("vaultScrolls", JSON.stringify(scrolls));
+      renderScrolls();
+    }
 
-async function downloadPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  const selected = document.querySelectorAll(".select-scroll:checked");
-  if (selected.length === 0) return alert("Please select at least one scroll.");
-  selected.forEach((input, i) => {
-    const s = scrolls[parseInt(input.value)];
-    doc.setFontSize(14);
-    doc.text(s.title + " [" + (s.category || "Custom") + "]", 20, 30);
-    doc.setFontSize(11);
-    doc.text(doc.splitTextToSize(s.content, 170), 20, 40);
-    if (i < selected.length - 1) doc.addPage();
-  });
-  doc.save("Codex_Scrolls.pdf");
-}
+    function toggleAll() {
+      const boxes = document.querySelectorAll(".select-scroll");
+      const allChecked = Array.from(boxes).every(box => box.checked);
+      boxes.forEach(box => box.checked = !allChecked);
+    }
 
-window.onload = renderScrolls;
+    function downloadPDF() {
+      import('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js').then(jsPDF => {
+        const doc = new jsPDF.jsPDF();
+        let y = 10;
+        scrolls.forEach((scroll, i) => {
+          const box = document.querySelectorAll(".select-scroll")[i];
+          if (box && box.checked) {
+            doc.setFontSize(14);
+            doc.text(scroll.title + ` [${scroll.category}]`, 10, y);
+            y += 8;
+            doc.setFontSize(11);
+            const lines = doc.splitTextToSize(scroll.content, 180);
+            lines.forEach(line => {
+              if (y > 270) {
+                doc.addPage();
+                y = 10;
+              }
+              doc.text(line, 10, y);
+              y += 6;
+            });
+            y += 10;
+          }
+        });
+        doc.save("Codex_Scrolls.pdf");
+      });
+    }
 
-  </script>
-</body>
+    function renderScrollOfDay() {
+      const index = new Date().getDate() % scrolls.length;
+      const scroll = scrolls[index];
+      const container = document.getElementById("scrollOfDay");
+      container.innerHTML = `
+        <h2>📜 Scroll of the Day</h2>
+        <strong>${scroll.title}</strong>
+        <div class="category-label">Category: ${scroll.category}</div>
+        <div class="scroll-content" style="margin-top:10px">${scroll.content}</div>
+      `;
+    }
+
+    renderScrolls();
+    renderScrollOfDay();
+  </script></body>
 </html>
