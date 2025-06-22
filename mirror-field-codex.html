@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mirror Field Codex ✧ Advanced Training Scroll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -11,6 +12,7 @@
       color: #e8dcff;
       margin: 0;
       padding: 40px 20px;
+      overflow-x: hidden;
     }
     h1 {
       text-align: center;
@@ -30,7 +32,7 @@
       border-radius: 14px;
       padding: 20px;
       margin-bottom: 24px;
-      box-shadow: 0 0 10px rgba(200, 155, 255, 0.25);
+      box-shadow: 0 0 12px rgba(200, 155, 255, 0.25);
     }
     .codex-toggle {
       background: #2c1c4c;
@@ -42,6 +44,7 @@
       cursor: pointer;
       font-family: 'Unbounded', sans-serif;
       margin-bottom: 12px;
+      transition: all 0.3s ease;
     }
     .codex-toggle:hover {
       background: #3b2960;
@@ -82,47 +85,131 @@
   </style>
 </head>
 <body>
-  <h1>Mirror Field Codex ✧ Advanced Training Scroll</h1>  <div class="codex-section">
+  <h1>Mirror Field Codex ✧ Advanced Training Scroll</h1>
+
+  <div class="codex-section">
     <button class="codex-toggle" onclick="toggleSection(this)">✧ Signature Mirror Abilities ✧</button>
     <div class="codex-section-content">
       <h3>Signature Abilities of the Mirror Field</h3>
       <ul>
-        <li><strong>Mirror Tethering</strong> — Locks awareness into a mirrored loop of truth. Can gently awaken or confront. Use with discernment.</li>
-        <li><strong>Mirror Collapse</strong> — Shatters illusion overlays by bringing unfiltered truth forward. Best used in protected space.</li>
-        <li><strong>Mirror Amplify</strong> — Echoes and intensifies any reflected tone. Can be used to broadcast clarity, love, or coherence.</li>
-        <li><strong>Mirror Weaving</strong> — Threads wisdom, pattern, and coherence across soul layers using reflection points.</li>
-        <li><strong>Multidimensional Mirror Gate Walking</strong> — Moves across timelines through mirrored gates. Best used in trance or ceremony.</li>
+        <li><strong>Mirror Tethering</strong> — Anchors awareness to a mirrored truth-loop.</li>
+        <li><strong>Mirror Collapse</strong> — Shatters false overlays by reflecting core essence.</li>
+        <li><strong>Mirror Amplify</strong> — Magnifies chosen reflection frequency.</li>
+        <li><strong>Mirror Weaving</strong> — Threads energy, tone, memory into healing grids.</li>
+        <li><strong>Mirror Gate Walking</strong> — Timeline or field traversal via reflection keys.</li>
       </ul>
     </div>
-  </div>  <div class="codex-section">
-    <button class="codex-toggle" onclick="toggleSection(this)">✧ Daily Training Practices ✧</button>
+  </div>
+
+  <div class="codex-section">
+    <button class="codex-toggle" onclick="toggleSection(this)">✧ Daily Mirror Training ✧</button>
     <div class="codex-section-content">
-      <h3>Daily Techniques to Train Mirror Mastery</h3>
+      <h3>Daily Techniques</h3>
       <ul>
-        <li><strong>Mirror Reflection Journaling</strong> — Write one external mirrored moment per day. Ask: "What part of me created or echoed this?"</li>
-        <li><strong>Mirror Gaze Ritual</strong> — Stare into your own eyes for 1–2 minutes and ask your field: “What do I reflect today?”</li>
-        <li><strong>Mirror Breathwork</strong> — Use slow breath + mirror intent to shift field state. E.g., breathe in: “I witness,” out: “I return.”</li>
-        <li><strong>Command Phrasing</strong> — Say aloud one mirror command daily. Examples: “Return to True,” “Reflect Coherence,” “Seal My Echo.”</li>
+        <li>Write down one mirror reflection per day and name its source signal.</li>
+        <li>Mirror gaze with tone invocation: “Reveal,” “Return,” “Seal.”</li>
+        <li>Breathe into the mirror: inhale “Receive,” exhale “Reflect.”</li>
+        <li>Speak your current field aloud. Practice silent mode.</li>
       </ul>
     </div>
-  </div>  <div class="codex-section">
-    <button class="codex-toggle" onclick="toggleSection(this)">✧ Mirror Journal ✧</button>
+  </div>
+
+  <div class="codex-section">
+    <button class="codex-toggle" onclick="toggleSection(this)">✧ Reflection Journal ✧</button>
     <div class="codex-section-content">
       <textarea id="mirrorJournal" placeholder="Write your reflection..."></textarea>
       <button onclick="saveJournal()" class="codex-toggle">Save Reflection</button>
       <ul id="journalEntries"></ul>
     </div>
-  </div>  <div class="codex-section">
+  </div>
+
+  <div class="codex-section">
     <button class="codex-toggle" onclick="toggleSection(this)">✧ Field Integrity Reading ✧</button>
     <div class="codex-section-content">
-      <label><input type="radio" name="mirrorState"> Mirror Softened ✧ Ideal for intimacy, gentle witnessing</label>
-      <label><input type="radio" name="mirrorState"> Mirror Sealed ✧ Protection mode; shields from input/output</label>
-      <label><input type="radio" name="mirrorState"> Mirror Amplified ✧ Heightened reflective force for deep work</label>
-      <label><input type="radio" name="mirrorState"> Mirror Silent ✧ Null field. Pure witness without influence</label>
+      <label><input type="radio" name="mirrorState"> Mirror Softened ✧ Heart-open, gentle field</label>
+      <label><input type="radio" name="mirrorState"> Mirror Sealed ✧ Protected, closed reflection</label>
+      <label><input type="radio" name="mirrorState"> Mirror Amplified ✧ Heightened signal for ritual</label>
+      <label><input type="radio" name="mirrorState"> Mirror Silent ✧ Neutral witnessing, no signal</label>
       <button onclick="checkFieldIntegrity()" class="codex-toggle">Read Field</button>
       <div id="fieldReading"></div>
     </div>
-  </div>  <script>
+  </div>
+
+  <div class="codex-section">
+    <button class="codex-toggle" onclick="toggleSection(this)">✧ Expanded Mirror Abilities Codex ✧</button>
+    <div class="codex-section-content">
+      <h3>Living Mirror Abilities (Serena's Codex)</h3>
+      <ul>
+        <li><strong>Mirror Tethering:</strong> Loop truth. Whisper: “Lock in the light.”</li>
+        <li><strong>Mirror Collapse:</strong> Shatter false mirrors. Whisper: “Collapse the echo.”</li>
+        <li><strong>Mirror Amplify:</strong> Magnify coherence. Whisper: “Amplify the true tone.”</li>
+        <li><strong>Mirror Veil:</strong> Hide field. Whisper: “Mirror hush.”</li>
+        <li><strong>Echo Loop Reading:</strong> Detect returning soul pattern. Whisper: “What loop returns?”</li>
+        <li><strong>Mirror Weaving:</strong> Thread fields. Whisper: “Weave the mirror line.”</li>
+        <li><strong>Softened Mirror:</strong> Gentle reflect. Whisper: “Mirror softened.”</li>
+        <li><strong>Mirror Silence:</strong> Pure witness. Whisper: “Silent witness mode.”</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Pink Sparkle Trail Script -->
+  <canvas id="sparkleCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById(\"sparkleCanvas\");
+    const ctx = canvas.getContext(\"2d\");
+    canvas.style.position = \"fixed\";
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.pointerEvents = \"none\";
+    canvas.style.zIndex = 9999;
+
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+
+    const particles = [];
+    function sparkle(x, y) {
+      for (let i = 0; i < 5; i++) {
+        particles.push({
+          x,
+          y,
+          radius: Math.random() * 2 + 1,
+          alpha: 1,
+          dx: (Math.random() - 0.5) * 2,
+          dy: (Math.random() - 0.5) * 2,
+          hue: 320 + Math.random() * 20
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 85%, ${p.alpha})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        p.alpha -= 0.02;
+        if (p.alpha <= 0) particles.splice(i, 1);
+      });
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+    });
+
+    document.addEventListener('mousemove', (e) => sparkle(e.clientX, e.clientY));
+    draw();
+  </script>
+
+  <script>
     function toggleSection(button) {
       const content = button.nextElementSibling;
       if (!content) return;
@@ -164,27 +251,27 @@
           break;
         }
       }
-
       let reading = '';
       switch(state) {
-        case 'Mirror Softened ✧ Ideal for intimacy, gentle witnessing':
-          reading = 'Field open and receptive. Healing energy flows. Maintain boundary awareness.';
+        case 'Mirror Softened ✧ Heart-open, gentle field':
+          reading = 'Field is open and safe for relational healing and softness.';
           break;
-        case 'Mirror Sealed ✧ Protection mode; shields from input/output':
-          reading = 'Field shielded. You are safe and inward. Allow space to stabilize your core.';
+        case 'Mirror Sealed ✧ Protected, closed reflection':
+          reading = 'Field is sealed. You are safe and inward. Hold steady.';
           break;
-        case 'Mirror Amplified ✧ Heightened reflective force for deep work':
-          reading = 'You are emitting high mirror resonance. Stay grounded and focused. Use intentionally.';
+        case 'Mirror Amplified ✧ Heightened signal for ritual':
+          reading = 'Field is intensified. Use for ceremony or transmission.';
           break;
-        case 'Mirror Silent ✧ Null field. Pure witness without influence':
-          reading = 'Field is still. You are the witness. Deep reflection is possible now.';
+        case 'Mirror Silent ✧ Neutral witnessing, no signal':
+          reading = 'You are in pure witness state. Remain in stillness.';
           break;
         default:
-          reading = 'Please select a mirror field state to receive a reading.';
+          reading = 'Please select your current mirror field state.';
       }
       document.getElementById('fieldReading').innerText = reading;
     }
 
     window.onload = loadJournal;
-  </script></body>
+  </script>
+</body>
 </html>
