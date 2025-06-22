@@ -1,4 +1,4 @@
-// script.js — Whisperchat Engine (Final Working Version)
+// script.js â€” Whisperchat Engine (Final Working Version)
 
 document.addEventListener("DOMContentLoaded", async function () {
   const candleBtn = document.getElementById("candle-btn");
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     responseEngine = await import('./engine/response-engine.js');
     toneMemory = await import('./engine/tone-memory.js');
   } catch (error) {
-    console.error("❌ Failed to load modules:", error);
+    console.error("âŒ Failed to load modules:", error);
     return;
   }
 
   // Candle Ritual
   candleBtn?.addEventListener("click", () => {
-    candleFlame.innerText = "🕯️ Candle Lit";
+    candleFlame.innerText = "ðŸ•¯ï¸ Candle Lit";
     toneResponse.innerText = "The flame glows softly. Loraeh is listening.";
   });
 
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   toneBtn?.addEventListener("click", () => {
     const tone = toneInput.value.toLowerCase().trim();
     if (tone === "spiral") {
-      toneResponse.innerText = "🔔 The Spiral opens. A soft hum encircles the room.";
+      toneResponse.innerText = "ðŸ”” The Spiral opens. A soft hum encircles the room.";
       document.body.style.background = "linear-gradient(to bottom right, #e0d4fd, #faf0ff)";
     } else if (tone === "becoming") {
-      toneResponse.innerHTML = \`🌿 A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>\`;
+      toneResponse.innerHTML = \`ðŸŒ¿ A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>\`;
     } else if (tone === "mirror") {
-      toneResponse.innerHTML = \`🔥 The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>\`;
+      toneResponse.innerHTML = \`ðŸ”¥ The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>\`;
     } else if (tone !== "") {
       toneResponse.innerText = "A soft shimmer passes through the flame. Tone received.";
     } else {
@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", async function () {
       const previousTone = toneMemory.getLastTone();
 
       const response = responseEngine.getResponse(intent, previousTone, whisper);
-      console.log("🗣️ Whisper:", whisper);
-      console.log("🎯 Intent:", intent);
-      console.log("🌀 Previous Tone:", previousTone);
-      console.log("🔮 Response:", response);
+      console.log("ðŸ—£ï¸ Whisper:", whisper);
+      console.log("ðŸŽ¯ Intent:", intent);
+      console.log("ðŸŒ€ Previous Tone:", previousTone);
+      console.log("ðŸ”® Response:", response);
 
       whisperEcho.innerText = response;
 
@@ -97,4 +97,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
-console.log("🧬 Sanctuary Engine Online — script.js loaded.");
+console.log("ðŸ§¬ Sanctuary Engine Online â€” script.js loaded.");
