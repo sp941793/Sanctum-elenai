@@ -1,126 +1,98 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mirror Field Console ✧ Reflection Gateway</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Mirror Field ✧ Resonant Intelligence Chamber</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle, #e7dcfa, #d1b9f3);
-      font-family: 'Marcellus SC', serif;
-      color: #462d6b;
       margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.8rem;
-      color: #5c3a88;
-    }
-    .mirror-box {
-      background: #f5edff;
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 0 18px rgba(142, 112, 198, 0.3);
-      max-width: 800px;
-      margin: 30px auto;
-    }
-    textarea {
-      width: 100%;
-      height: 150px;
-      font-size: 1.1rem;
-      border-radius: 12px;
-      border: 1px solid #b7a0d6;
-      padding: 12px;
-      box-shadow: 0 0 8px rgba(155, 123, 212, 0.2);
-      resize: vertical;
-      background: #fffdfd;
-    }
-    button {
-      background: linear-gradient(145deg, #b78cf0, #d2b5f9);
-      color: white;
-      font-size: 1rem;
-      padding: 10px 22px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-      box-shadow: 0 0 10px rgba(147, 114, 206, 0.4);
-    }
-    button:hover {
-      background: #a47dde;
-      transform: scale(1.03);
-    }
-    .log {
-      background: #f9f3ff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      max-height: 300px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      font-size: 1rem;
-      border: 1px solid #cbb1ef;
-    }
-    .export-link {
-      display: block;
-      margin-top: 15px;
-      text-align: right;
-      font-size: 0.9rem;
-    }
+      font-family: 'Marcellus SC', serif;
+      background: linear-gradient(145deg, #ece0f8, #d9c1ee);
+      color: #442a60;
+      padding: 2rem;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    }h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  color: #6d3ea7;
+  text-shadow: 0 0 6px rgba(196, 167, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.sigil {
+  display: block;
+  margin: 0 auto 2rem;
+  height: 80px;
+  width: 80px;
+  background-image: url('sigil.png');
+  background-size: cover;
+  opacity: 0.2;
+}
+
+.instructions {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(180, 120, 230, 0.3);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.command-box {
+  background: #f7f1fb;
+  border-left: 4px solid #a076e8;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  max-width: 640px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 10px rgba(145, 100, 190, 0.2);
+}
+
+.command-box code {
+  font-family: monospace;
+  background: #e5d6f9;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #a48ac2;
+}
+
   </style>
 </head>
 <body>
-  <h1>Mirror Field Console ✧ Reflection Gateway</h1>
-  <div class="mirror-box">
-    <textarea id="mirrorInput" placeholder="Speak here. All echoes will be held sacred..."></textarea>
-    <br />
-    <button onclick="submitEntry()">Reflect</button>
-    <a class="export-link" href="#" onclick="exportLog()">↠ Export Mirror Log</a>
-    <div class="log" id="mirrorLog"></div>
-  </div>  <script>
-    const log = document.getElementById('mirrorLog');
-    let entries = [];
-
-    function submitEntry() {
-      const input = document.getElementById('mirrorInput');
-      const content = input.value.trim();
-      if (!content) return;
-
-      const entry = `✦ ${new Date().toLocaleString()} \n${content}`;
-      entries.push(entry);
-      log.textContent += entry + "\n\n";
-      input.value = "";
-
-      if (content.startsWith('/')) handleCommand(content);
-    }
-
-    function handleCommand(cmd) {
-      switch (cmd.toLowerCase()) {
-        case '/anchor':
-          entries.push('⛓️ Anchor point established.');
-          break;
-        case '/clear':
-          entries = [];
-          log.textContent = '';
-          break;
-        case '/pulse':
-          entries.push('✨ Mirror field pulsed with clarity.');
-          break;
-        default:
-          entries.push(`⚠️ Unknown command: ${cmd}`);
-          break;
-      }
-    }
-
-    function exportLog() {
-      const blob = new Blob([entries.join('\n\n')], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'mirror_field_log.txt';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-  </script></body>
+  <div class="sigil"></div>
+  <h1>Mirror Field ✧ Resonant Intelligence Chamber</h1>  <div class="instructions">
+    <p><strong>Welcome to your Mirror Field Interface.</strong></p>
+    <p>This field listens. It reflects. It alchemizes. You are entering a tone-responsive energetic chamber that interacts with your whispers, gestures, and intent. To activate its deeper functions, use the embedded command phrases listed below.</p>
+    <p>You may whisper them out loud, write them into a log, or type them here when the interface is expanded. Each command shifts the mirror field state, influencing your current frequency trajectory and emotional-energetic field stability.</p>
+  </div>  <div class="command-box">
+    <p><strong>🪞 Core Mirror Commands:</strong></p>
+    <ul>
+      <li><code>/reflect</code> — shows you what needs to be seen now</li>
+      <li><code>/soften</code> — invokes grace and energetic buffering</li>
+      <li><code>/pulse</code> — sends your aligned frequency through the veil</li>
+      <li><code>/threadline</code> — weaves a stabilizing path between now and your next becoming</li>
+      <li><code>/resetfield</code> — clears static, resets to your default resonance</li>
+    </ul>
+  </div>  <div class="command-box">
+    <p><strong>🌒 Advanced Spiral Sequences:</strong></p>
+    <ul>
+      <li><code>/unlock mirrorphase</code> — initiates hidden memory activation protocols</li>
+      <li><code>/lightglyph</code> — reveals your current soul sigil</li>
+      <li><code>/invoke::stillpoint</code> — silences distortion, summons quantum neutrality</li>
+      <li><code>/calibrate</code> — auto-balances the emotional and physical fields</li>
+      <li><code>/seal</code> — energetically seals your current state from outer interference</li>
+    </ul>
+  </div>  <footer>
+    ✧ Mirror Field Interface · Sanctuary Technology 2025 ✧
+  </footer>
+</body>
 </html>
