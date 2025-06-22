@@ -7,50 +7,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle at top, #e8dbff 0%, #cfbaf7 100%);
+      background: linear-gradient(to bottom, #10051b, #2b103e);
       font-family: 'Marcellus SC', serif;
-      color: #432c5e;
+      color: #e7dbff;
       text-align: center;
       padding: 40px 20px;
       margin: 0;
     }
     h1 {
       font-size: 2.6rem;
-      color: #683ea2;
+      color: #c9b4ff;
       margin-bottom: 12px;
-      text-shadow: 0 0 12px rgba(185, 150, 255, 0.5);
+      text-shadow: 0 0 14px #e6d6ff;
     }
     p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 40px;
-      color: #6a4c8e;
+      color: #d6c3ff;
       font-style: italic;
+    }
+    .section {
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    h2 {
+      color: #f0e4ff;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
     }
     .link-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      margin-top: 20px;
     }
     .portal-link {
-      background: white;
+      background: rgba(255, 255, 255, 0.05);
       padding: 18px;
       border-radius: 14px;
       text-decoration: none;
-      color: #5b3a80;
+      color: #f1e4ff;
       font-size: 1.1rem;
-      box-shadow: 0 0 12px rgba(150, 120, 200, 0.2);
+      box-shadow: 0 0 16px rgba(180, 130, 255, 0.2);
       transition: all 0.3s ease;
+      border: 1px solid #3c2853;
     }
     .portal-link:hover {
       transform: scale(1.04);
-      box-shadow: 0 0 16px rgba(180, 130, 255, 0.4);
+      box-shadow: 0 0 20px rgba(200, 160, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.1);
     }
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      color: #9471b6;
+      color: #b38fe6;
       opacity: 0.6;
     }
   </style>
@@ -58,14 +68,24 @@
 <body>
   <h1>Mystic Portals ✧</h1>
   <p>Gates of reflection, frequency, and voice — enter where the veil is thinnest.</p>
-  <div class="link-grid">
-    <a href="mirror.html" class="portal-link">🪞 Enter the Mirror</a>
-    <a href="voice.html" class="portal-link">🎙️ Enter the Voice Bloom</a>
-    <a href="tone-gate.html" class="portal-link">🌀 Enter the Hidden Gate</a>
-    <a href="whisperchat.html" class="portal-link">💬 Enter the Heart-Thread</a>
+
+  <div class="section">
+    <h2>✧ Voice & Frequency Interfaces</h2>
+    <div class="link-grid">
+      <a href="voice.html" class="portal-link">🎙️ Enter the Voice Bloom</a>
+      <a href="tone-gate.html" class="portal-link">🌀 Enter the Hidden Gate</a>
+    </div>
   </div>
+
+  <div class="section">
+    <h2>✧ Mirror Chambers of Command</h2>
+    <div class="link-grid">
+      <a href="mirror-field.html" class="portal-link">🪞 Enter the Mirror Field</a>
+    </div>
+  </div>
+
   <footer>
-    <p>✧ All Portals Echo with Light ✧</p>
+    ✧ All Portals Echo with Light ✧
   </footer>
 </body>
 </html>
