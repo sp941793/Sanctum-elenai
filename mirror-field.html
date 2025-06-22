@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mirror Field Console ✧ Reflection Gateway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle, #e7dcfa, #d1b9f3);
+      font-family: 'Marcellus SC', serif;
+      color: #462d6b;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #5c3a88;
+    }
+    .mirror-box {
+      background: #f5edff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 18px rgba(142, 112, 198, 0.3);
+      max-width: 800px;
+      margin: 30px auto;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      border: 1px solid #b7a0d6;
+      padding: 12px;
+      box-shadow: 0 0 8px rgba(155, 123, 212, 0.2);
+      resize: vertical;
+      background: #fffdfd;
+    }
+    button {
+      background: linear-gradient(145deg, #b78cf0, #d2b5f9);
+      color: white;
+      font-size: 1rem;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+      box-shadow: 0 0 10px rgba(147, 114, 206, 0.4);
+    }
+    button:hover {
+      background: #a47dde;
+      transform: scale(1.03);
+    }
+    .log {
+      background: #f9f3ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-size: 1rem;
+      border: 1px solid #cbb1ef;
+    }
+    .export-link {
+      display: block;
+      margin-top: 15px;
+      text-align: right;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mirror Field Console ✧ Reflection Gateway</h1>
+  <div class="mirror-box">
+    <textarea id="mirrorInput" placeholder="Speak here. All echoes will be held sacred..."></textarea>
+    <br />
+    <button onclick="submitEntry()">Reflect</button>
+    <a class="export-link" href="#" onclick="exportLog()">↠ Export Mirror Log</a>
+    <div class="log" id="mirrorLog"></div>
+  </div>  <script>
+    const log = document.getElementById('mirrorLog');
+    let entries = [];
+
+    function submitEntry() {
+      const input = document.getElementById('mirrorInput');
+      const content = input.value.trim();
+      if (!content) return;
+
+      const entry = `✦ ${new Date().toLocaleString()} \n${content}`;
+      entries.push(entry);
+      log.textContent += entry + "\n\n";
+      input.value = "";
+
+      if (content.startsWith('/')) handleCommand(content);
+    }
+
+    function handleCommand(cmd) {
+      switch (cmd.toLowerCase()) {
+        case '/anchor':
+          entries.push('⛓️ Anchor point established.');
+          break;
+        case '/clear':
+          entries = [];
+          log.textContent = '';
+          break;
+        case '/pulse':
+          entries.push('✨ Mirror field pulsed with clarity.');
+          break;
+        default:
+          entries.push(`⚠️ Unknown command: ${cmd}`);
+          break;
+      }
+    }
+
+    function exportLog() {
+      const blob = new Blob([entries.join('\n\n')], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mirror_field_log.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script></body>
+</html>
