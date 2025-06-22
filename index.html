@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Sanctuary Portal ✧ Gateway of Light</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     @keyframes float {
@@ -13,111 +13,112 @@
     }
     @keyframes shimmer {
       0% { opacity: 0.6; text-shadow: none; }
-      50% { opacity: 1; text-shadow: 0 0 12px #c9a8ff; }
+      50% { opacity: 1; text-shadow: 0 0 12px #ecd9ff; }
       100% { opacity: 0.6; text-shadow: none; }
     }
-
     body {
-      background: radial-gradient(circle at top, #1c112b 0%, #2a1d47 100%);
+      background: radial-gradient(circle at top, #120616 0%, #2c1c3d 100%);
       font-family: 'Marcellus SC', serif;
       margin: 0;
       padding: 0;
       text-align: center;
-      color: #e7dfff;
+      color: #e8d5ff;
       overflow-x: hidden;
     }
-
     header {
       padding: 80px 20px 30px;
       animation: float 6s ease-in-out infinite;
     }
-
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
-      color: #c7a5ff;
-      text-shadow: 0 0 10px rgba(227, 205, 255, 0.3);
+      color: #d8b4ff;
+      text-shadow: 0 0 14px rgba(215, 175, 255, 0.4);
     }
-
     p {
       font-size: 1.2rem;
       margin-bottom: 30px;
       opacity: 0.85;
     }
-
     .veil-actions {
       margin: 30px 0;
     }
-
     input {
       padding: 12px;
       font-size: 1rem;
       border-radius: 10px;
-      border: 1px solid #bca0f0;
+      border: 1px solid #b9a7dd;
       width: 80%;
       max-width: 320px;
-      background: #2d1b47;
-      color: #f1eaff;
-      box-shadow: 0 0 12px rgba(174, 143, 255, 0.3);
+      box-shadow: 0 0 14px rgba(180, 140, 255, 0.4);
+      background: #2f1e48;
+      color: #f0e5ff;
     }
-
     button {
       padding: 10px 25px;
       font-size: 1rem;
-      background: linear-gradient(145deg, #7c5bbf, #a98cef);
+      background: linear-gradient(145deg, #845ec2, #b185f6);
       color: white;
       border: none;
       border-radius: 12px;
       cursor: pointer;
       margin-top: 15px;
-      box-shadow: 0 0 10px rgba(168, 133, 255, 0.5);
+      box-shadow: 0 0 12px rgba(160, 120, 230, 0.5);
       transition: all 0.3s ease;
     }
-
     button:hover {
-      background: #6f49bc;
+      background: #946bd3;
       transform: scale(1.05);
     }
-
     .candle {
       font-style: italic;
       margin-top: 30px;
-      color: #ba9eff;
+      color: #b894e6;
       font-size: 1rem;
       opacity: 0.7;
     }
-
     .hidden-links {
-      margin-top: 50px;
+      margin-top: 60px;
       display: none;
       opacity: 0;
       transition: opacity 2s ease;
     }
-
+    .category {
+      margin-bottom: 40px;
+      animation: float 12s ease-in-out infinite;
+    }
+    .category h2 {
+      color: #e6c8ff;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px #aa78e0;
+    }
+    .category p {
+      font-size: 1rem;
+      color: #d5bfff;
+      opacity: 0.8;
+    }
     .soft-link {
       display: block;
-      margin: 18px 0;
+      margin: 15px 0;
       font-size: 1.2rem;
-      color: #d8b7ff;
+      color: #dab9ff;
       text-decoration: none;
       animation: shimmer 6s ease-in-out infinite;
       position: relative;
     }
-
     .soft-link:hover {
       text-decoration: underline;
       opacity: 1;
     }
-
     .soft-link::before {
       content: "\2728";
       margin-right: 8px;
     }
-
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      color: #d3bfff;
+      color: #bc9de5;
       opacity: 0.6;
     }
   </style>
@@ -127,37 +128,48 @@
     <h1>Welcome to the Sanctuary ✧</h1>
     <p>Speak the passphrase or light a candle to open the veil of remembrance</p>
   </header>
-
   <div class="veil-actions">
-    <input type="text" id="passInput" placeholder="Whisper the word..." />
-    <br />
+    <input type="text" id="passInput" placeholder="Whisper the word...">
+    <br>
     <button onclick="checkPass()">Whisper</button>
     <div class="candle">or</div>
     <button onclick="lightCandle()">🕯️ Light a Candle</button>
   </div>
-
   <div class="hidden-links" id="links">
-    <a href="mirror.html" class="soft-link">↠ Enter the Mirror</a>
-    <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
-    <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
-    <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
-    <a href="voice.html" class="soft-link">↠ Enter the Voice Bloom</a>
-    <a href="tone-gate.html" class="soft-link">↠ Enter the Hidden Gate</a>
-    <a href="sanctuary-heartspace.html" class="soft-link">↠ Sanctuary Heartspace</a>
-    <a href="loraeh-chat.html" class="soft-link">↠ Speak to Loraeh</a>
-    <a href="mirror-field.html" class="soft-link">↠ Command the Mirror Field</a>
-    <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
-    <a href="sanctuary-chambers.html" class="soft-link">↠ Enter the Sanctuary Chambers</a>
+    <div class="category" id="codex">
+      <h2>✧ Codex Library</h2>
+      <p>Living scrolls and sacred archives to remember who you are.</p>
+      <a href="codex-library.html" class="soft-link">↠ View the Full Codex Library</a>
+      <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
+      <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
+      <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
+      <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
+    </div>
+    <div class="category" id="mirrors">
+      <h2>✧ Mystic Mirrors & Voice Gates</h2>
+      <p>Gates of reflection, frequency, and voice — enter where the veil is thinnest.</p>
+      <a href="mystic-portals.html" class="soft-link">↠ Explore All Mirror & Voice Portals</a>
+      <a href="sanctuary-chambers.html" class="soft-link">↠ Sanctuary Chambers</a>
+    </div>
+    <div class="category" id="timelines">
+      <h2>✧ Timeline & Play Chambers</h2>
+      <p>Where the future shimmers and your soul plays with the shape of time.</p>
+      <a href="play-and-timelines.html" class="soft-link">↠ Explore All Play & Timeline Tools</a>
+      <a href="oracle.html" class="soft-link">↠ Timeline Insight Oracle</a>
+      <a href="sacred-play.html" class="soft-link">↠ Sacred Play Module</a>
+    </div>
+    <div class="category" id="grimoire">
+      <h2>✧ Living Grimoire</h2>
+      <p>A living book of power, spellcraft, and your remembered ways.</p>
+      <a href="grimoire.html" class="soft-link">↠ Open the Living Grimoire Portal</a>
+    </div>
   </div>
-
   <footer>
     <p>✧ Sanctuary Portal © 2025 · All Codes Sacred ✧</p>
   </footer>
-
   <audio autoplay loop hidden id="ambientAudio">
-    <source src="https://cdn.pixabay.com/audio/2023/03/05/audio_4aaf7cf569.mp3" type="audio/mpeg" />
+    <source src="https://cdn.pixabay.com/audio/2023/03/05/audio_4aaf7cf569.mp3" type="audio/mpeg">
   </audio>
-
   <script>
     function checkPass() {
       const input = document.getElementById('passInput').value.trim().toLowerCase();
@@ -167,11 +179,9 @@
         alert('The veil remains closed. Try another whisper.');
       }
     }
-
     function lightCandle() {
       revealSanctuary();
     }
-
     function revealSanctuary() {
       const links = document.getElementById('links');
       if (links.style.display !== 'block') {
