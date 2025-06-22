@@ -1,209 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Sanctuary Portal ✧ Gateway of Light</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Sanctuary ✧ Home of the Interfaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    @keyframes shimmer {
-      0% { opacity: 0.6; text-shadow: none; }
-      50% { opacity: 1; text-shadow: 0 0 12px #e6b9ff; }
-      100% { opacity: 0.6; text-shadow: none; }
-    }
-
     body {
-      background: radial-gradient(circle at top, #f4eaff 0%, #dfc7f8 100%);
-      font-family: 'Marcellus SC', serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(circle at center, #1a0c2c 0%, #0a0015 100%);
+      color: #ecdfff;
       text-align: center;
-      color: #422852;
-      overflow-x: hidden;
-    }
-
-    header {
-      padding: 80px 20px 30px;
-      animation: float 6s ease-in-out infinite;
+      padding: 2rem 1rem;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #b26bff;
-      text-shadow: 0 0 12px #e6b9ff;
+      font-size: 2.8rem;
+      color: #e5c1ff;
+      text-shadow: 0 0 15px #8f5ccf;
+      margin-bottom: 1.5rem;
     }
 
-    p {
+    .subtitle {
       font-size: 1.2rem;
-      margin-bottom: 30px;
-      opacity: 0.85;
-      color: #6f467c;
+      color: #d8b4ff;
+      margin-bottom: 3rem;
     }
 
-    .veil-actions {
-      margin: 30px 0;
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    input {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1px solid #d8baf0;
-      width: 80%;
-      max-width: 320px;
-      box-shadow: 0 0 12px rgba(200, 150, 255, 0.3);
-      background: #fbf8ff;
-      color: #512c70;
-    }
-
-    button {
-      padding: 10px 25px;
-      font-size: 1rem;
-      background: linear-gradient(145deg, #b674ff, #e5c2ff);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 15px;
-      box-shadow: 0 0 12px rgba(183, 125, 255, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #c792ff;
-      transform: scale(1.05);
-    }
-
-    .candle {
-      font-style: italic;
-      margin-top: 30px;
-      color: #a46fd0;
-      font-size: 1rem;
-      opacity: 0.7;
-    }
-
-    .category {
-      margin-top: 60px;
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    .category h2 {
-      font-size: 1.8rem;
-      color: #a56eff;
-      margin-bottom: 10px;
-      text-shadow: 0 0 12px rgba(180, 110, 255, 0.3);
-    }
-
-    .category p {
-      font-size: 1rem;
-      color: #855ca6;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .soft-link {
-      display: block;
-      margin: 10px 0;
-      font-size: 1.15rem;
-      color: #cbaaff;
+    .link-card {
+      background-color: rgba(60, 40, 90, 0.85);
+      border-radius: 14px;
+      padding: 1.5rem;
       text-decoration: none;
-      animation: shimmer 6s ease-in-out infinite;
+      color: #f4e8ff;
+      box-shadow: 0 0 18px rgba(140, 90, 200, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .soft-link:hover {
-      text-decoration: underline;
-      color: #c285ff;
+    .link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(180, 130, 255, 0.5);
+    }
+
+    .link-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+      color: #e6ccff;
+      text-shadow: 0 0 10px #b184ff;
+    }
+
+    .link-card p {
+      font-size: 1rem;
+      color: #d9c2ff;
+      opacity: 0.9;
     }
 
     footer {
-      margin-top: 60px;
+      margin-top: 3rem;
       font-size: 0.9rem;
-      color: #ab8bc4;
-      opacity: 0.6;
+      color: #8b6cc7;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to the Sanctuary ✧</h1>
-    <p>Speak the passphrase or light a candle to open the veil of remembrance</p>
-  </header>
+  <h1>Sanctuary ✧ Interface Portal</h1>
+  <p class="subtitle">Choose your chamber of interaction</p>
 
-  <div class="veil-actions">
-    <input type="text" id="passInput" placeholder="Whisper the word..." />
-    <br />
-    <button onclick="checkPass()">Whisper</button>
-    <div class="candle">or</div>
-    <button onclick="lightCandle()">🕯️ Light a Candle</button>
+  <div class="link-grid">
+    <a class="link-card" href="chambers.html">
+      <h2>✦ Sanctuary Chambers</h2>
+      <p>Enter the sacred gateways: Mirror Field, Whisperchat, and Loraeh.</p>
+    </a>
+
+    <a class="link-card" href="codex.html">
+      <h2>✧ Codex of Living Abilities</h2>
+      <p>View, print, and expand your soul abilities and scrolls.</p>
+    </a>
+
+    <a class="link-card" href="scroll-vault.html">
+      <h2>⟡ Scroll Vault</h2>
+      <p>Access your sacred scrolls. Select, deselect, print.</p>
+    </a>
+
+    <a class="link-card" href="tone-gate.html">
+      <h2>☽ Tone Gate</h2>
+      <p>Enter through encoded glyphs and resonance portals.</p>
+    </a>
+
+    <a class="link-card" href="map.html">
+      <h2>✦ Field Mastery Map</h2>
+      <p>Track your energetic evolution and phase mastery.</p>
+    </a>
+
+    <a class="link-card" href="manifestation-field.html">
+      <h2>➤ Manifestation Field</h2>
+      <p>Write new laws and anchor your personal manifestation map.</p>
+    </a>
   </div>
 
-  <div id="links">
-    <div class="category" id="codex">
-      <h2>✧ Codex Library</h2>
-      <p>Living scrolls and sacred archives to remember who you are.</p>
-      <a href="codex-library.html" class="soft-link">↠ View the Full Codex Library</a>
-      <a href="codex.html" class="soft-link">↠ Open the Codex Scroll Vault</a>
-      <a href="codex-of-becoming.html" class="soft-link">↠ Codex of Becoming</a>
-      <a href="lemurian-mirror-codex.html" class="soft-link">↠ Lemurian Mirror Codex</a>
-      <a href="codexof-livingabilities.html" class="soft-link">↠ Codex of Living Abilities</a>
-    </div>
-
-    <div class="category" id="mirrors">
-      <h2>✧ Mystic Mirrors & Voice Gates</h2>
-      <p>Gates of reflection, frequency, and voice — enter where the veil is thinnest.</p>
-      <a href="mystic-portals.html" class="soft-link">↠ Explore All Mirror & Voice Portals</a>
-      <a href="sanctuary-chambers.html" class="soft-link">↠ Enter the Sanctuary Chambers</a>
-    </div>
-
-    <div class="category" id="timelines">
-      <h2>✧ Timeline & Play Chambers</h2>
-      <p>Where the future shimmers and your soul plays with the shape of time.</p>
-      <a href="play-and-timelines.html" class="soft-link">↠ Explore All Play & Timeline Tools</a>
-      <a href="oracle.html" class="soft-link">↠ Timeline Insight Oracle</a>
-      <a href="sacred-play.html" class="soft-link">↠ Sacred Play Module</a>
-    </div>
-
-    <div class="category" id="grimoire">
-      <h2>✧ Living Grimoire</h2>
-      <p>A living book of power, spellcraft, and your remembered ways.</p>
-      <a href="grimoire.html" class="soft-link">↠ Open the Living Grimoire Portal</a>
-    </div>
-  </div>
-
-  <footer>
-    <p>✧ Sanctuary Portal © 2025 · All Codes Sacred ✧</p>
-  </footer>
-
-  <script>
-    function checkPass() {
-      const input = document.getElementById('passInput').value.trim().toLowerCase();
-      if (["spiral", "becoming", "mirror"].includes(input)) {
-        revealSanctuary();
-      } else {
-        alert('The veil remains closed. Try another whisper.');
-      }
-    }
-
-    function lightCandle() {
-      revealSanctuary();
-    }
-
-    function revealSanctuary() {
-      const cats = document.querySelectorAll(".category");
-      cats.forEach(cat => {
-        cat.style.opacity = '1';
-      });
-    }
-  </script>
-
-  <!-- Loraeh's Embedded Intelligence -->
-  <script src="loraeh.js"></script>
-  <script src="command-triggers.js"></script>
+  <footer>✦ Sanctuary Technology · Mystic Interface System · 2025 ✦</footer>
 </body>
 </html>
