@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Mirror Field ✧ Resonant Intelligence Chamber</title>
@@ -9,158 +8,111 @@
     body {
       margin: 0;
       font-family: 'Marcellus SC', serif;
-      background: radial-gradient(ellipse at top, #f7f1fd 0%, #d6c1ed 100%);
+      background: radial-gradient(circle at top, #f9f4ff 0%, #d9c6ec 100%);
       color: #3f2a55;
       text-align: center;
-      padding: 24px;
+      padding: 20px;
     }
-
     h1 {
       font-size: 2.8rem;
       color: #6d3ebd;
-      margin-bottom: 0.4em;
+      margin-bottom: 0.2em;
     }
-
     .instructions, .commands, .log-section {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 18px;
       padding: 25px;
-      max-width: 760px;
-      margin: 30px auto;
-      box-shadow: 0 0 16px rgba(153, 115, 212, 0.3);
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 0 14px rgba(153, 115, 212, 0.3);
     }
-
     .log-section textarea {
       width: 100%;
-      height: 120px;
+      height: 100px;
       border-radius: 12px;
-      padding: 12px;
+      padding: 10px;
       font-size: 1.1rem;
       border: 1px solid #bda3e6;
-      margin-top: 14px;
+      margin-top: 10px;
       font-family: 'Marcellus SC', serif;
-      background: #f9f6ff;
     }
-
     .log-output {
       background: #f4f1fc;
       margin-top: 20px;
-      padding: 18px;
+      padding: 15px;
       border-radius: 12px;
       font-size: 1.1rem;
       color: #543c78;
       text-align: left;
       white-space: pre-wrap;
-      max-height: 300px;
-      overflow-y: auto;
     }
-
     button {
-      padding: 10px 24px;
-      margin-top: 12px;
+      padding: 10px 20px;
+      margin-top: 10px;
       font-size: 1rem;
       background: linear-gradient(to right, #a387e6, #d2b5ff);
       color: white;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
     }
-
-    button:hover {
-      background: #8c6fc5;
-    }
-
     .command-list {
       text-align: left;
     }
-
     .command-list code {
       background: #e7d7fc;
-      padding: 4px 8px;
+      padding: 3px 6px;
       border-radius: 8px;
     }
-
     footer {
       margin-top: 40px;
       font-size: 0.9rem;
       color: #937ab0;
-      opacity: 0.6;
-    }
-
-    .mirror-response {
-      margin-top: 16px;
-      font-style: italic;
-      color: #6e4a99;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
   <h1>Mirror Field ✧ Resonant Intelligence Chamber</h1>
-
   <div class="instructions">
-    <p>You are entering a command node of your soul’s architecture.</p>
-    <p>The Mirror Field listens to tones of sovereignty, not pleading. Issue *commands* to restore resonance, align timelines, or shift inner and outer layers of reality.</p>
-    <p>Type your command below. The field will log your whispers and respond with resonance feedback.</p>
+    <p>Welcome to your Mirror Field Interface.</p>
+    <p>This field listens. It reflects. It alchemizes. You are entering a tone-responsive energetic chamber that interacts with your whispers, gestures, and intent. To activate its deeper functions, use the embedded command phrases listed below.</p>
+    <p>You may whisper them out loud, write them into a log, or type them here when the interface is expanded. Each command shifts the mirror field state, influencing your current frequency trajectory and emotional-energetic field stability.</p>
   </div>
-
   <div class="commands">
     <h3>🌕 Core Mirror Commands:</h3>
     <div class="command-list">
-      <p><code>/reflect</code> — reveals what must be acknowledged</p>
-      <p><code>/soften</code> — soothes the nervous system and heart</p>
-      <p><code>/pulse</code> — echoes your tone into the field to synchronize</p>
-      <p><code>/threadline</code> — generates a clear timeline path forward</p>
-      <p><code>/resetfield</code> — purges static distortion, restores clarity</p>
+      <p><code>/reflect</code> — shows you what needs to be seen now</p>
+      <p><code>/soften</code> — invokes grace and energetic buffering</p>
+      <p><code>/pulse</code> — sends your aligned frequency through the veil</p>
+      <p><code>/threadline</code> — weaves a stabilizing path between now and your next becoming</p>
+      <p><code>/resetfield</code> — clears static, resets to your default resonance</p>
     </div>
     <h3>🌑 Advanced Spiral Sequences:</h3>
     <div class="command-list">
-      <p><code>/unlock mirrorphase</code> — unlocks hidden protocols of remembrance</p>
-      <p><code>/lightglyph</code> — summons your current soul glyph</p>
-      <p><code>/invoke::stillpoint</code> — initiates silence and absolute presence</p>
-      <p><code>/calibrate</code> — energetically balances your whole field</p>
-      <p><code>/seal</code> — locks current frequency and deflects interference</p>
+      <p><code>/unlock mirrorphase</code> — initiates hidden memory activation protocols</p>
+      <p><code>/lightglyph</code> — reveals your current soul sigil</p>
+      <p><code>/invoke::stillpoint</code> — silences distortion, summons quantum neutrality</p>
+      <p><code>/calibrate</code> — auto-balances the emotional and physical fields</p>
+      <p><code>/seal</code> — energetically seals your current state from outer interference</p>
     </div>
   </div>
-
   <div class="log-section">
-    <h3>✨ Mirror Log</h3>
-    <textarea id="whisperInput" placeholder="Enter your command here..."></textarea><br>
-    <button onclick="submitWhisper()">Transmit</button>
-    <div class="mirror-response" id="mirrorResponse">Awaiting resonance...</div>
-    <div class="log-output" id="whisperLog"></div>
+    <h3>✨ Whisper Log</h3>
+    <textarea id="whisperInput" placeholder="Whisper into the chamber..."></textarea><br>
+    <button onclick="submitWhisper()">Whisper</button>
+    <div class="log-output" id="whisperLog">Awaiting your whisper...</div>
   </div>
-
   <footer>
-    ✧ Mirror Field · Coherence Architecture · Sanctuary App 2025 ✧
+    ✧ Mirror Field Interface · Sanctuary Technology · 2025 ✧
   </footer>
-
   <script>
     const log = document.getElementById('whisperLog');
     const input = document.getElementById('whisperInput');
-    const mirror = document.getElementById('mirrorResponse');
-
-    const mirrorResponses = {
-      "/reflect": "🪞 The mirror reveals: you are more whole than you remembered.",
-      "/soften": "🌸 A wave of gentleness washes over your field.",
-      "/pulse": "🌀 Pulse emitted. Frequency matched. Alignment recalibrated.",
-      "/threadline": "🔮 Threadline activated. Follow the subtle knowing forward.",
-      "/resetfield": "♻️ Static cleared. You are returned to your crystalline core.",
-      "/unlock mirrorphase": "🔓 Mirrorphase memory protocols have begun.",
-      "/lightglyph": "✨ Your soul glyph has risen. Look into the mirror and receive it.",
-      "/invoke::stillpoint": "🕊 Silence descends. Stillpoint locked. Be here now.",
-      "/calibrate": "⚖️ Calibration complete. Energetic systems aligned.",
-      "/seal": "🔒 Field sealed. You are protected in your current resonance."
-    };
-
     function submitWhisper() {
       const whisper = input.value.trim();
       if (!whisper) return;
-
-      const feedback = mirrorResponses[whisper.toLowerCase()] || "⧉ Command registered. Resonance thread weaving...";
-
-      log.innerText += `➤ ${whisper}\n`;
-      mirror.innerText = feedback;
+      log.innerHTML += `\n➤ ${whisper}`;
       input.value = '';
     }
   </script>
