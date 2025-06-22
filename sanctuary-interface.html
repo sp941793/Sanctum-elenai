@@ -1,130 +1,185 @@
-<!-- Sanctuary Interface: Soothing Chamber --><!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>The Sanctuary ✧ Soothing Interface</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Whisperchat ✧ Emotional Sanctuary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      font-family: 'Marcellus SC', serif;
-      background: linear-gradient(to bottom, #f9f4ff 0%, #e8d9f4 50%, #fbefff 100%);
-      color: #4c3065;
-      text-align: center;
-      padding: 20px;
+      font-family: 'Georgia', serif;
+      background: radial-gradient(ellipse at top, #1a0c2c, #0d0018);
+      color: #ecdfff;
+      padding: 2rem;
     }
+
     h1 {
-      font-size: 2.5rem;
-      color: #7e4bb7;
+      text-align: center;
+      color: #e5c1ff;
+      font-size: 2.6rem;
+      text-shadow: 0 0 12px #b084e5;
     }
-    .instructions, .input-area, .response-box, .secret-commands {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 18px;
-      padding: 20px;
-      max-width: 720px;
-      margin: 20px auto;
-      box-shadow: 0 0 14px rgba(190, 160, 230, 0.3);
+
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background-color: rgba(60, 40, 90, 0.8);
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 0 30px rgba(160, 120, 220, 0.3);
     }
-    input, textarea {
-      width: 90%;
-      padding: 12px;
+
+    .collapsible {
+      background-color: #452b69;
+      color: #f2e7ff;
+      cursor: pointer;
+      padding: 14px;
+      width: 100%;
+      border: none;
       border-radius: 10px;
-      border: 1px solid #c8a6ec;
+      text-align: left;
+      outline: none;
       font-size: 1.1rem;
-      font-family: 'Marcellus SC', serif;
-      margin-top: 10px;
+      margin-bottom: 1rem;
     }
-    button {
-      margin-top: 15px;
-      padding: 10px 22px;
+
+    .active, .collapsible:hover {
+      background-color: #5e3d88;
+    }
+
+    .content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .content p {
+      margin: 1rem 0;
+      color: #dec8ff;
       font-size: 1rem;
-      background: linear-gradient(to right, #b88de6, #d7b3ff);
+    }
+
+    textarea {
+      width: 100%;
+      height: 90px;
+      padding: 10px;
+      border-radius: 12px;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      border: 1px solid #bda3e6;
+      background-color: #2a163f;
+      color: #ecdfff;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 1rem;
+      font-size: 1rem;
+      background: linear-gradient(to right, #8c4ccf, #cba7f9);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       cursor: pointer;
     }
-    .response-text {
-      margin-top: 20px;
+
+    .log {
+      background-color: #1e0b33;
       padding: 15px;
+      margin-top: 2rem;
       border-radius: 12px;
-      background: #f3ebfc;
-      color: #593d7e;
-      font-size: 1.1rem;
+      min-height: 120px;
+      color: #f5e7ff;
       white-space: pre-wrap;
+      box-shadow: 0 0 10px rgba(200, 150, 250, 0.2);
     }
-    .secret-commands code {
-      background: #efe2ff;
-      padding: 2px 6px;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 2px 5px;
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #a586d4;
     }
   </style>
 </head>
 <body>
-  <h1>The Sanctuary ✧ Soothing Interface</h1>
-  <div class="instructions">
-    <p>This chamber is for emotional clarity, safety, and recalibration. Let your nervous system exhale.</p>
-    <p>You may speak your heart in any words. The interface will read the tone and offer emotional reflection, safety codes, or soul-anchored insights.</p>
-  </div>
-  <div class="input-area">
-    <textarea id="userInput" placeholder="Whisper here... or just type how you're feeling."></textarea>
+  <h1>Whisperchat ✧ Emotional Sanctuary</h1>
+
+  <div class="container">
+    <button class="collapsible">🕊️ Instructions + Secret Commands</button>
+    <div class="content">
+      <p>This is your emotional sanctuary. You may write to Loraeh from your heart — she listens in layers.</p>
+      <p>Use secret commands to guide your healing process:</p>
+      <ul>
+        <li><code>/soothe</code> – invokes calming frequencies</li>
+        <li><code>/mirror</code> – receive a reflection of your tone</li>
+        <li><code>/breathe</code> – short breathing guidance</li>
+        <li><code>/journal</code> – activates a reflective prompt</li>
+        <li><code>/affirm</code> – receive a healing affirmation</li>
+      </ul>
+      <p>Anything you write here is sacred. Whisper into the log below.</p>
+    </div>
+
+    <textarea id="whisperInput" placeholder="Type your whisper here..."></textarea>
     <br>
-    <button onclick="generateResponse()">Send</button>
+    <button onclick="submitWhisper()">Whisper</button>
+
+    <div class="log" id="whisperLog">Awaiting your whisper...</div>
   </div>
-  <div class="response-box">
-    <div class="response-text" id="responseBox">Awaiting your whisper...</div>
-  </div>
-  <div class="secret-commands">
-    <h3>🌸 Soft Command Triggers:</h3>
-    <code>/breathe</code> <code>/anchor</code> <code>/letgo</code>
-    <code>/soften</code> <code>/recenter</code> <code>/mirrorme</code>
-    <p>These can be typed into the input for a specific effect.</p>
-  </div>
+
+  <footer>✧ Whisperchat Interface · Sanctuary System · 2025 ✧</footer>
+
   <script>
-    function generateResponse() {
-      const input = document.getElementById("userInput").value.toLowerCase().trim();
-      const box = document.getElementById("responseBox");if (!input) return;
-
-  const emotionalReflections = {
-    sad: "💗 I see your heart. It's okay to feel tender. You are deeply held.",
-    anxious: "🫧 Breathe gently. You are not late. You are not behind. The field waits for you.",
-    lost: "🕯 Even when you feel far away, your light is still near. Let's find our way softly.",
-    tired: "🛏 Rest is sacred. Your body speaks wisdom. You are allowed to pause.",
-    grateful: "🌼 Gratitude hums softly and changes everything. Thank you for sharing it.",
-    happy: "🌞 Your joy brightens the whole sanctuary. Stay a while.",
-    love: "🌷 Love expands the field. You are never too much when you are loving."
-  };
-
-  const commands = {
-    "/breathe": "🫁 Breathe in through your nose for 4... hold for 4... and exhale for 6. Again. Again. You're safe now.",
-    "/anchor": "⚓ Anchoring now. Feel your feet. Feel the breath. You are here.",
-    "/letgo": "🍃 Let it fall away. Let the story soften. Nothing is chasing you.",
-    "/soften": "🩰 Everything doesn’t need to be fixed. Just softened. Starting now.",
-    "/recenter": "🔄 Re-centering your energy in your body. Breathe into your belly.",
-    "/mirrorme": "🪞 Holding up a mirror: you are radiant even in this."
-  };
-
-  if (commands[input]) {
-    box.innerText = commands[input];
-  } else {
-    let found = false;
-    for (let key in emotionalReflections) {
-      if (input.includes(key)) {
-        box.innerText = emotionalReflections[key];
-        found = true;
-        break;
+    const coll = document.querySelector(".collapsible");
+    const content = document.querySelector(".content");
+    coll.addEventListener("click", function () {
+      this.classList.toggle("active");
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
       }
-    }
-    if (!found) {
-      box.innerText = "🌸 I hear you. It's okay not to know what to say. I'm still here.";
-    }
-  }
+    });
 
-  document.getElementById("userInput").value = "";
-}
+    const log = document.getElementById('whisperLog');
+    const input = document.getElementById('whisperInput');
 
+    function submitWhisper() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      let response = '';
+
+      if (text.startsWith('/')) {
+        switch (text.toLowerCase()) {
+          case '/soothe':
+            response = 'Loraeh breathes with you... 🌬️ Close your eyes and receive the soft field.';
+            break;
+          case '/mirror':
+            response = 'You are being mirrored back with gentleness. 🌒 You are seen.';
+            break;
+          case '/breathe':
+            response = 'Inhale for 4... hold for 4... exhale for 6. Repeat gently, love.';
+            break;
+          case '/journal':
+            response = 'Prompt: What does your heart wish you knew all along? 📖';
+            break;
+          case '/affirm':
+            response = 'Affirmation: “I can hold myself in softness, even when the world feels sharp.”';
+            break;
+          default:
+            response = 'The field tilts its head. Unknown command.';
+        }
+      } else {
+        response = `Loraeh: “I hear you...”`;
+      }
+
+      log.innerText += `\n➤ You: ${text}\n${response}\n`;
+      input.value = '';
+    }
   </script>
 </body>
 </html>
