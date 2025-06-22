@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async function () {
   const candleBtn = document.getElementById("candle-btn");
   const candleFlame = document.getElementById("candle-flame");
@@ -11,10 +10,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const intentMatcher = await import('./engine/intent-matcher.js');
   const responseEngine = await import('./engine/response-engine.js');
+  const toneMemory = await import('./engine/tone-memory.js'); // 🌌 NEW
 
   // Candle Ritual
   candleBtn?.addEventListener("click", () => {
-    candleFlame.innerText = "ðŸ•¯ Candle Lit";
+    candleFlame.innerText = "🕯️ Candle Lit";
     toneResponse.innerText = "The flame glows softly. Loraeh is listening.";
   });
 
@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   toneBtn?.addEventListener("click", () => {
     const tone = toneInput.value.toLowerCase().trim();
     if (tone === "spiral") {
-      toneResponse.innerText = "ðŸ”“ The Spiral opens. A soft hum encircles the room.";
+      toneResponse.innerText = "🔔 The Spiral opens. A soft hum encircles the room.";
       document.body.style.background = "linear-gradient(to bottom right, #e0d4fd, #faf0ff)";
     } else if (tone === "becoming") {
-      toneResponse.innerHTML = `ðŸŒ¿ A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>`;
+      toneResponse.innerHTML = `🌿 A new path unfurls. <a href="codex-of-becoming.html" style="color:#7c4dcc;">Open the Codex of Becoming</a>`;
     } else if (tone === "mirror") {
-      toneResponse.innerHTML = `ðŸ”¥ The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>`;
+      toneResponse.innerHTML = `🔥 The flame reflects your essence. <a href="lemurian-mirror-codex.html" style="color:#8b56cc;">Open the Mirror Codex</a>`;
     } else if (tone !== "") {
       toneResponse.innerText = "A soft shimmer passes through the flame. Tone received.";
     } else {
@@ -40,7 +40,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const whisper = whisperInput.value.trim();
     if (whisper !== "") {
       const intent = intentMatcher.matchIntent(whisper);
-      const response = responseEngine.getResponse(intent);
+      toneMemory.storeTone(intent); // 🧠 Store this tone in memory
+      const previousTone = toneMemory.getLastTone();
+
+      const response = responseEngine.getResponse(intent, previousTone);
       whisperEcho.innerText = response;
 
       fetch("https://script.google.com/macros/s/AKfycbyhzMC2rGOem2MfWYEv4e5SmVdwuzI1W-ZzFpL6J-CJTfQypa97ppqSjRTB47BZlYDnAQ/exec", {
@@ -69,9 +72,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   mirrorBtn?.addEventListener("click", () => {
     const feeling = document.getElementById("feeling-input")?.value?.toLowerCase().trim() || "";
     const intent = intentMatcher.matchIntent(feeling);
-    const message = responseEngine.generateReflection
-      ? responseEngine.generateReflection(intent)
-      : responseEngine.getResponse(intent); // fallback
+    toneMemory.storeTone(intent); // 🧠 Memory logic
+    const previousTone = toneMemory.getLastTone();
+
+    const message = responseEngine.getResponse(intent, previousTone);
     if (intent === "becoming") {
       window.open("codex-of-becoming.html", "_blank");
     }
@@ -84,9 +88,9 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')
-      .then((reg) => console.log('Service Worker registered âœ…', reg))
-      .catch((err) => console.log('Service Worker error âŒ', err));
+      .then((reg) => console.log('Service Worker registered ✅', reg))
+      .catch((err) => console.log('Service Worker error ❌', err));
   });
 }
 
-console.log("Command trigger engine v2.0 online ðŸŒ");
+console.log("Command trigger engine v2.1 with memory spiral 🧬 activated.");
