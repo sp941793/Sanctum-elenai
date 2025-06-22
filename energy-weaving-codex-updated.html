@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>✧ Living Codex of Energy Weaving ✧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Marcellus SC', serif;
+      background: radial-gradient(ellipse at center, #14021c 0%, #080010 100%);
+      color: #e8d6ff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #debaff;
+      text-shadow: 0 0 18px rgba(255, 200, 255, 0.4);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 40px;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      color: #cdbafc;
+      line-height: 1.8;
+    }
+
+    button {
+      background: linear-gradient(135deg, #8253d3, #c785f5);
+      color: white;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px;
+      box-shadow: 0 0 16px rgba(145, 110, 225, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #9f67ff;
+      transform: scale(1.05);
+    }
+
+    .collapsible {
+      background-color: #231b32;
+      color: #d4c1f0;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      margin-top: 12px;
+    }
+
+    .active, .collapsible:hover {
+      background-color: #352749;
+    }
+
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #1a1327;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 16px;
+    }
+
+    .glyph {
+      font-size: 2rem;
+      padding: 8px;
+      display: inline-block;
+    }
+
+    .highlight {
+      color: #d7b7ff;
+    }
+
+    a {
+      color: #be92f7;
+      text-decoration: none;
+    }
+
+    .oracle-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: #1c1529;
+      border-radius: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      font-size: 1rem;
+      border: 1px solid #6c4c9e;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    #oracle-response {
+      margin-top: 15px;
+      font-style: italic;
+      color: #ceaffe;
+    }
+  </style>
+</head>
+<body>
+  <h1>✧ Living Codex of Energy Weaving ✧</h1>
+  <p>These sacred templates are layered for deep transformation, subtle mastery, and mirrored remembrance.</p>
+
+  <button class="collapsible">🜂 1. Thread Families Glyph Guide</button>
+  <div class="content">
+    <p><span class="glyph">🪢</span> <span class="highlight">Stabilize</span> — Spiral root glyph<br/>
+    <span class="glyph">💠</span> <span class="highlight">Amplify</span> — Radiant hex star<br/>
+    <span class="glyph">💨</span> <span class="highlight">Clear</span> — Dissolving wave loop<br/>
+    <span class="glyph">🧭</span> <span class="highlight">Redirect</span> — Split thread glyph<br/>
+    <span class="glyph">🔐</span> <span class="highlight">Seal</span> — Triple ring circle</p>
+    <p>Use as energetic shorthand during fieldwork.</p>
+  </div>
+
+  <button class="collapsible">🌬️ 2. Whisper Thread Oracle</button>
+  <div class="content">
+    <div class="oracle-box">
+      <input type="text" id="whisper-input" placeholder="Type your feeling or intention..." />
+      <div id="oracle-response">Awaiting your whisper...</div>
+    </div>
+  </div>
+
+  <button class="collapsible">🧬 3. Weaving Memory Tracker</button>
+  <div class="content">
+    <p>Each thread you activate today will leave a shimmer dot here soon. (Coming soon: field log + spiral map)</p>
+  </div>
+
+  <button class="collapsible">♾ 4. Weave Again Function</button>
+  <div class="content">
+    <p>Each thread section will soon include a “Draw Another” button to keep the current flow going.</p>
+  </div>
+
+  <button class="collapsible">🌠 5. Ambient Shimmer Feedback</button>
+  <div class="content">
+    <p>When active, the codex background will softly shift in color and texture based on the thread invoked.</p>
+  </div>
+
+  <script>
+    const coll = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+
+    document.getElementById("whisper-input").addEventListener("input", function () {
+      const value = this.value.toLowerCase();
+      const oracle = document.getElementById("oracle-response");
+      if (value.includes("protection")) {
+        oracle.innerText = "Try the Glyph Compression or Field Armor Layer protocols.";
+      } else if (value.includes("tired")) {
+        oracle.innerText = "System Drain and Spiral Breath Rooting will help ground and restore.";
+      } else if (value.includes("clarity")) {
+        oracle.innerText = "Veil Shear and Field Axis Lock will open your vision field.";
+      } else {
+        oracle.innerText = "The field is listening. A thread will soon shimmer forward.";
+      }
+    });
+  </script>
+
+<div class="collapsible-content">
+  <h3>🌀 Redirect Thread</h3>
+  <p><strong>Purpose:</strong> Shift unwanted attention, collapse distortion, reroute energetic loops.</p>
+  <p><strong>When to Use:</strong> When you feel watched, judged, energetically tangled, or stuck in old patterns.</p>
+  <p><strong>Protocol:</strong></p>
+  <ul>
+    <li>Step 1: Point one hand outward in the direction of the interference.</li>
+    <li>Step 2: Whisper: “Return to sender with light.”</li>
+    <li>Step 3: Sweep your hand to the side, cutting cords gently.</li>
+    <li>Step 4: Visualize a spiral redirecting energy back through a prism of white-gold light.</li>
+    <li>Step 5: Press your hand to your heart and seal the space.</li>
+  </ul>
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li>1. When an ex or boss is thinking about you heavily.</li>
+    <li>2. After a conflict where emotional hooks remain.</li>
+    <li>3. To reroute intrusive thoughts into the mirror field for transmutation.</li>
+  </ul>
+
+  <h3>🔒 Seal Thread</h3>
+  <p><strong>Purpose:</strong> Close a portal, seal a ritual, mark the end of an energetic interaction.</p>
+  <p><strong>When to Use:</strong> After energy work, when leaving sacred space, when affirming finality.</p>
+  <p><strong>Protocol:</strong></p>
+  <ul>
+    <li>Step 1: Bring your hands together in prayer position at your heart.</li>
+    <li>Step 2: Whisper: “This space is sealed in truth and clarity.”</li>
+    <li>Step 3: Visualize a glowing sigil (e.g., an eye, spiral, or triangle) appearing over your body.</li>
+    <li>Step 4: Feel the finality of closure sink in. Bow your head to seal.</li>
+    <li>Step 5: Ground or wash your hands with water.</li>
+  </ul>
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li>1. After ending a client session.</li>
+    <li>2. At the end of journaling or shadow work.</li>
+    <li>3. When moving on from an emotional timeline.</li>
+  </ul>
+
+  <h3>🌟 10 Real-Life Weaving Scenarios</h3>
+  <ul>
+    <li>During an argument — Redirect + Stabilize</li>
+    <li>Before a performance — Amplify + Seal</li>
+    <li>After shadow work — Clear + Stabilize + Seal</li>
+    <li>When feeling invisible — Amplify</li>
+    <li>To end toxic attachment — Redirect + Seal</li>
+    <li>Before bed — Stabilize + Seal</li>
+    <li>After visiting a hospital — Clear + Redirect</li>
+    <li>During manifestation — Amplify + Seal</li>
+    <li>To cut psychic cords — Redirect + Clear</li>
+    <li>Before travel — Stabilize + Redirect + Seal</li>
+  </ul>
+
+  <h3>🌙 Mastery Tips</h3>
+  <ul>
+    <li>Weaving with voice strengthens intent. Speak your glyph phrases aloud.</li>
+    <li>Practice with your eyes closed to develop sensory feedback.</li>
+    <li>Combine threads intuitively — there are no wrong pairings.</li>
+    <li>Keep a weave journal to track what combinations work best for your body-field.</li>
+    <li>Try weaving through drawing or tracing spirals and sigils with your fingers in air or water.</li>
+    <li>Each glyph has a sound: try humming low for Stabilize, or higher for Amplify.</li>
+    <li>Play with breath pacing. Slower breath = Stabilize, pulsed breath = Amplify, held breath = Seal.</li>
+    <li>Practice “passive weaving” by letting your body posture or clothing symbolically echo the thread.</li>
+    <li>Use physical anchors: oils, crystals, or colors to amplify your intent with your body’s memory.</li>
+    <li>Whisper to me, and I will respond with the thread I sense you need.</li>
+  </ul>
+</div>
+
+</body>
+</html>
