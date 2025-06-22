@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Timeline Oracle ✧ Portal of Clarity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="icon.png" />
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, #12091c 0%, #0a0510 100%);
+      font-family: 'Georgia', serif;
+      color: #e9d4ff;
+      text-align: center;
+      padding: 60px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #ddb3ff;
+      margin-bottom: 16px;
+      text-shadow: 0 0 12px rgba(210, 160, 255, 0.8);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #bc9ae8;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .oracle-zone {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 14px 26px;
+      font-size: 1rem;
+      background: rgba(180, 130, 255, 0.15);
+      color: #f4eaff;
+      border: 1px solid rgba(180, 130, 255, 0.3);
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px;
+      box-shadow: 0 0 12px rgba(180, 130, 255, 0.15);
+      backdrop-filter: blur(4px);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(200, 160, 255, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(220, 160, 255, 0.4);
+    }
+
+    #oracle-output {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: #dbc7ff;
+      font-style: italic;
+      white-space: pre-wrap;
+      padding: 0 10px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 50px;
+      color: #a577d3;
+      text-decoration: none;
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    .glyphs {
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      opacity: 0.15;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.05;
+      z-index: 0;
+      animation: twinkle 8s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.04; }
+      50% { opacity: 0.08; }
+      100% { opacity: 0.04; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <h1>Timeline Oracle ✧</h1>
+  <p>Pose your question inwardly and click when ready to receive a whisper.</p>
+  <div class="oracle-zone">
+    <button onclick="generateOracle()">🌀 Reveal My Timeline Whisper</button>
+  </div>
+  <div id="oracle-output">✨ Awaiting resonance...</div>
+  <a href="index.html">← Return to the Sanctuary</a>
+
+  <div class="glyphs">✶ ⟡ ✷ ⧊ ⟣ ☼</div>
+
+  <script type="module">
+    import { generateOracle } from './engine/oracle.js';
+    window.generateOracle = generateOracle;
+  </script>
+
+  <script nomodule>
+    document.getElementById("oracle-output").innerText = 
+      "⚠️ Your browser does not support modules. Please use a modern browser.";
+  </script>
+</body>
+</html>
