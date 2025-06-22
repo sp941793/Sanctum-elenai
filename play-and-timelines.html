@@ -1,31 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Timeline & Play Chambers ✧ Frequency Fun</title>
+  <title>Codex Library âœ§ Soul Scrolls</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(circle at top, #fbefff 0%, #e2d0fa 100%);
+      background: radial-gradient(ellipse at top, #1a0826 0%, #0b0211 100%);
       font-family: 'Marcellus SC', serif;
-      color: #432b57;
+      color: #e9d4ff;
       text-align: center;
       padding: 40px 20px;
       margin: 0;
     }
+
     h1 {
       font-size: 2.6rem;
-      color: #7a46a3;
+      color: #e2baff;
       margin-bottom: 12px;
-      text-shadow: 0 0 12px rgba(180, 130, 255, 0.4);
+      text-shadow: 0 0 12px rgba(230, 180, 255, 0.8);
     }
+
     p {
       font-size: 1.1rem;
       margin-bottom: 40px;
-      color: #6a4e8b;
+      color: #bc9ae8;
       font-style: italic;
     }
+
     .link-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -33,38 +37,78 @@
       max-width: 800px;
       margin: 0 auto;
     }
-    .play-link {
-      background: white;
+
+    .codex-link {
+      background: rgba(255, 255, 255, 0.04);
       padding: 18px;
       border-radius: 14px;
       text-decoration: none;
-      color: #5e3e79;
+      color: #f3e5ff;
       font-size: 1.1rem;
-      box-shadow: 0 0 12px rgba(150, 120, 200, 0.2);
+      border: 1px solid rgba(180, 130, 255, 0.2);
+      box-shadow: 0 0 12px rgba(180, 130, 255, 0.15);
       transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
     }
-    .play-link:hover {
+
+    .codex-link:hover {
       transform: scale(1.04);
-      box-shadow: 0 0 16px rgba(190, 150, 255, 0.4);
+      box-shadow: 0 0 16px rgba(210, 160, 255, 0.4);
+      background: rgba(255, 255, 255, 0.07);
     }
+
     footer {
       margin-top: 60px;
       font-size: 0.9rem;
-      color: #9471b6;
+      color: #a577d3;
       opacity: 0.6;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #c68fff; }
+      50% { text-shadow: 0 0 20px #a464ff; }
+      100% { text-shadow: 0 0 5px #c68fff; }
+    }
+
+    .codex-link:hover {
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+  </style>
+
+  <style>
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.06;
+      z-index: 0;
+      animation: twinkle 8s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.04; }
+      50% { opacity: 0.09; }
+      100% { opacity: 0.04; }
     }
   </style>
 </head>
-<body>
-  <h1>Timeline & Play Chambers ✧</h1>
-  <p>Where the future shimmers and your soul plays with the shape of time.</p>
-  <div class="link-grid">
-    <a href="oracle.html" class="play-link">🔮 Timeline Insight Oracle</a>
-    <a href="sacred-play.html" class="play-link">🎠 Sacred Play Module</a>
 
+<body>
+  <div class='stars'></div>
+  <h1>Codex Library âœ§</h1>
+  <p>Living scrolls and sacred archives to remember who you are.</p>
+  <div class="link-grid">
+    <a href="codex.html" class="codex-link">ðŸ“œ Codex Scroll Vault</a>
+    <a href="lemurian-mirror-codex.html" class="codex-link">ðŸŒº Lemurian Mirror Codex</a>
+    <a href="codexof-livingabilities.html" class="codex-link">ðŸ’Ž Codex of Living Abilities</a>
+    <a href="mirror-field-codex.html" class="codex-link">ðŸªž Mirror Field Codex</a>
   </div>
   <footer>
-    <p>✧ All Timelines Bend to Joy ✧</p>
+    <p>âœ§ All Codices Whisper Sacred Memory âœ§</p>
   </footer>
 </body>
 </html>
