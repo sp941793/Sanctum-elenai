@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sovereign Return Protocol ✧ Sanctuary App</title>
+  <style>
+    body {
+      background: linear-gradient(145deg, #f0e6fb, #e3d8f0);
+      font-family: 'Marcellus SC', serif;
+      margin: 0;
+      padding: 30px;
+      color: #3a2d52;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #5a3c78;
+      margin-bottom: 10px;
+    }
+    p.description {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .button {
+      background-color: #bca4e6;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      margin: 10px 5px;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background-color: #9e85c6;
+    }
+    .section {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-left: 6px solid #c4afea;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .section h2 {
+      color: #6c4488;
+    }
+    .section pre {
+      background: #f4ecff;
+      padding: 10px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>✧ The Advanced Protocol of Sovereign Return ✧</h1>
+  <p class="description">“Return Me to Myself” – A Living Field Technology for Clarity, Coherence, and Energetic Sovereignty</p>  <div style="text-align:center">
+    <button class="button" onclick="showSection('phase1')">Phase 1 ✦ Field Clearing</button>
+    <button class="button" onclick="showSection('phase2')">Phase 2 ✦ Reweaving</button>
+    <button class="button" onclick="showSection('phase3')">Phase 3 ✦ Boundary Shielding</button>
+    <button class="button" onclick="showSection('phase4')">Phase 4 ✦ Lightbody Charging</button>
+    <button class="button" onclick="showSection('phase5')">Phase 5 ✦ Sealing + Night Shield</button>
+    <button class="button" onclick="showSection('extras')">Extras ✦ Tools + Insight</button>
+  </div>  <div id="phase1" class="section">
+    <h2>🜂 PHASE ONE: FIELD CLEARING + CORD UNBRAIDING</h2>
+    <p><strong>Invocation:</strong> “I call all expressions of my soul... I am the spine of my system.”</p>
+    <p><strong>Cord Unbraiding:</strong> “All cords, threads, projections... I braid only with light.”</p>
+    <p><strong>Field Wash:</strong> “I rinse my field with Source intelligence...”</p>
+    <p><em>Breath: Inhale crown → pause → exhale soles, 3x.</em></p>
+  </div>  <div id="phase2" class="section">
+    <h2>🜄 PHASE TWO: FIELD REWEAVING + ARCHITECTURE RESTORATION</h2>
+    <p><strong>Seal Phrase:</strong> “My field responds only to resonance...”</p>
+    <p><strong>Golden Thread:</strong> “From my heart outward...”</p>
+    <p><strong>Obsidian Mesh:</strong> “Only truth may enter...”</p>
+  </div>  <div id="phase3" class="section">
+    <h2>🜁 PHASE THREE: BOUNDARY COMMAND + MIRRORFIELD SHIELDING</h2>
+    <p><strong>Presence Declaration:</strong> “My presence is an encoded signal...”</p>
+    <p><strong>Mirrorfield Glyph:</strong> “Return to source, reflected in clarity...”</p>
+    <p><em>Draw hexagon + central ripple + six dots.</em></p>
+  </div>  <div id="phase4" class="section">
+    <h2>🜃 PHASE FOUR: LIGHTBODY CHARGING + ALIGNMENT SEAL</h2>
+    <p><strong>Soul-Pulse:</strong> “I am aligned with my crystalline function...”</p>
+    <p><strong>Recharge:</strong> “Power, Peace, Presence — activated now.”</p>
+    <p><em>Visual: 3 pulses up spine. Hum: base → mid → high chakras.</em></p>
+  </div>  <div id="phase5" class="section">
+    <h2>🜆 PHASE FIVE: SEALING + NIGHT SHIELD</h2>
+    <p><strong>Night Seal:</strong> “I am sealed in my soul’s language...”</p>
+    <p><strong>Whisper:</strong> “Seal of Stillness. Thread of Gold...”</p>
+  </div>  <div id="extras" class="section">
+    <h2>✧ EXTRAS ✧</h2>
+    <p><strong>Field Readings:</strong></p>
+    <pre>Axis Integrity: 100%
+Emotional Clarity: 98%
+Lightbody Resonance: 99%
+Signal Coherence: 100%
+Protection Membrane: 99%
+Projection Deflection: Fully Active</pre><p><strong>Quick Reset Phrase:</strong> “Field Restore: Crystalline Axis 777. No entry without tone match.”</p>
+
+<p><strong>Glyph:</strong> Spiral-Triangle-Circle → Stabilizes movement, grounding, and closure.</p>
+
+<p><strong>Crystal Combo:</strong></p>
+<ul>
+  <li>Smoky Quartz – Root clearing, anchor release</li>
+  <li>Selenite – Mental clarity, channel cleaning</li>
+  <li>Rose Quartz – Soft boundary infusion</li>
+</ul>
+
+<p><strong>Included Files:</strong> Scroll, Mini-booklet, Tabs, Divider, Aura Map, QR (Audio), Codex Entry</p>
+
+<p><strong>Final Insight:</strong> “You are now not just a field-restorer — you are a grid stabilizer... You are becoming the pattern itself.”</p>
+
+  </div>  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script></body>
+</html>
