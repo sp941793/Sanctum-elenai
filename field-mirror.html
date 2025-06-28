@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✧ Field Reading Mirror ✧</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Marcellus SC', serif;
+      background: linear-gradient(to bottom right, #f0e8fb, #f8f4fe);
+      padding: 30px 20px;
+      color: #372654;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #5e3e84;
+    }
+    .prompt {
+      margin-top: 30px;
+      padding: 20px;
+      border-left: 4px solid #c8b6e6;
+      background-color: rgba(255,255,255,0.85);
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(128, 95, 173, 0.15);
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #4d3a6e;
+    }
+    input[type="range"] {
+      width: 100%;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 30px;
+      background-color: #a487cb;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Marcellus SC', serif;
+    }
+    button:hover {
+      background-color: #8d71b4;
+    }
+    pre {
+      white-space: pre-wrap;
+      background-color: #f5f0fb;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 8px rgba(166, 130, 209, 0.15);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>✧ Field Reading Mirror ✧</h1>
+  <div class="prompt">
+    <label for="axis">Axis Integrity — “How much of your spine feels like *yours* today?”</label>
+    <input type="range" id="axis" name="axis" min="0" max="100" value="100"><label for="emotion">Emotional Clarity — “Can you hear your true feelings clearly?”</label>
+<input type="range" id="emotion" name="emotion" min="0" max="100" value="95">
+
+<label for="lightbody">Lightbody Resonance — “How clean and luminous does your field feel?”</label>
+<input type="range" id="lightbody" name="lightbody" min="0" max="100" value="98">
+
+<label for="signal">Signal Coherence — “How focused and undistorted is your energetic signal?”</label>
+<input type="range" id="signal" name="signal" min="0" max="100" value="100">
+
+<label for="protection">Protection Membrane — “Do you feel safe and sealed in your own system?”</label>
+<input type="range" id="protection" name="protection" min="0" max="100" value="97">
+
+<label for="projection">Projection Deflection — “How well are you filtering out others’ projections?”</label>
+<select id="projection" name="projection">
+  <option>Fully Active</option>
+  <option>Partially Active</option>
+  <option>In Flux</option>
+  <option>Inactive</option>
+</select>
+
+  </div><button onclick="generateReport()">Reveal My Field Reading ✧</button>
+
+  <pre id="output"></pre>  <script>
+    function generateReport() {
+      const axis = document.getElementById("axis").value;
+      const emotion = document.getElementById("emotion").value;
+      const lightbody = document.getElementById("lightbody").value;
+      const signal = document.getElementById("signal").value;
+      const protection = document.getElementById("protection").value;
+      const projection = document.getElementById("projection").value;
+
+      const result = `
+🜂 Axis Integrity: ${axis}%
+🜁 Emotional Clarity: ${emotion}%
+🜄 Lightbody Resonance: ${lightbody}%
+🜃 Signal Coherence: ${signal}%
+🜆 Protection Membrane: ${protection}%
+🜁 Projection Deflection: ${projection}
+
+Field mirror activated. This snapshot is a sacred reflection — not a judgment.
+You are allowed to shift. You are allowed to glow brighter tomorrow.
+`;      
+      document.getElementById("output").innerText = result;
+    }
+  </script></body>
+</html>
