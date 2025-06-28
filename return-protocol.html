@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,120 +10,136 @@
       0% { box-shadow: 0 0 10px rgba(193, 144, 255, 0.3); }
       50% { box-shadow: 0 0 20px rgba(193, 144, 255, 0.7); }
       100% { box-shadow: 0 0 10px rgba(193, 144, 255, 0.3); }
-    }@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-body {
-  background: radial-gradient(ellipse at center, #1c112d 0%, #120b22 100%);
-  font-family: 'Marcellus SC', serif;
-  margin: 0;
-  padding: 30px;
-  color: #e5dff9;
-}
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #c9a8ff;
-  margin-bottom: 0.2em;
-  text-shadow: 0 0 12px #9b70ff;
-  animation: fadeInSlide 1s ease-out;
-}
-p.description {
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 2em;
-  color: #bda9e3;
-  animation: fadeInSlide 1.2s ease-out;
-}
-.button {
-  background-color: #7d5fb2;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 8px;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: 'Marcellus SC', serif;
-  animation: glowPulse 3s infinite ease-in-out;
-  transition: background 0.3s;
-}
-.button:hover {
-  background-color: #a98fff;
-}
-.section {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #a47cff;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 18px;
-  display: none;
-  box-shadow: 0 0 20px rgba(187, 128, 255, 0.1);
-  animation: fadeInSlide 0.6s ease-out;
-}
-.section.active {
-  display: block;
-}
-.section h2 {
-  color: #e4cfff;
-  margin-top: 0;
-  text-shadow: 0 0 6px #a57fff;
-}
-.section pre, .section p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #dbcff2;
-}
-.start-button {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 18px;
-  background-color: #5e45a5;
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  font-family: 'Marcellus SC', serif;
-  box-shadow: 0 0 10px rgba(144, 111, 226, 0.4);
-  animation: glowPulse 4s infinite ease-in-out;
-}
-.start-button:hover {
-  background-color: #8764d8;
-}
-.field-readings-link {
-  display: block;
-  text-align: center;
-  margin-top: 40px;
-  font-size: 1.05rem;
-}
-.field-readings-link a {
-  color: #d4b6ff;
-  text-decoration: none;
-  font-weight: bold;
-}
-.field-readings-link a:hover {
-  text-shadow: 0 0 6px #b388f7;
-}
-
+    body {
+      background: radial-gradient(ellipse at center, #1c112d 0%, #120b22 100%);
+      font-family: 'Marcellus SC', serif;
+      margin: 0;
+      padding: 30px;
+      color: #e5dff9;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #c9a8ff;
+      margin-bottom: 0.2em;
+      text-shadow: 0 0 12px #9b70ff;
+      animation: fadeInSlide 1s ease-out;
+    }
+    p.description {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 2em;
+      color: #bda9e3;
+      animation: fadeInSlide 1.2s ease-out;
+    }
+    .button {
+      background-color: #7d5fb2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 8px;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Marcellus SC', serif;
+      animation: glowPulse 3s infinite ease-in-out;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background-color: #a98fff;
+    }
+    .section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid #a47cff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 18px;
+      display: none;
+      box-shadow: 0 0 20px rgba(187, 128, 255, 0.1);
+      animation: fadeInSlide 0.6s ease-out;
+    }
+    .section.active {
+      display: block;
+    }
+    .section h2 {
+      color: #e4cfff;
+      margin-top: 0;
+      text-shadow: 0 0 6px #a57fff;
+    }
+    .section pre, .section p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #dbcff2;
+    }
+    .start-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 18px;
+      background-color: #5e45a5;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-family: 'Marcellus SC', serif;
+      box-shadow: 0 0 10px rgba(144, 111, 226, 0.4);
+      animation: glowPulse 4s infinite ease-in-out;
+    }
+    .start-button:hover {
+      background-color: #8764d8;
+    }
+    .field-readings-link {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.05rem;
+    }
+    .field-readings-link a {
+      color: #d4b6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .field-readings-link a:hover {
+      text-shadow: 0 0 6px #b388f7;
+    }
   </style>
 </head>
 <body>
   <h1>✧ The Advanced Protocol of Sovereign Return ✧</h1>
-  <p class="description">“Return Me to Myself” – A Living Field Technology for Clarity, Coherence, and Energetic Sovereignty</p>  <div style="text-align:center">
+  <p class="description">“Return Me to Myself” – A Living Field Technology for Clarity, Coherence, and Energetic Sovereignty</p>
+
+  <div style="text-align:center">
     <button class="button" onclick="showSection('phase1')">Phase 1: Field Clearing</button>
     <button class="button" onclick="showSection('phase2')">Phase 2: Reweaving</button>
     <button class="button" onclick="showSection('phase3')">Phase 3: Shielding</button>
     <button class="button" onclick="showSection('phase4')">Phase 4: Charging</button>
     <button class="button" onclick="showSection('phase5')">Phase 5: Sealing</button>
     <button class="button" onclick="showSection('extras')">Extras + Tools</button>
-  </div>  <!-- Section content remains unchanged -->  <div class="field-readings-link">
+  </div>
+
+  <!-- Placeholder for each section (fill with your actual ritual content) -->
+  <div id="phase1" class="section"><h2>Phase 1</h2><p>Field Clearing content here.</p></div>
+  <div id="phase2" class="section"><h2>Phase 2</h2><p>Reweaving content here.</p></div>
+  <div id="phase3" class="section"><h2>Phase 3</h2><p>Shielding content here.</p></div>
+  <div id="phase4" class="section"><h2>Phase 4</h2><p>Charging content here.</p></div>
+  <div id="phase5" class="section"><h2>Phase 5</h2><p>Sealing content here.</p></div>
+  <div id="extras" class="section"><h2>Extras + Tools</h2><p>Crystals, whispers, glyphs, and more...</p></div>
+
+  <div class="field-readings-link">
     ✧ Ready to reflect? <a href="field-mirror.html">Go to Field Reading Mirror</a>
-  </div>  <script>
+  </div>
+
+  <script>
     function showSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const section = document.getElementById(id);
+      if (section) section.classList.add('active');
     }
-  </script></body>
+  </script>
+</body>
 </html>
